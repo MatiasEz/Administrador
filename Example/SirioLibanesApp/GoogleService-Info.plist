@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>872141928763-14bkinjnavf60b2612536427c0g3vj0s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.872141928763-14bkinjnavf60b2612536427c0g3vj0s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAyt9Qpe_73_P01WyAi2if3TCN_Dc0DqrA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>872141928763</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.federicobf.siriolibanes</string>
+	<key>PROJECT_ID</key>
+	<string>salon-sirio-libanes</string>
+	<key>STORAGE_BUCKET</key>
+	<string>salon-sirio-libanes.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:872141928763:ios:90647429e59e3a57</string>
+	<key>DATABASE_URL</key>
+	<string>https://salon-sirio-libanes.firebaseio.com</string>
+</dict>
+</plist>
