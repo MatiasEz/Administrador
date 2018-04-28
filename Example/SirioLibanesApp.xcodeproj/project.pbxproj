@@ -31,6 +31,7 @@
 		98DE10032027C27800DB1A7C /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE10022027C27800DB1A7C /* SongsViewController.swift */; };
 		98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE0FFF2027C14700DB1A7C /* DetailViewController.swift */; };
 		98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */; };
+		F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DA18120952BCE005AE2FA /* NewEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		B57A9B50AC19E9969C1742D4 /* SirioLibanesApp.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SirioLibanesApp.podspec; path = ../SirioLibanesApp.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B68CCAAA50F3F52468FB4528 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F70DA18120952BCE005AE2FA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SirioLibanesApp_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				9855A96420274F9500515E1A /* HomeViewController.swift */,
 				98DE0FF92027B71100DB1A7C /* HomeTableViewCell.swift */,
 				98DE0FF520278A9200DB1A7C /* InputViewController.swift */,
+				F70DA18120952BCE005AE2FA /* NewEventViewController.swift */,
 				98DE0FFF2027C14700DB1A7C /* DetailViewController.swift */,
 				98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */,
 				98DE0FFD2027C11600DB1A7C /* SocialViewController.swift */,
@@ -445,6 +448,7 @@
 			files = (
 				98DE10032027C27800DB1A7C /* SongsViewController.swift in Sources */,
 				9855A96520274F9500515E1A /* HomeViewController.swift in Sources */,
+				F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */,
 				9855A95F2027398600515E1A /* LoginViewController.swift in Sources */,
 				98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */,
 				98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */,

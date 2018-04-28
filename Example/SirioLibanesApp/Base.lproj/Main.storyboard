@@ -133,7 +133,7 @@
                                 <rect key="frame" x="16" y="219.66666666666671" width="382" height="436.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeCell" rowHeight="80" id="chu-Sl-if3" customClass="HomeTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeCell" rowHeight="80" id="chu-Sl-if3" customClass="HomeTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="382" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chu-Sl-if3" id="fDw-pc-Sib">
@@ -254,10 +254,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8S-iC-7dd" userLabel="background">
-                                                    <rect key="frame" x="0.0" y="10" width="736" height="159.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="10" width="382" height="159.66666666666666"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hea-mC-vsc">
-                                                            <rect key="frame" x="644" y="96" width="76" height="48.666666666666657"/>
+                                                            <rect key="frame" x="290" y="96" width="76" height="48.666666666666657"/>
                                                             <color key="backgroundColor" red="0.29300096840000001" green="0.4495093" blue="0.7330391839" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="76" id="wnP-Oe-ifn"/>
@@ -273,7 +273,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nyi-3u-K9c" userLabel="square">
-                                                    <rect key="frame" x="670" y="20" width="50" height="50"/>
+                                                    <rect key="frame" x="316" y="20" width="50" height="50"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-fN-L8m">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -296,13 +296,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50u-Q7-mgf">
-                                                    <rect key="frame" x="12" y="20" width="642" height="29"/>
+                                                    <rect key="frame" x="12" y="20" width="288" height="29"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIt-2w-fpD">
-                                                    <rect key="frame" x="12" y="57" width="642" height="41"/>
+                                                    <rect key="frame" x="12" y="57" width="288" height="41"/>
                                                     <string key="text">Email: fwefewf@gewgww.com 
 Telefono: 122312312</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -310,13 +310,13 @@ Telefono: 122312312</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asignado a: Mesa 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cen-WG-Mt8">
-                                                    <rect key="frame" x="12" y="106" width="622" height="20.666666666666671"/>
+                                                    <rect key="frame" x="12" y="106" width="268" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asistencia: Confirmado" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-rW-FJB">
-                                                    <rect key="frame" x="12" y="134" width="622" height="21"/>
+                                                    <rect key="frame" x="12" y="134" width="268" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -426,7 +426,7 @@ Telefono: 122312312</string>
                                 <rect key="frame" x="16" y="44.666666666666686" width="382" height="539.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="120" id="DW2-H9-QdS" customClass="SongTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="120" id="DW2-H9-QdS" customClass="SongTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="382" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DW2-H9-QdS" id="XZg-XI-GIm">
@@ -463,7 +463,7 @@ Telefono: 122312312</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ8-74-XsE">
-                                                    <rect key="frame" x="195.66666666666663" y="10" width="48.333333333333343" height="99.666666666666671"/>
+                                                    <rect key="frame" x="195.66666666666666" y="10" width="48.333333333333343" height="99.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -554,23 +554,26 @@ Telefono: 122312312</string>
             </objects>
             <point key="canvasLocation" x="1932" y="663"/>
         </scene>
-        <!--View Controller-->
+        <!--New Event View Controller-->
         <scene sceneID="aqc-C1-FQ1">
             <objects>
-                <viewController id="wVD-6k-fQZ" sceneMemberID="viewController">
+                <viewController id="wVD-6k-fQZ" customClass="NewEventViewController" customModule="SirioLibanesApp_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sy8-pp-g7S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlg-lC-Rtn">
                                 <rect key="frame" x="16" y="396" width="382" height="44"/>
-                                <color key="backgroundColor" red="0.32393639559999998" green="0.22787396130000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Rs-PK-612"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Continuar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="continuePressAction:" destination="wVD-6k-fQZ" eventType="touchUpInside" id="K0Y-yn-DOR"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbn-g5-nQL" userLabel="TecladoView">
                                 <rect key="frame" x="0.0" y="456" width="414" height="216"/>
@@ -591,13 +594,13 @@ Telefono: 122312312</string>
                                                     <constraint firstAttribute="height" constant="40" id="EOe-hr-UQM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrese el titulo con el que quiera nombrar el evento" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wy0-FG-FMM">
                                                 <rect key="frame" x="2" y="47" width="346" height="116"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Putito" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQf-jt-WAr">
@@ -633,7 +636,7 @@ Telefono: 122312312</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Xlg-lC-Rtn" firstAttribute="top" secondItem="yWc-NQ-wT2" secondAttribute="bottom" constant="16" id="44I-nC-IRL"/>
                             <constraint firstItem="Mb0-JR-ENn" firstAttribute="trailing" secondItem="Wbn-g5-nQL" secondAttribute="trailing" id="5Bj-zx-qYb"/>
@@ -649,6 +652,12 @@ Telefono: 122312312</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mb0-JR-ENn"/>
                     </view>
+                    <connections>
+                        <outlet property="continueButton" destination="Xlg-lC-Rtn" id="WX5-jt-JYi"/>
+                        <outlet property="descriptionLabel" destination="wy0-FG-FMM" id="FCP-oI-8Ds"/>
+                        <outlet property="inputTextField" destination="zQf-jt-WAr" id="ybd-QO-wHK"/>
+                        <outlet property="titleLabel" destination="3q2-1g-S8X" id="dyW-7y-nxv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKT-CE-RrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -666,7 +675,7 @@ Telefono: 122312312</string>
                                 <rect key="frame" x="0.0" y="16" width="414" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailCell" rowHeight="2000" id="58h-4i-5h5" customClass="DetailTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailCell" rowHeight="2000" id="58h-4i-5h5" customClass="DetailTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="2000"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="58h-4i-5h5" id="VDO-zW-Pu7">
