@@ -61,63 +61,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             return self.navigationController?.viewControllers [numberOfViewControllers - 2];
         }
     }
-
-    @IBAction func newPlaceholderEvent(_ sender: Any) {
-      
-      
-      let alertController = UIAlertController(title: "Nuevo evento", message: "Ingresa un nombre clave que identifique a tu evento sin usar caracteres especiales", preferredStyle: .alert)
-      
-      let saveAction = UIAlertAction(title: "OK", style: .default, handler: {
-         alert -> Void in
-         
-         
-         let firstTextField = alertController.textFields![0] as UITextField?
-         let formatedText = (firstTextField?.text)!.components(separatedBy: CharacterSet.alphanumerics.inverted)
-            .joined()
-         if (formatedText.isEmpty) {
-            self.displayError(message: "Elije un nombre clave no vacio simple sin caracteres especiales")
-            return
-         }
-
-         self.createPlaceholderEvent(key: formatedText);
-         
-      })
-      
-      let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
-         (action : UIAlertAction!) -> Void in
-         
-      })
-      
-      alertController.addTextField { (textField : UITextField!) -> Void in
-         textField.placeholder = "Nombre clave del evento"
-         textField.keyboardType = UIKeyboardType.alphabet
-      }
-      
-      alertController.addAction(saveAction)
-      alertController.addAction(cancelAction)
-      
-      self.present(alertController, animated: true, completion: nil)
-      
-    }
    
-   func createPlaceholderEvent(key : String) {
+   public func createPlaceholderEvent(map : [AnyHashable:Any]) {
       
-      self.ref.child("Eventos").child(key).setValue(self.placeholderEvent())
+      self.ref.child("Eventos").child(map["key"] as! String).setValue(map)
       
       PKHUD.sharedHUD.contentView = PKHUDProgressView()
       PKHUD.sharedHUD.show()
       getEventsDataAndContinue()
       
-   }
-   
-   func placeholderEvent () -> [AnyHashable:Any]
-   {
-      let tt = "placeholder"
-      let placeholderSocial = ["link":tt,"name":tt,"applink":tt]
-      let redes = ["facebook":placeholderSocial,"twitter":placeholderSocial,"instagram":placeholderSocial]
-      let timestampNow = Int ( Date().timeIntervalSince1970)
-      let event = ["titulo":tt,"descripcion":tt,"telefono":tt,"lugar":tt,"foto":tt,"timestamp":timestampNow,"redes":redes, "habilitada":false] as [String : Any]
-      return event
    }
     
     func getEventsDataAndContinue () {
