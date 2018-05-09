@@ -18,6 +18,7 @@ class NewEventViewController: UIViewController {
     var numeroDePaso : Int = 0
     var socialNetworkStepStarted : Bool = false
     var currentSocialNetwork : String?
+    var currentSocialKey : String?
     var currentSocialStep : Int = 0
    
    //VARIABLES PARA GUARDAR INFORMACION DEL USUARIO
@@ -29,7 +30,10 @@ class NewEventViewController: UIViewController {
    var lugar : String?
    var codigoQR : String?
    var keyEvento : String?
-   
+   var socialApplink : String?
+   var socialTag : String?
+   var socialLink : String?
+   var socialMaps : [String:Any] = [:]
    
    //METODOS
    
@@ -61,23 +65,24 @@ class NewEventViewController: UIViewController {
          self.requiredFieldsStep()
       } else {
          
-         self.inputTextField.text = ""
  //esta linea de codigo se ejecuta cuando el usuario toca continuar tras haber completado la primer pregunta de una red social
 
          
          switch currentSocialStep {
             
          case 1:
-            
+            self.socialTag  = self.inputTextField.text
             self.displaySecondQuestionForCurrentSocialNetwork()
             break
          
          case 2:
-         
+            self.socialApplink  = self.inputTextField.text
             self.displayThirdQuestionForCurrentSocialNetwork()
             break
          
          case 3:
+            self.socialLink  = self.inputTextField.text
+            self.saveCurrentSocialData()
             self.chooseNewSocialNetwork()
             break
             
@@ -85,9 +90,17 @@ class NewEventViewController: UIViewController {
             break
          }
          
+         self.inputTextField.text = ""
 
       }
       
+   }
+   
+   func saveCurrentSocialData () {
+      let mapSocial = ["link":self.socialLink,
+                               "name":self.socialTag,
+                               "applink":self.socialApplink]
+      self.socialMaps [self.currentSocialKey!] = mapSocial
    }
    
    func requiredFieldsStep () {
@@ -112,6 +125,7 @@ class NewEventViewController: UIViewController {
       case 3:
          self.telefono = self.inputTextField.text
          self.changeText(title:"Imagen de fondo", description: "URL de la imagen que se muestra como fondo en el detalle del evento")
+         self.inputTextField.keyboardType = .phonePad
          break
          
       case 4:
@@ -149,14 +163,32 @@ class NewEventViewController: UIViewController {
       //agrego acciones a la alerta
       alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.default, handler: {(action) in
          self.currentSocialNetwork = "Facebook"
+         self.currentSocialKey = "facebook"
          self.displayFirstQuestionForCurrentSocialNetwork()
       }))
       alert.addAction(UIAlertAction(title: "Instagram", style: UIAlertActionStyle.default, handler: {(action) in
          self.currentSocialNetwork = "Instagram"
+         self.currentSocialKey = "instagram"
          self.displayFirstQuestionForCurrentSocialNetwork()
       }))
       alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.default, handler: {(action) in
          self.currentSocialNetwork = "Twitter"
+         self.currentSocialKey = "twitter"
+         self.displayFirstQuestionForCurrentSocialNetwork()
+      }))
+      alert.addAction(UIAlertAction(title: "Snapchat", style: UIAlertActionStyle.default, handler: {(action) in
+         self.currentSocialNetwork = "Snapchat"
+         self.currentSocialKey = "snapchat"
+         self.displayFirstQuestionForCurrentSocialNetwork()
+      }))
+      alert.addAction(UIAlertAction(title: "Youtube", style: UIAlertActionStyle.default, handler: {(action) in
+         self.currentSocialNetwork = "Youtube"
+         self.currentSocialKey = "youtube"
+         self.displayFirstQuestionForCurrentSocialNetwork()
+      }))
+      alert.addAction(UIAlertAction(title: "Pagina web", style: UIAlertActionStyle.default, handler: {(action) in
+         self.currentSocialNetwork = "Pagina web"
+         self.currentSocialKey = "Webpage"
          self.displayFirstQuestionForCurrentSocialNetwork()
       }))
       alert.addAction(UIAlertAction(title: "Ninguna", style: UIAlertActionStyle.default, handler: {(action) in
@@ -172,7 +204,7 @@ class NewEventViewController: UIViewController {
    }
    
    func displaySecondQuestionForCurrentSocialNetwork () {
-      
+
       self.currentSocialStep = 2
 
       self.changeText(title:"\(self.currentSocialNetwork!) app link", description: " Este link permite abrir tu link en el contexto de la aplicacion de \(self.currentSocialNetwork!) ")
@@ -208,11 +240,8 @@ class NewEventViewController: UIViewController {
    
    func placeholderEvent () -> [AnyHashable:Any]
    {
-      let tt = "placeholder"
 
-      let placeholderSocial = ["link":tt,"name":tt,"applink":tt]
-
-      let redes = ["facebook":placeholderSocial,"twitter":placeholderSocial,"instagram":placeholderSocial]
+///      let redes = NO HARDCODEO
 
       let event = ["titulo":self.titulo!,
                    "descripcion":self.descripcion!,
@@ -220,7 +249,7 @@ class NewEventViewController: UIViewController {
                    "lugar":self.lugar!,
                    "foto":self.foto!,
                    "timestamp":self.timestamp!,
-                   "redes":redes,
+                   "redes":self.socialMaps,
                    "habilitada":false,
                    "key":self.keyEvento!] as [String : Any]
 

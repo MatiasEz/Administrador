@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/NewEventViewController.swift"
-            timestampString = "546748032.0128011"
+            timestampString = "547589596.882138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "continuePressAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
