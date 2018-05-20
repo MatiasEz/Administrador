@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SirioLibanesApp/NewEventViewController.swift"
-            timestampString = "547589596.882138"
+            filePath = "SirioLibanesApp/Classes/HomeViewController.swift"
+            timestampString = "548199549.139214"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "createPlaceholderEvent(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SirioLibanesApp/Classes/HomeViewController.swift"
+            timestampString = "548199549.13937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
             endingLineNumber = "69"
-            landmarkName = "continuePressAction(_:)"
+            landmarkName = "createPlaceholderEvent(map:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

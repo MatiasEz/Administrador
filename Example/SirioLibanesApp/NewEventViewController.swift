@@ -15,11 +15,14 @@ class NewEventViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+   public var datePickerView : UIDatePicker?
+   
     var numeroDePaso : Int = 0
     var socialNetworkStepStarted : Bool = false
     var currentSocialNetwork : String?
     var currentSocialKey : String?
     var currentSocialStep : Int = 0
+   var middleTimestamp : String?
    
    //VARIABLES PARA GUARDAR INFORMACION DEL USUARIO
    var titulo : String?
@@ -49,8 +52,21 @@ class NewEventViewController: UIViewController {
       self.continueButton.layer.borderWidth = 1
       self.continueButton.layer.borderColor = UIColor.white.cgColor
       
+      self.datePickerView = UIDatePicker()
+      self.datePickerView!.datePickerMode = .dateAndTime
+      self.datePickerView!.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+      
       self.changeText(title: "Titulo", description: "Esto se mostrará en el listado de eventos de tus usuarios")
     }
+   
+   @objc func handleDatePicker() {
+      self.middleTimestamp = "\(Int(self.datePickerView!.date.timeIntervalSince1970))"
+      
+      let dateFormatterGet = DateFormatter()
+      dateFormatterGet.dateFormat = "HH:mm  dd/MM/yyyy"
+      var dateString = dateFormatterGet.string(from: self.datePickerView!.date)
+      self.inputTextField.text = dateString
+   }
 
    @IBAction func continuePressAction(_ sender: Any) {
       
@@ -73,17 +89,20 @@ class NewEventViewController: UIViewController {
          case 1:
             self.socialTag  = self.inputTextField.text
             self.displaySecondQuestionForCurrentSocialNetwork()
+            self.inputTextField.keyboardType = .default
             break
          
          case 2:
             self.socialApplink  = self.inputTextField.text
             self.displayThirdQuestionForCurrentSocialNetwork()
+            self.inputTextField.keyboardType = .default
             break
          
          case 3:
             self.socialLink  = self.inputTextField.text
             self.saveCurrentSocialData()
             self.chooseNewSocialNetwork()
+            self.inputTextField.keyboardType = .default
             break
             
          default:
@@ -108,6 +127,7 @@ class NewEventViewController: UIViewController {
       case 0:
          self.titulo = self.inputTextField.text
          self.changeText(title:"Descripción", description: "Debe ser una descripción corta que se muestra como bajada en el listado de eventos")
+         self.inputTextField.keyboardType = .default
          break
          
       case 1:
@@ -125,22 +145,27 @@ class NewEventViewController: UIViewController {
       case 3:
          self.telefono = self.inputTextField.text
          self.changeText(title:"Imagen de fondo", description: "URL de la imagen que se muestra como fondo en el detalle del evento")
-         self.inputTextField.keyboardType = .phonePad
+         self.inputTextField.keyboardType = .URL
          break
          
       case 4:
          self.foto = self.inputTextField.text
          self.changeText(title:"Fecha", description: "Fecha y hora en la que se va a producir el evento")
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.inputView = self.datePickerView!
          break
          
       case 5:
-         self.timestamp = self.inputTextField.text
+         self.timestamp = self.middleTimestamp
          self.changeText(title:"Clave QR", description: "Codigo secreto que pueden ingresar manualmente los usuarios a la hora de escanearlo")
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.inputView = nil
          break
          
       case 6:
          self.codigoQR = self.inputTextField.text
          self.changeText(title:"ID de Base de Datos", description: "Esta es un ID sin espacios que sirve para identificar este evento en la base de datos")
+         self.inputTextField.keyboardType = .default
          break
          
       default:
@@ -153,6 +178,7 @@ class NewEventViewController: UIViewController {
       numeroDePaso = numeroDePaso + 1
       self.inputTextField.text = ""
       print("numero de paso: \(numeroDePaso)")
+      self.inputTextField.becomeFirstResponder()
    }
    
    func chooseNewSocialNetwork() {
@@ -188,10 +214,10 @@ class NewEventViewController: UIViewController {
       }))
       alert.addAction(UIAlertAction(title: "Pagina web", style: UIAlertActionStyle.default, handler: {(action) in
          self.currentSocialNetwork = "Pagina web"
-         self.currentSocialKey = "Webpage"
+         self.currentSocialKey = "webpage"
          self.displayFirstQuestionForCurrentSocialNetwork()
       }))
-      alert.addAction(UIAlertAction(title: "Ninguna", style: UIAlertActionStyle.default, handler: {(action) in
+      alert.addAction(UIAlertAction(title: "Terminar redes y crear evento", style: UIAlertActionStyle.destructive, handler: {(action) in
          self.finishEvent()
       }))
       self.present(alert, animated: true, completion: nil)
@@ -248,7 +274,8 @@ class NewEventViewController: UIViewController {
                    "telefono":self.telefono!,
                    "lugar":self.lugar!,
                    "foto":self.foto!,
-                   "timestamp":self.timestamp!,
+                   "timestamp":Int(self.timestamp!)!,
+                   "qrkey":self.codigoQR!,
                    "redes":self.socialMaps,
                    "habilitada":false,
                    "key":self.keyEvento!] as [String : Any]

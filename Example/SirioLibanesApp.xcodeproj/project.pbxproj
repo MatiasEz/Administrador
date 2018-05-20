@@ -10,7 +10,7 @@
 		0E27479390BBCC8D09178D57 /* Pods_SirioLibanesApp_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6259837E4FD150DFA86EAD41 /* Pods_SirioLibanesApp_Example.framework */; };
 		5FC389108518E14EBD5C5471 /* Pods_SirioLibanesApp_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* RedSocialViewControllerr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* RedSocialViewControllerr.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -32,6 +32,8 @@
 		98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE0FFF2027C14700DB1A7C /* DetailViewController.swift */; };
 		98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */; };
 		F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DA18120952BCE005AE2FA /* NewEventViewController.swift */; };
+		F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F716861620ACDAFB00C971DB /* OptionsViewController.swift */; };
+		F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,7 @@
 		607FACD01AFB9204008FA782 /* SirioLibanesApp_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SirioLibanesApp_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* RedSocialViewControllerr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialViewControllerr.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		B57A9B50AC19E9969C1742D4 /* SirioLibanesApp.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SirioLibanesApp.podspec; path = ../SirioLibanesApp.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B68CCAAA50F3F52468FB4528 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F70DA18120952BCE005AE2FA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		F716861620ACDAFB00C971DB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = Classes/OptionsViewController.swift; sourceTree = "<group>"; };
+		F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialTableViewCell.swift; sourceTree = "<group>"; };
 		FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SirioLibanesApp_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,15 +154,17 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				9855A95E2027398600515E1A /* LoginViewController.swift */,
 				9855A96220274D1E00515E1A /* InitialViewController.swift */,
+				607FACD71AFB9204008FA782 /* RedSocialViewControllerr.swift */,
+				F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */,
 				981C3C8D20277767004B3282 /* RegisterViewController.swift */,
 				9855A96420274F9500515E1A /* HomeViewController.swift */,
 				98DE0FF92027B71100DB1A7C /* HomeTableViewCell.swift */,
 				98DE0FF520278A9200DB1A7C /* InputViewController.swift */,
 				F70DA18120952BCE005AE2FA /* NewEventViewController.swift */,
 				98DE0FFF2027C14700DB1A7C /* DetailViewController.swift */,
+				F716861620ACDAFB00C971DB /* OptionsViewController.swift */,
 				98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */,
 				98DE0FFD2027C11600DB1A7C /* SocialViewController.swift */,
 				98DE10002027C20500DB1A7C /* AssignmentViewController.swift */,
@@ -448,11 +454,13 @@
 			files = (
 				98DE10032027C27800DB1A7C /* SongsViewController.swift in Sources */,
 				9855A96520274F9500515E1A /* HomeViewController.swift in Sources */,
+				F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */,
 				F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */,
+				F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */,
 				9855A95F2027398600515E1A /* LoginViewController.swift in Sources */,
 				98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */,
 				98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* RedSocialViewControllerr.swift in Sources */,
 				98DE0FF620278A9200DB1A7C /* InputViewController.swift in Sources */,
 				98DE0FFE2027C11600DB1A7C /* SocialViewController.swift in Sources */,
 				98DE10012027C20500DB1A7C /* AssignmentViewController.swift in Sources */,

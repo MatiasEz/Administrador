@@ -11,9 +11,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var twoButton: UIButton!
-    @IBOutlet weak var threeButton: UIButton!
-    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     public var information : [AnyHashable: Any] = [:]
     public var pageName : String = ""
@@ -27,16 +24,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         ref = Database.database().reference()
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        
-        twoButton.backgroundColor = .clear
-      twoButton.layer.cornerRadius = 20
-        twoButton.layer.borderWidth = 1
-        twoButton.layer.borderColor = UIColor.white.cgColor
-        
-        threeButton.backgroundColor = .clear
-        threeButton.layer.cornerRadius = 20
-        threeButton.layer.borderWidth = 1
-        threeButton.layer.borderColor = UIColor.white.cgColor
+      
 
         
         super.viewDidLoad()
@@ -98,22 +86,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
       cell.switchHabilitado.setOn((self.information ["habilitada"] as? Bool)!, animated: true)
       cell.textfieldQR.text = self.currentQRkey
       
-      let map = self.information ["redes"] as! [AnyHashable:Any]
-      let facebook = map ["facebook"] as! [AnyHashable:Any]
-      let instagram = map ["instagram"] as! [AnyHashable:Any]
-      let twitter = map ["twitter"] as! [AnyHashable:Any]
-      
-      cell.textfieldTwitterTag.text = twitter ["name"] as! String?
-      cell.textfieldTwitterLink.text = twitter ["link"] as! String?
-      cell.textfieldTwitterApplink.text = twitter ["applink"] as! String?
-      
-      cell.textfieldInstagramTag.text = instagram ["name"] as! String?
-      cell.textfieldInstagramLink.text = instagram ["link"] as! String?
-      cell.textfieldInstagramApplink.text = instagram ["applink"] as! String?
-      
-      cell.textfieldFacebookTag.text = facebook ["name"] as! String?
-      cell.textfieldFacebookLink.text = facebook ["link"] as! String?
-      
       return cell
     }
    
@@ -147,12 +119,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
    
    func currentDataEvent (_ cell : DetailTableViewCell) -> [AnyHashable:Any]
    {
-      let facebookSocial = ["link":cell.textfieldFacebookLink.text!,"name":cell.textfieldFacebookTag.text!]
-      let twitterSocial = ["link":cell.textfieldTwitterLink.text!,"applink":cell.textfieldTwitterApplink.text!,"name":cell.textfieldTwitterTag.text!]
-      let instagramSocial = ["link":cell.textfieldInstagramLink.text!,"applink":cell.textfieldInstagramApplink.text!,"name":cell.textfieldInstagramTag.text!]
-      let redes = ["facebook":facebookSocial,"twitter":twitterSocial,"instagram":instagramSocial]
       let event = ["titulo":cell.textfieldTitle.text!,"descripcion":cell.textfieldDescription.text!,"telefono":cell.textfieldPhone.text!,"lugar":cell.textfieldAddress.text!,"foto":cell.textfieldURL.text!,"timestamp":
-         Int(Double(cell.textfieldTimestamp.text!)!), "redes":redes, "habilitada":cell.switchHabilitado.isOn, "invitados": self.information ["invitados"]] as [String : Any]
+         Int(Double(cell.textfieldTimestamp.text!)!),
+                   "habilitada":cell.switchHabilitado.isOn,
+                   "invitados": self.information ["invitados"]] as [String : Any]
       return event
    }
     
@@ -182,5 +152,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             viewController.pageName = self.pageName
         }
     }
-    
+   
+   
 }
