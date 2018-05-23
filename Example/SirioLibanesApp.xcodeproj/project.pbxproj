@@ -10,7 +10,7 @@
 		0E27479390BBCC8D09178D57 /* Pods_SirioLibanesApp_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6259837E4FD150DFA86EAD41 /* Pods_SirioLibanesApp_Example.framework */; };
 		5FC389108518E14EBD5C5471 /* Pods_SirioLibanesApp_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* RedSocialViewControllerr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* RedSocialViewControllerr.swift */; };
+		607FACD81AFB9204008FA782 /* RedSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* RedSocialViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -34,6 +34,7 @@
 		F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DA18120952BCE005AE2FA /* NewEventViewController.swift */; };
 		F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F716861620ACDAFB00C971DB /* OptionsViewController.swift */; };
 		F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */; };
+		F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC620B2473A0081A4BD /* Redsocial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,7 @@
 		607FACD01AFB9204008FA782 /* SirioLibanesApp_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SirioLibanesApp_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* RedSocialViewControllerr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialViewControllerr.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* RedSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		F70DA18120952BCE005AE2FA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		F716861620ACDAFB00C971DB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = Classes/OptionsViewController.swift; sourceTree = "<group>"; };
 		F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialTableViewCell.swift; sourceTree = "<group>"; };
+		F7960FC620B2473A0081A4BD /* Redsocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redsocial.swift; sourceTree = "<group>"; };
 		FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SirioLibanesApp_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -156,7 +158,8 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				9855A95E2027398600515E1A /* LoginViewController.swift */,
 				9855A96220274D1E00515E1A /* InitialViewController.swift */,
-				607FACD71AFB9204008FA782 /* RedSocialViewControllerr.swift */,
+				607FACD71AFB9204008FA782 /* RedSocialViewController.swift */,
+				F7960FC620B2473A0081A4BD /* Redsocial.swift */,
 				F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */,
 				981C3C8D20277767004B3282 /* RegisterViewController.swift */,
 				9855A96420274F9500515E1A /* HomeViewController.swift */,
@@ -460,11 +463,12 @@
 				9855A95F2027398600515E1A /* LoginViewController.swift in Sources */,
 				98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */,
 				98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* RedSocialViewControllerr.swift in Sources */,
+				607FACD81AFB9204008FA782 /* RedSocialViewController.swift in Sources */,
 				98DE0FF620278A9200DB1A7C /* InputViewController.swift in Sources */,
 				98DE0FFE2027C11600DB1A7C /* SocialViewController.swift in Sources */,
 				98DE10012027C20500DB1A7C /* AssignmentViewController.swift in Sources */,
 				981C3C8E20277767004B3282 /* RegisterViewController.swift in Sources */,
+				F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */,
 				9861C86F202AA59E0004B1F5 /* AssignmentTableViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				9861C871202ABF2D0004B1F5 /* SongTableViewCell.swift in Sources */,

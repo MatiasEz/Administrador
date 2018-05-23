@@ -107,13 +107,13 @@
                                 <rect key="frame" x="16" y="200" width="343" height="386.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tienes eventos cargados" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vn-6r-aBt">
-                                        <rect key="frame" x="17.5" y="179.5" width="309" height="29"/>
+                                        <rect key="frame" x="17.5" y="179" width="309" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuando accedas a un evento aquí encontraras el listado de todos los eventos a los que fuiste invitado" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUL-p4-hku">
-                                        <rect key="frame" x="32.5" y="215.5" width="278" height="54"/>
+                                        <rect key="frame" x="32.5" y="215" width="278" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chu-Sl-if3" id="fDw-pc-Sib">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEG-7W-OBF">
@@ -250,7 +250,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NJT-rS-Gjj" id="p2o-kN-SR1">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="179.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8S-iC-7dd" userLabel="background">
@@ -400,10 +400,10 @@ Telefono: 122312312</string>
             </objects>
             <point key="canvasLocation" x="2608" y="663"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="85Y-NW-3TL">
             <objects>
-                <viewController id="ojW-kx-p3b" customClass="ViewController" customModule="SirioLibanesApp_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ojW-kx-p3b" customClass="RedSocialViewController" customModule="SirioLibanesApp_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c7I-CU-khS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -414,15 +414,15 @@ Telefono: 122312312</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UnI-W0-Xy3" customClass="RedSocial">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UnI-W0-Xy3">
                                 <rect key="frame" x="16" y="50" width="343" height="537"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="143" id="rZU-SR-Wla">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="143"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="socialCell" rowHeight="150" id="rZU-SR-Wla" customClass="RedSocialTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rZU-SR-Wla" id="R1w-cc-jUJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="142.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taJ-Iu-lzD">
@@ -432,43 +432,61 @@ Telefono: 122312312</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbr-n9-NJg">
-                                                    <rect key="frame" x="16" y="40" width="28" height="20.5"/>
+                                                    <rect key="frame" x="16" y="40" width="70" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="iUH-Ks-WFk"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noc-HK-C52">
-                                                    <rect key="frame" x="16" y="66.5" width="62" height="21"/>
+                                                    <rect key="frame" x="16" y="66.5" width="70" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="Ia2-mP-xpf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-SF-da6">
-                                                    <rect key="frame" x="16" y="93.5" width="31.5" height="21"/>
+                                                    <rect key="frame" x="16" y="93.5" width="70" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="mCe-qr-3tl"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-jt-8t4">
-                                                    <rect key="frame" x="104" y="94" width="223" height="20"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-jt-8t4" userLabel="Link Textfield">
+                                                    <rect key="frame" x="101" y="94" width="226" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
+                                                    <connections>
+                                                        <action selector="editingDidBegin:" destination="ojW-kx-p3b" eventType="editingDidBegin" id="ZBJ-gB-U22"/>
+                                                    </connections>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPC-Az-yvT">
-                                                    <rect key="frame" x="104" y="67" width="223" height="20"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPC-Az-yvT" userLabel="Applink Textfield">
+                                                    <rect key="frame" x="101" y="67" width="226" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
+                                                    <connections>
+                                                        <action selector="editingDidBegin:" destination="ojW-kx-p3b" eventType="editingDidBegin" id="Z4Y-RU-99G"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riE-KR-jtX">
-                                                    <rect key="frame" x="104" y="40" width="223" height="20"/>
+                                                    <rect key="frame" x="101" y="40" width="226" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="G3u-aG-Ebf"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <connections>
+                                                        <action selector="editingDidBegin:" destination="ojW-kx-p3b" eventType="editingDidBegin" id="pEW-7b-KkI"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -488,17 +506,20 @@ Telefono: 122312312</string>
                                                 <constraint firstItem="xMg-SF-da6" firstAttribute="leading" secondItem="noc-HK-C52" secondAttribute="leading" id="bgd-rQ-T3R"/>
                                                 <constraint firstItem="noc-HK-C52" firstAttribute="top" secondItem="Vbr-n9-NJg" secondAttribute="bottom" constant="6" id="fvi-4a-iBP"/>
                                                 <constraint firstItem="SPC-Az-yvT" firstAttribute="centerY" secondItem="noc-HK-C52" secondAttribute="centerY" id="j8i-da-l3W"/>
-                                                <constraint firstItem="riE-KR-jtX" firstAttribute="leading" secondItem="Vbr-n9-NJg" secondAttribute="trailing" constant="60" id="mHf-s2-GJZ"/>
+                                                <constraint firstItem="riE-KR-jtX" firstAttribute="leading" secondItem="Vbr-n9-NJg" secondAttribute="trailing" constant="15" id="mHf-s2-GJZ"/>
                                                 <constraint firstItem="taJ-Iu-lzD" firstAttribute="leading" secondItem="R1w-cc-jUJ" secondAttribute="leading" constant="16" id="nTl-YX-PoM"/>
                                                 <constraint firstItem="SPC-Az-yvT" firstAttribute="leading" secondItem="riE-KR-jtX" secondAttribute="leading" id="uMn-gd-RMa"/>
                                                 <constraint firstItem="IUM-jt-8t4" firstAttribute="trailing" secondItem="SPC-Az-yvT" secondAttribute="trailing" id="wdE-04-mA6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="applinkTextfield" destination="SPC-Az-yvT" id="PzC-rv-ZpO"/>
+                                            <outlet property="linkTextfield" destination="IUM-jt-8t4" id="9nq-dM-K0u"/>
+                                            <outlet property="tagTextfield" destination="riE-KR-jtX" id="ca0-QN-013"/>
+                                            <outlet property="titleLabel" destination="taJ-Iu-lzD" id="sO0-UO-kHe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="tagTextfield" destination="riE-KR-jtX" id="hnb-UO-ZuX"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -515,13 +536,20 @@ Telefono: 122312312</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8WZ-5G-z29"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="DHA-KS-40E">
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="ppy-Kf-q0x">
+                            <connections>
+                                <action selector="saveAction:" destination="ojW-kx-p3b" id="H4v-7x-I97"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="UnI-W0-Xy3" id="Y2d-E2-IJu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COR-oj-d4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3336.8000000000002" y="635.53223388305855"/>
+            <point key="canvasLocation" x="3337" y="675"/>
         </scene>
         <!--Música-->
         <scene sceneID="TXv-Y6-cEi">
@@ -553,7 +581,7 @@ Telefono: 122312312</string>
                                         <rect key="frame" x="0.0" y="28" width="343" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DW2-H9-QdS" id="XZg-XI-GIm">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjn-yG-uLf">
@@ -822,7 +850,7 @@ Telefono: 122312312</string>
                                         <rect key="frame" x="191.5" y="191.5" width="167.5" height="167.5"/>
                                         <color key="backgroundColor" red="1" green="0.29920423280000003" blue="0.9097566976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="ojW-kx-p3b" kind="show" id="vSj-PX-QgL"/>
+                                            <segue destination="ojW-kx-p3b" kind="show" identifier="social" id="vSj-PX-QgL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tby-LK-gYq">
@@ -990,7 +1018,7 @@ Telefono: 122312312</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="2000"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WiY-RQ-IBq" id="zsU-IX-iFO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="1999.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-oZ-tar">

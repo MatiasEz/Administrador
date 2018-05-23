@@ -50,7 +50,7 @@ class OptionsViewController: UIViewController
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       
       if segue.identifier == "social" {
-         let viewController: SocialViewController = segue.destination as! SocialViewController
+         let viewController: RedSocialViewController = segue.destination as! RedSocialViewController
          viewController.information = self.information
          viewController.pageName = self.pageName
       }
