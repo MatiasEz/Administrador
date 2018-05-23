@@ -65,6 +65,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
    public func createPlaceholderEvent(map : [AnyHashable:Any]) {
       
       self.ref.child("Eventos").child(map["key"] as! String).setValue(map)
+      self.ref.child("Codigos").child(map["qrkey"] as! String).setValue(map["key"] as! String)
       
       PKHUD.sharedHUD.contentView = PKHUDProgressView()
       PKHUD.sharedHUD.show()
@@ -189,7 +190,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailEvent" {
-            let viewController: DetailViewController = segue.destination as! DetailViewController
+            let viewController = segue.destination as! OptionsViewController
             viewController.information = self.information
             viewController.pageName = self.pageName
         }
