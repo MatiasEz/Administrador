@@ -58,7 +58,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
          if (self.currentQRkey.isEmpty == false) {
             self.ref.child("Codigos").child(self.currentQRkey).removeValue()
          }
-         self.navigationController?.popViewController(animated: true)
+         self.navigationController?.popToRootViewController(animated: true)
       }))
       
       alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))

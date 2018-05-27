@@ -57,6 +57,11 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
     @IBAction func saveAction(_ sender: Any) {
       self.saveRedSocial(key: "facebook", displayName: "Facebook")
       self.saveRedSocial(key: "instagram", displayName: "Instagram")
+      self.saveRedSocial(key: "twitter", displayName: "Twitter")
+      self.saveRedSocial(key: "snapchat", displayName: "Snapchat")
+      self.saveRedSocial(key: "youtube", displayName: "Youtube")
+      self.saveRedSocial(key: "webPage", displayName: "Pagina Web")
+
    }
    
    func saveRedSocial(key: String, displayName: String) {

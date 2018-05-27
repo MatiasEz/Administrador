@@ -176,6 +176,8 @@ class NewEventViewController: UIViewController {
       }
       
       numeroDePaso = numeroDePaso + 1
+      self.inputTextField.reloadInputViews()
+      self.inputTextField.resignFirstResponder()
       self.inputTextField.text = ""
       print("numero de paso: \(numeroDePaso)")
       self.inputTextField.becomeFirstResponder()
