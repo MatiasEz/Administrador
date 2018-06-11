@@ -18,8 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var claveBox: UITextField!
     
-    @IBOutlet weak var songSwitch: UISwitch!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         mailBox.keyboardType = UIKeyboardType.emailAddress
@@ -33,8 +32,7 @@ class LoginViewController: UIViewController {
         ingresarButton.layer.cornerRadius = 20
         ingresarButton.layer.borderWidth = 1
         ingresarButton.layer.borderColor = UIColor.white.cgColor
-      self.songSwitch.setOn(false, animated: false)
-        
+      
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -89,7 +87,6 @@ class LoginViewController: UIViewController {
         let email = mailBox.text!;
         let pass = passBox.text!;
       
-      UserDefaults.standard.set(self.songSwitch.isOn, forKey: "songsOnlyKey")
         
         if (clave != "gamal1234") {
             displayError()

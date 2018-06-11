@@ -23,6 +23,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var allEvents : [AnyHashable : Any] = [:]
     var userEvents : [AnyHashable : Any] = [:]
     var firstTime : Bool = true
+    var accessType : String?
+   var permissionsData : [String : [String]]?
     
     override func viewDidLoad() {
         ref = Database.database().reference()
@@ -102,11 +104,44 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (self.userItemList.count > 0) {
             self.tableView.reloadData()
         }
-        
-        PKHUD.sharedHUD.hide(afterDelay: 0.3) { success in
-        }
-        
+
+      self.getPermissionsDataAndContinue()
     }
+   
+   func getPermissionsDataAndContinue () {
+      ref.child("Accesos").observeSingleEvent(of: .value, with: { (snapshot) in
+         // Get user value
+         let data = snapshot.value as? NSDictionary!
+         if let unwData = data {
+            self.permissionsData = unwData as? [String : [String]];
+            self.accessType = nil
+
+            self.checkCurrentPermission(key: "Admin")
+            self.checkCurrentPermission(key: "Cliente")
+            self.checkCurrentPermission(key: "DJ")
+            self.checkCurrentPermission(key: "Recepcion")
+            
+            PKHUD.sharedHUD.hide(afterDelay: 0.3) { success in
+            }
+            
+         } else {
+            self.displayError()
+         }
+      }) { (error) in
+         self.displayError()
+      }
+   }
+   
+   func checkCurrentPermission(key: String) {
+      let myEmail = Auth.auth().currentUser?.email;
+      let emails = self.permissionsData![key]
+      for currentEmail in emails! {
+         if (currentEmail == myEmail) {
+            self.accessType = key
+         }
+      }
+      
+   }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.userEvents.keys.count;
@@ -151,14 +186,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.goToDetailScreen()
     }
     
-    func goToDetailScreen ()
-    {
+    func goToDetailScreen () {
       
-      let songsOnly = UserDefaults.standard.bool(forKey: "songsOnlyKey")
-      if (songsOnly) {
-         self.performSegue(withIdentifier: "songs", sender: self)
-      } else {
-        self.performSegue(withIdentifier: "detailEvent", sender: self)
+      guard let variableDeAccesoNoOpcional = self.accessType else {
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         self.present(alert, animated: true, completion: nil)
+         return;
+      }
+      
+      switch (variableDeAccesoNoOpcional) {
+      case "Admin":  self.performSegue(withIdentifier: "detailEvent", sender: self)
+         break
+      case "Cliente":self.performSegue(withIdentifier: "invitados", sender: self)
+         break
+      case "DJ":  self.performSegue(withIdentifier: "songs", sender: self)
+         break
+      case "Recepcion":  self.performSegue(withIdentifier: "invitados", sender: self)
+         break
+
+      default:
+         
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         
+         break
+         
       }
     }
     
@@ -209,6 +262,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
       
       if segue.identifier == "songs" {
          let viewController: SongsViewController = segue.destination as! SongsViewController
+         viewController.information = self.information
+         viewController.pageName = self.pageName
+      }
+      
+      if segue.identifier == "invitados" {
+         let viewController: AssignmentViewController = segue.destination as! AssignmentViewController
          viewController.information = self.information
          viewController.pageName = self.pageName
       }

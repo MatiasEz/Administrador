@@ -33,6 +33,7 @@
 		98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */; };
 		F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DA18120952BCE005AE2FA /* NewEventViewController.swift */; };
 		F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F716861620ACDAFB00C971DB /* OptionsViewController.swift */; };
+		F71B9D2320CD5ACE00BF9E99 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */; };
 		F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */; };
 		F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC620B2473A0081A4BD /* Redsocial.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		B68CCAAA50F3F52468FB4528 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F70DA18120952BCE005AE2FA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		F716861620ACDAFB00C971DB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = Classes/OptionsViewController.swift; sourceTree = "<group>"; };
+		F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialTableViewCell.swift; sourceTree = "<group>"; };
 		F7960FC620B2473A0081A4BD /* Redsocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redsocial.swift; sourceTree = "<group>"; };
 		FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SirioLibanesApp_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 				F716861620ACDAFB00C971DB /* OptionsViewController.swift */,
 				98DE10052027DEA400DB1A7C /* DetailTableViewCell.swift */,
 				98DE0FFD2027C11600DB1A7C /* SocialViewController.swift */,
+				F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */,
 				98DE10002027C20500DB1A7C /* AssignmentViewController.swift */,
 				9861C86E202AA59E0004B1F5 /* AssignmentTableViewCell.swift */,
 				98DE10022027C27800DB1A7C /* SongsViewController.swift */,
@@ -357,6 +360,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
 				"${BUILT_PRODUCTS_DIR}/SirioLibanesApp/SirioLibanesApp.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -367,6 +371,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SirioLibanesApp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -474,6 +479,7 @@
 				9861C871202ABF2D0004B1F5 /* SongTableViewCell.swift in Sources */,
 				98DE0FFA2027B71100DB1A7C /* HomeTableViewCell.swift in Sources */,
 				9855A96320274D1E00515E1A /* InitialViewController.swift in Sources */,
+				F71B9D2320CD5ACE00BF9E99 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

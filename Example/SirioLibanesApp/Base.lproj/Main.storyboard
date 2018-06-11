@@ -107,13 +107,13 @@
                                 <rect key="frame" x="16" y="200" width="343" height="386.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tienes eventos cargados" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vn-6r-aBt">
-                                        <rect key="frame" x="17.5" y="179" width="309" height="29"/>
+                                        <rect key="frame" x="17.5" y="179.5" width="309" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuando accedas a un evento aquí encontraras el listado de todos los eventos a los que fuiste invitado" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUL-p4-hku">
-                                        <rect key="frame" x="32.5" y="215" width="278" height="54"/>
+                                        <rect key="frame" x="32.5" y="215.5" width="278" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -228,11 +228,12 @@
                         <segue destination="06n-ke-BLh" kind="show" identifier="detailEvent" id="FBC-vz-wiB"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="Q8h-x8-hMf"/>
                         <segue destination="QsQ-uz-bZ7" kind="show" identifier="songs" id="ujG-c6-FvI"/>
+                        <segue destination="wTZ-1S-5E8" kind="show" identifier="invitados" id="Iyy-o2-Eau"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUA-c8-wu2" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1766" y="-88"/>
+            <point key="canvasLocation" x="1689" y="-107"/>
         </scene>
         <!--Asignar mesas-->
         <scene sceneID="j9C-FS-Ba6">
@@ -243,7 +244,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hZT-R3-se8">
-                                <rect key="frame" x="16" y="100" width="343" height="487"/>
+                                <rect key="frame" x="16" y="160" width="343" height="427"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="180" id="NJT-rS-Gjj" customClass="AssignmentTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
@@ -361,31 +362,105 @@ Telefono: 122312312</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="242" verticalCompressionResistancePriority="756" text="Buscando invitados" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t5-Ku-bel">
-                                <rect key="frame" x="24.5" y="8" width="326.5" height="55.5"/>
+                                <rect key="frame" x="24.5" y="8" width="326.5" height="52.5"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La compartes con estas personas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPq-ue-ZAd">
-                                <rect key="frame" x="20" y="71.5" width="335" height="20.5"/>
+                                <rect key="frame" x="20" y="68.5" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJS-a6-wHO">
+                                <rect key="frame" x="16" y="126" width="109" height="26"/>
+                                <color key="backgroundColor" red="1" green="0.88341701110000004" blue="0.073700896779999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Mesa">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTableButton:" destination="wTZ-1S-5E8" eventType="touchUpInside" id="1iw-dh-yMT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMm-GT-oH1">
+                                <rect key="frame" x="133" y="126" width="109" height="26"/>
+                                <color key="backgroundColor" red="0.88180727332093234" green="1" blue="0.076901484123573005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="Blh-wO-dKF"/>
+                                </constraints>
+                                <state key="normal" title="Asistencia">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectAssistanceButton:" destination="wTZ-1S-5E8" eventType="touchUpInside" id="wrw-GM-Lgr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xud-In-1od">
+                                <rect key="frame" x="250" y="126" width="109" height="26"/>
+                                <color key="backgroundColor" red="1" green="0.88341701110000004" blue="0.073700896779999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Alfabeticamente">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectAbcButton:" destination="wTZ-1S-5E8" eventType="touchUpInside" id="YVV-kH-lSP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtrar por :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCa-Kv-5Em">
+                                <rect key="frame" x="0.0" y="97" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvd-kb-ze4">
+                                <rect key="frame" x="0.0" y="92" width="375" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Gfo-hJ-yEU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVo-0q-VLn">
+                                <rect key="frame" x="0.0" y="160" width="375" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="6in-zi-jP5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AMm-GT-oH1" firstAttribute="leading" secondItem="CJS-a6-wHO" secondAttribute="trailing" constant="8" id="0En-gP-H3r"/>
+                            <constraint firstItem="dvd-kb-ze4" firstAttribute="centerX" secondItem="qQa-5a-ut9" secondAttribute="centerX" id="2Tz-2V-K0N"/>
                             <constraint firstItem="6t5-Ku-bel" firstAttribute="centerX" secondItem="IPq-ue-ZAd" secondAttribute="centerX" id="3gl-yT-ulR"/>
+                            <constraint firstItem="Xud-In-1od" firstAttribute="height" secondItem="AMm-GT-oH1" secondAttribute="height" id="4gp-0H-MX8"/>
+                            <constraint firstItem="hZT-R3-se8" firstAttribute="top" secondItem="Xud-In-1od" secondAttribute="bottom" constant="8" id="5Sl-vR-WmJ"/>
+                            <constraint firstItem="qQa-5a-ut9" firstAttribute="trailing" secondItem="Xud-In-1od" secondAttribute="trailing" constant="16" id="7U9-y7-AGW"/>
+                            <constraint firstItem="CJS-a6-wHO" firstAttribute="leading" secondItem="qQa-5a-ut9" secondAttribute="leading" constant="16" id="9Qs-4G-tez"/>
                             <constraint firstItem="IPq-ue-ZAd" firstAttribute="width" secondItem="hIo-4X-1mK" secondAttribute="width" constant="-40" id="AnA-GD-h9j"/>
-                            <constraint firstItem="hZT-R3-se8" firstAttribute="top" secondItem="qQa-5a-ut9" secondAttribute="top" constant="100" id="Aw9-ap-3nR"/>
+                            <constraint firstItem="hZT-R3-se8" firstAttribute="top" secondItem="qQa-5a-ut9" secondAttribute="top" constant="160" id="Aw9-ap-3nR"/>
                             <constraint firstItem="qQa-5a-ut9" firstAttribute="bottom" secondItem="hZT-R3-se8" secondAttribute="bottom" constant="16" id="Cah-SY-yDf"/>
+                            <constraint firstItem="AMm-GT-oH1" firstAttribute="centerX" secondItem="qQa-5a-ut9" secondAttribute="centerX" id="GHG-Hp-4OO"/>
+                            <constraint firstItem="dvd-kb-ze4" firstAttribute="width" secondItem="qQa-5a-ut9" secondAttribute="width" id="INV-AO-gtx"/>
+                            <constraint firstItem="Xud-In-1od" firstAttribute="width" secondItem="CJS-a6-wHO" secondAttribute="width" id="JYd-ul-a5Z"/>
+                            <constraint firstItem="CJS-a6-wHO" firstAttribute="centerY" secondItem="Xud-In-1od" secondAttribute="centerY" id="N7O-wh-NUJ"/>
+                            <constraint firstItem="tCa-Kv-5Em" firstAttribute="width" secondItem="hIo-4X-1mK" secondAttribute="width" id="O0Z-MU-UCe"/>
+                            <constraint firstItem="kVo-0q-VLn" firstAttribute="top" secondItem="AMm-GT-oH1" secondAttribute="bottom" constant="8" id="OHj-y7-D7R"/>
+                            <constraint firstItem="kVo-0q-VLn" firstAttribute="width" secondItem="dvd-kb-ze4" secondAttribute="width" id="OXu-8S-gDP"/>
+                            <constraint firstItem="tCa-Kv-5Em" firstAttribute="top" secondItem="IPq-ue-ZAd" secondAttribute="bottom" constant="8" id="Pxa-ua-Pue"/>
                             <constraint firstItem="hZT-R3-se8" firstAttribute="leading" secondItem="qQa-5a-ut9" secondAttribute="leading" constant="16" id="Qfg-ei-14E"/>
                             <constraint firstItem="6t5-Ku-bel" firstAttribute="top" secondItem="qQa-5a-ut9" secondAttribute="top" constant="8" id="Yre-bF-cBR"/>
                             <constraint firstItem="IPq-ue-ZAd" firstAttribute="centerX" secondItem="hZT-R3-se8" secondAttribute="centerX" id="dd1-YX-gNX"/>
+                            <constraint firstItem="kVo-0q-VLn" firstAttribute="centerX" secondItem="dvd-kb-ze4" secondAttribute="centerX" id="dv6-aX-IJw"/>
+                            <constraint firstItem="AMm-GT-oH1" firstAttribute="top" secondItem="tCa-Kv-5Em" secondAttribute="bottom" constant="8" id="eqR-Am-AXj"/>
                             <constraint firstItem="qQa-5a-ut9" firstAttribute="trailing" secondItem="6t5-Ku-bel" secondAttribute="trailing" constant="24" id="eyv-jC-mWl"/>
                             <constraint firstItem="IPq-ue-ZAd" firstAttribute="top" secondItem="6t5-Ku-bel" secondAttribute="bottom" constant="8" id="fC8-oO-72c"/>
-                            <constraint firstItem="hZT-R3-se8" firstAttribute="top" secondItem="IPq-ue-ZAd" secondAttribute="bottom" constant="8" id="iY6-Gg-VCk"/>
+                            <constraint firstItem="CJS-a6-wHO" firstAttribute="height" secondItem="AMm-GT-oH1" secondAttribute="height" id="iR8-4d-HMs"/>
+                            <constraint firstItem="tCa-Kv-5Em" firstAttribute="centerX" secondItem="qQa-5a-ut9" secondAttribute="centerX" id="j8Y-Fq-8jV"/>
+                            <constraint firstItem="tCa-Kv-5Em" firstAttribute="top" secondItem="dvd-kb-ze4" secondAttribute="bottom" constant="4" id="mFA-mV-4OT"/>
                             <constraint firstItem="qQa-5a-ut9" firstAttribute="trailing" secondItem="hZT-R3-se8" secondAttribute="trailing" constant="16" id="o7n-SA-Jci"/>
+                            <constraint firstItem="Xud-In-1od" firstAttribute="width" secondItem="AMm-GT-oH1" secondAttribute="width" id="rIq-CV-jHd"/>
+                            <constraint firstItem="AMm-GT-oH1" firstAttribute="centerY" secondItem="Xud-In-1od" secondAttribute="centerY" id="zIp-js-x8n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qQa-5a-ut9"/>
                     </view>
@@ -394,11 +469,14 @@ Telefono: 122312312</string>
                         <outlet property="assignmentLabel" destination="6t5-Ku-bel" id="pzz-MS-LEu"/>
                         <outlet property="assignmentTable" destination="hZT-R3-se8" id="vaa-fg-jEQ"/>
                         <outlet property="descriptionLabel" destination="IPq-ue-ZAd" id="S3H-fI-ReK"/>
+                        <outlet property="filterAbcButton" destination="Xud-In-1od" id="Mrh-b6-LOB"/>
+                        <outlet property="filterAssistanceButton" destination="AMm-GT-oH1" id="gDb-69-qcq"/>
+                        <outlet property="filterTablesButton" destination="CJS-a6-wHO" id="AKa-Ly-Lrw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA1-iU-cDE" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2608" y="663"/>
+            <point key="canvasLocation" x="2390" y="673"/>
         </scene>
         <!--Title-->
         <scene sceneID="85Y-NW-3TL">
@@ -550,6 +628,152 @@ Telefono: 122312312</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COR-oj-d4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3337" y="675"/>
+        </scene>
+        <!--Compartir-->
+        <scene sceneID="lgj-QL-nQd">
+            <objects>
+                <viewController id="0h3-gu-Yig" customClass="InformationViewController" customModule="SirioLibanesApp_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j04-aA-mHs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="http://www.eventossiriolibanes.com/app/index.html" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qYI-Uc-vkL">
+                                <rect key="frame" x="16" y="351" width="287" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DjG-rK-vSZ"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekk-qn-UPa">
+                                <rect key="frame" x="16" y="547" width="343" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.88341701110000004" blue="0.073700896779999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Kkn-ox-HIV"/>
+                                </constraints>
+                                <state key="normal" title="Terminar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmButton:" destination="0h3-gu-Yig" eventType="touchUpInside" id="KNz-sc-0GW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdy-gX-xJo">
+                                <rect key="frame" x="16" y="491" width="343" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.28287589938140734" blue="0.047463579844130077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Descargar código QR del evento">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadQRCodeImage:" destination="0h3-gu-Yig" eventType="touchUpInside" id="gT2-SF-N2P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4L-70-g6i">
+                                <rect key="frame" x="319" y="351" width="48" height="40"/>
+                                <connections>
+                                    <action selector="copyURLButtonAction:" destination="0h3-gu-Yig" eventType="touchUpInside" id="maw-kL-CGb"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="copy" translatesAutoresizingMaskIntoConstraints="NO" id="REg-6R-GTe">
+                                <rect key="frame" x="319" y="351" width="48" height="40"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="juanitoclave" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="miE-nu-wKV">
+                                <rect key="frame" x="16" y="401" width="287" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pQQ-o4-4fA"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="copy" translatesAutoresizingMaskIntoConstraints="NO" id="nqC-FI-zZf">
+                                <rect key="frame" x="319" y="401" width="48" height="40"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whK-wF-K84">
+                                <rect key="frame" x="319" y="401" width="48" height="40"/>
+                                <connections>
+                                    <action selector="copyLinkButtonAction:" destination="0h3-gu-Yig" eventType="touchUpInside" id="Huh-rl-V8w"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RaG-sP-Eog">
+                                <rect key="frame" x="16" y="16" width="343" height="319"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <string key="text">¡Excelente! Ya has creado tu nuevo evento, ahora solo debes compartirlo, para eso deberás tener a mano los siguientes datos:
+- Link de descarga de la app: esta dirección web es general para todos los eventos y le permite a tus usuarios descargar la app en sus teléfonos de forma gratuita
+
+- Imagen de código QR: adjunta esta imagen si compartes el evento por mail o inclúyelo en algun sector de la invitacion física. Es la forma más rápida de acceder al evento para los usuarios una vez que ya instalaron la app.
+
+- Código manual de ingreso al evento: No todos los dispositivos cuentan con una cámara, o tus usuarios pueden estar viendo el QR de acceso en el mismo telefono donde tienen la app si compartes la invitación por whatsapp. La alternativa para estos usuarios es ingresar el código secreto del evento manualmente, y por tanto siempre deberás compartírselo a tus invitados junto a la imagen QR para q todos puedan acceder.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iuf-UF-2A9">
+                                <rect key="frame" x="315" y="499" width="24" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iuf-UF-2A9" secondAttribute="height" id="xiD-xA-UJM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PBa-vR-8bh" firstAttribute="trailing" secondItem="c4L-70-g6i" secondAttribute="trailing" constant="8" id="1CM-PO-S8v"/>
+                            <constraint firstItem="PBa-vR-8bh" firstAttribute="trailing" secondItem="Ekk-qn-UPa" secondAttribute="trailing" constant="16" id="55a-7f-QVP"/>
+                            <constraint firstItem="REg-6R-GTe" firstAttribute="leading" secondItem="qYI-Uc-vkL" secondAttribute="trailing" constant="16" id="6cr-Ym-XkT"/>
+                            <constraint firstItem="iuf-UF-2A9" firstAttribute="trailing" secondItem="Cdy-gX-xJo" secondAttribute="trailing" constant="-20" id="6ov-dP-tom"/>
+                            <constraint firstItem="REg-6R-GTe" firstAttribute="height" secondItem="c4L-70-g6i" secondAttribute="height" id="6y8-V7-htn"/>
+                            <constraint firstItem="RaG-sP-Eog" firstAttribute="top" secondItem="PBa-vR-8bh" secondAttribute="top" constant="16" id="Bep-hx-wmc"/>
+                            <constraint firstItem="miE-nu-wKV" firstAttribute="width" secondItem="qYI-Uc-vkL" secondAttribute="width" id="BhI-v8-QUe"/>
+                            <constraint firstItem="miE-nu-wKV" firstAttribute="height" secondItem="qYI-Uc-vkL" secondAttribute="height" id="FPt-dL-YqU"/>
+                            <constraint firstItem="nqC-FI-zZf" firstAttribute="centerX" secondItem="whK-wF-K84" secondAttribute="centerX" id="JwP-d4-rtx"/>
+                            <constraint firstItem="nqC-FI-zZf" firstAttribute="height" secondItem="miE-nu-wKV" secondAttribute="height" id="K7u-kG-HFF"/>
+                            <constraint firstItem="Cdy-gX-xJo" firstAttribute="centerX" secondItem="PBa-vR-8bh" secondAttribute="centerX" id="KlI-jo-8Fe"/>
+                            <constraint firstItem="REg-6R-GTe" firstAttribute="width" secondItem="c4L-70-g6i" secondAttribute="width" id="KoG-lX-gHH"/>
+                            <constraint firstItem="miE-nu-wKV" firstAttribute="top" secondItem="qYI-Uc-vkL" secondAttribute="bottom" constant="10" id="Lcv-Xy-95m"/>
+                            <constraint firstItem="Cdy-gX-xJo" firstAttribute="width" secondItem="Ekk-qn-UPa" secondAttribute="width" id="MHa-zM-vkQ"/>
+                            <constraint firstItem="whK-wF-K84" firstAttribute="height" secondItem="miE-nu-wKV" secondAttribute="height" id="Mfe-rr-64l"/>
+                            <constraint firstItem="nqC-FI-zZf" firstAttribute="centerY" secondItem="whK-wF-K84" secondAttribute="centerY" id="Pq2-L0-Rqk"/>
+                            <constraint firstItem="PBa-vR-8bh" firstAttribute="trailing" secondItem="whK-wF-K84" secondAttribute="trailing" constant="8" id="Qi5-qr-XEx"/>
+                            <constraint firstItem="c4L-70-g6i" firstAttribute="height" secondItem="qYI-Uc-vkL" secondAttribute="height" id="Qow-vL-dgP"/>
+                            <constraint firstItem="PBa-vR-8bh" firstAttribute="bottom" secondItem="Ekk-qn-UPa" secondAttribute="bottom" constant="16" id="T1h-EL-oT4"/>
+                            <constraint firstItem="REg-6R-GTe" firstAttribute="centerX" secondItem="c4L-70-g6i" secondAttribute="centerX" id="TNi-4G-P5O"/>
+                            <constraint firstItem="Cdy-gX-xJo" firstAttribute="height" secondItem="Ekk-qn-UPa" secondAttribute="height" id="Vcj-CR-Oq8"/>
+                            <constraint firstItem="qYI-Uc-vkL" firstAttribute="top" secondItem="RaG-sP-Eog" secondAttribute="bottom" constant="16" id="ZEa-Qs-9zb"/>
+                            <constraint firstItem="whK-wF-K84" firstAttribute="centerY" secondItem="miE-nu-wKV" secondAttribute="centerY" id="cKU-tX-pOr"/>
+                            <constraint firstItem="nqC-FI-zZf" firstAttribute="height" secondItem="whK-wF-K84" secondAttribute="height" id="d9x-Z6-84r"/>
+                            <constraint firstItem="Ekk-qn-UPa" firstAttribute="top" secondItem="Cdy-gX-xJo" secondAttribute="bottom" constant="16" id="dND-TR-F8Z"/>
+                            <constraint firstItem="nqC-FI-zZf" firstAttribute="width" secondItem="whK-wF-K84" secondAttribute="width" id="dzg-qH-itU"/>
+                            <constraint firstItem="RaG-sP-Eog" firstAttribute="centerX" secondItem="PBa-vR-8bh" secondAttribute="centerX" id="gqD-L2-gGT"/>
+                            <constraint firstItem="RaG-sP-Eog" firstAttribute="leading" secondItem="PBa-vR-8bh" secondAttribute="leading" constant="16" id="hu7-rX-X7C"/>
+                            <constraint firstItem="REg-6R-GTe" firstAttribute="centerY" secondItem="c4L-70-g6i" secondAttribute="centerY" id="jeR-QU-kRO"/>
+                            <constraint firstItem="Ekk-qn-UPa" firstAttribute="leading" secondItem="PBa-vR-8bh" secondAttribute="leading" constant="16" id="jyc-Qv-GWL"/>
+                            <constraint firstItem="Cdy-gX-xJo" firstAttribute="top" secondItem="miE-nu-wKV" secondAttribute="bottom" constant="50" id="knv-dG-KbF"/>
+                            <constraint firstItem="whK-wF-K84" firstAttribute="leading" secondItem="miE-nu-wKV" secondAttribute="trailing" constant="16" id="l24-7F-fhc"/>
+                            <constraint firstItem="c4L-70-g6i" firstAttribute="centerY" secondItem="qYI-Uc-vkL" secondAttribute="centerY" id="mJt-Hv-2FZ"/>
+                            <constraint firstItem="iuf-UF-2A9" firstAttribute="bottom" secondItem="Cdy-gX-xJo" secondAttribute="bottom" constant="-8" id="pAe-bm-zZD"/>
+                            <constraint firstItem="PBa-vR-8bh" firstAttribute="trailing" secondItem="RaG-sP-Eog" secondAttribute="trailing" constant="16" id="pc2-hL-qtu"/>
+                            <constraint firstItem="miE-nu-wKV" firstAttribute="leading" secondItem="qYI-Uc-vkL" secondAttribute="leading" id="sFx-DU-XP8"/>
+                            <constraint firstItem="qYI-Uc-vkL" firstAttribute="leading" secondItem="PBa-vR-8bh" secondAttribute="leading" constant="16" id="vGj-1n-Q43"/>
+                            <constraint firstItem="iuf-UF-2A9" firstAttribute="top" secondItem="Cdy-gX-xJo" secondAttribute="top" constant="8" id="y6c-kh-s0g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PBa-vR-8bh"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Compartir" id="yFO-hg-qNw"/>
+                    <connections>
+                        <outlet property="confirmationButton" destination="Ekk-qn-UPa" id="bBj-I0-NGe"/>
+                        <outlet property="copyLinkTextView" destination="miE-nu-wKV" id="WcA-FB-T7U"/>
+                        <outlet property="copyURLTextView" destination="qYI-Uc-vkL" id="92I-UA-l8y"/>
+                        <outlet property="eventCodeButton" destination="Cdy-gX-xJo" id="Elh-vU-jHw"/>
+                        <outlet property="qrImageView" destination="iuf-UF-2A9" id="08N-tg-cNn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S74-rw-SiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3399.1999999999998" y="-761.46926536731644"/>
         </scene>
         <!--Música-->
         <scene sceneID="TXv-Y6-cEi">
@@ -703,7 +927,7 @@ Telefono: 122312312</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGb-mD-Enx" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="663"/>
+            <point key="canvasLocation" x="1706" y="674"/>
         </scene>
         <!--New Event View Controller-->
         <scene sceneID="aqc-C1-FQ1">
@@ -808,6 +1032,7 @@ Telefono: 122312312</string>
                         <outlet property="descriptionLabel" destination="wy0-FG-FMM" id="FCP-oI-8Ds"/>
                         <outlet property="inputTextField" destination="zQf-jt-WAr" id="ybd-QO-wHK"/>
                         <outlet property="titleLabel" destination="3q2-1g-S8X" id="dyW-7y-nxv"/>
+                        <segue destination="0h3-gu-Yig" kind="show" identifier="information" id="mw8-Au-s9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKT-CE-RrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1294,10 +1519,10 @@ Telefono: 122312312</string>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jkq-rl-zjv">
-                                <rect key="frame" x="0.0" y="207" width="375" height="297"/>
+                                <rect key="frame" x="0.0" y="207" width="375" height="226"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7Ru-hv-cW0">
-                                        <rect key="frame" x="32" y="0.0" width="311" height="297"/>
+                                        <rect key="frame" x="32" y="0.0" width="311" height="226"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhO-9W-3XE" userLabel="Spacer">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="16"/>
@@ -1376,25 +1601,6 @@ Telefono: 122312312</string>
                                                     <constraint firstAttribute="height" constant="16" id="It0-by-m2f"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Solo canciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jn-oe-qtW">
-                                                <rect key="frame" x="0.0" y="226" width="311" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQY-WD-8m8">
-                                                <rect key="frame" x="0.0" y="250" width="313" height="31"/>
-                                                <connections>
-                                                    <action selector="songsSwitch:" destination="KMi-De-Uxd" eventType="valueChanged" id="3Qr-VK-Fgk"/>
-                                                </connections>
-                                            </switch>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faV-a6-atd" userLabel="Spacer">
-                                                <rect key="frame" x="0.0" y="281" width="311" height="16"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="ljp-ob-XgR"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -1434,17 +1640,16 @@ Telefono: 122312312</string>
                         <outlet property="ingresarButton" destination="lhB-af-dgx" id="yzZ-70-zBM"/>
                         <outlet property="mailBox" destination="x2K-qp-M1G" id="Jac-CH-XWd"/>
                         <outlet property="passBox" destination="JoT-v7-VmP" id="AcL-nP-CVD"/>
-                        <outlet property="songSwitch" destination="vQY-WD-8m8" id="0ad-yu-G4g"/>
                         <segue destination="GYU-OV-TZG" kind="show" identifier="loginSuccess" id="2KB-6s-OzT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qR5-qZ-OBi" sceneMemberID="firstResponder"/>
-                <exit id="KMi-De-Uxd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="991" y="-107"/>
         </scene>
     </scenes>
     <resources>
+        <image name="copy" width="48" height="48"/>
         <image name="header" width="264" height="266"/>
         <image name="info" width="50" height="50"/>
         <image name="mesa" width="96" height="96"/>
@@ -1452,7 +1657,8 @@ Telefono: 122312312</string>
         <image name="redoscial" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TrI-94-nHd"/>
+        <segue reference="ujG-c6-FvI"/>
+        <segue reference="Iyy-o2-Eau"/>
         <segue reference="2KB-6s-OzT"/>
         <segue reference="Q8h-x8-hMf"/>
     </inferredMetricsTieBreakers>

@@ -115,14 +115,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
       alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
       self.navigationController?.popViewController(animated: true)
       self.present(alert, animated: true, completion: nil)
+      self.navigationController?.popToRootViewController(animated: true)
     }
    
    func currentDataEvent (_ cell : DetailTableViewCell) -> [AnyHashable:Any]
    {
-      let event = ["titulo":cell.textfieldTitle.text!,"descripcion":cell.textfieldDescription.text!,"telefono":cell.textfieldPhone.text!,"lugar":cell.textfieldAddress.text!,"foto":cell.textfieldURL.text!,"timestamp":
-         Int(Double(cell.textfieldTimestamp.text!)!),
+      let event = ["titulo":cell.textfieldTitle.text!,
+                   "descripcion":cell.textfieldDescription.text!,
+                   "telefono":cell.textfieldPhone.text!,
+                   "lugar":cell.textfieldAddress.text!,
+                   "foto":cell.textfieldURL.text!,
+                   "timestamp":Int(Double(cell.textfieldTimestamp.text!)!),
                    "habilitada":cell.switchHabilitado.isOn,
-                   "invitados": self.information ["invitados"]] as [String : Any]
+                   "invitados": self.information ["invitados"]!,
+                   "redes": self.information ["redes"]!] as [String : Any]
       return event
    }
     

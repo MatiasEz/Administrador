@@ -55,6 +55,7 @@ PODS:
     - FBSnapshotTestCase (~> 2.0)
     - Nimble (~> 7.0)
   - PKHUD (5.0.0)
+  - QRCode (2.0)
   - Quick (1.2.0)
   - SirioLibanesApp (0.1.0)
 
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - Nimble (~> 7.0.2)
   - Nimble-Snapshots (~> 6.3.0)
   - PKHUD
+  - QRCode
   - Quick (~> 1.2.0)
   - SirioLibanesApp (from `../`)
 
@@ -90,9 +92,10 @@ SPEC CHECKSUMS:
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SirioLibanesApp: e5e6c8436a7cdc620668a99f02e97de3af67baaf
 
-PODFILE CHECKSUM: aaac6701b0c60503a7f1b644a0e367c562386040
+PODFILE CHECKSUM: 248a7458a076c6575c7abda90d8d2ac65423202a
 
 COCOAPODS: 1.4.0

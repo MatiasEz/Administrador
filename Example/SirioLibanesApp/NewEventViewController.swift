@@ -253,7 +253,9 @@ class NewEventViewController: UIViewController {
       
       let alert = UIAlertController(title: "Felicitaciones", message: "Has completado el evento con exito", preferredStyle: UIAlertControllerStyle.alert)
       alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: {(action) in
-         self.navigationController?.popViewController(animated: true)
+        
+        self.performSegue(withIdentifier: "information", sender: self)
+
          var viewController : HomeViewController?
          for vc in self.navigationController!.viewControllers {
             if (vc is HomeViewController) {
@@ -283,6 +285,13 @@ class NewEventViewController: UIViewController {
                    "key":self.keyEvento!] as [String : Any]
 
       return event
+   }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.identifier == "information" {
+         let viewController = segue.destination as! InformationViewController
+         viewController.setUpCode(code: self.codigoQR!)
+      }
    }
    
 }

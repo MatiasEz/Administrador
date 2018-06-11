@@ -15,6 +15,11 @@ import PKHUD
 class AssignmentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
 
+    @IBOutlet weak var filterTablesButton: UIButton!
+    @IBOutlet weak var filterAbcButton: UIButton!
+    
+    @IBOutlet weak var filterAssistanceButton: UIButton!
+   
    
    let kRed = UIColor(red: 206.0/255.0, green: 46.0/255.0, blue: 35.0/255.0, alpha: 1.0)
    let kGreen = UIColor(red: 3.0/255.0, green: 178.0/255.0, blue: 32.0/255.0, alpha: 1.0)
@@ -34,24 +39,105 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
    var allUserAssignments : [AnyHashable:Any] = [:];
    var currentMesaInvites : [[AnyHashable:Any]] = [];
    
-    var myFriends : [[AnyHashable:Any]] = [];
-    var myTableName : String = "";
+   var myFriends : [[AnyHashable:Any]] = [];
+   var myTableName : String = "";
+   var state : Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+      super.viewWillAppear(animated)
+      
+      self.filterAbcButton.backgroundColor = .clear
+      self.filterAbcButton.layer.cornerRadius = 13
+      self.filterAbcButton.layer.borderWidth = 1
+      self.filterAbcButton.layer.borderColor = UIColor.white.cgColor
+      self.filterTablesButton.backgroundColor = .clear
+      self.filterTablesButton.layer.cornerRadius = 13
+      self.filterTablesButton.layer.borderWidth = 1
+      self.filterTablesButton.layer.borderColor = UIColor.white.cgColor
+      
+      self.filterAssistanceButton.backgroundColor = .clear
+      self.filterAssistanceButton.layer.cornerRadius = 13
+      self.filterAssistanceButton.layer.borderWidth = 1
+      self.filterAssistanceButton.layer.borderColor = UIColor.white.cgColor
+
       self.assignmentLabel.backgroundColor = UIColor.black
-        
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
-        self.assignmentTable.dataSource = self;
-        self.assignmentTable.delegate = self;
-        self.assignmentTable.alpha = 0
-        self.descriptionLabel.alpha = 0
-        getCurrentEventInvites()
+      
+      PKHUD.sharedHUD.contentView = PKHUDProgressView()
+      PKHUD.sharedHUD.show()
+      self.assignmentTable.dataSource = self;
+      self.assignmentTable.delegate = self;
+      self.assignmentTable.alpha = 0
+      self.descriptionLabel.alpha = 0
+      getCurrentEventInvites()
+      selectAbcButton(nil)
     }
     
-    
-    func getUserDataAndContinue () {
+   @IBAction func selectTableButton(_ sender: Any?) {
+      self.setupButton(key: "mesa")
+      state = 0
+      self.allInvitesKeys = self.allInvitesKeys.sorted {
+         let string1 = self.allTableAssignments [$0] as! String? ?? "Nada"
+         let string2 = self.allTableAssignments [$1] as! String? ?? "Nada"
+         
+         
+         
+         if (string1 == "Nada") {
+            return true
+         }
+         if (string2 == "Nada") {
+            return false
+         }
+         return  string1 < string2
+      }
+      self.assignmentTable.reloadData()
+
+   }
+   @IBAction func selectAbcButton(_ sender: Any?) {
+      self.setupButton(key: "abecedario")
+      state = 1
+      self.allInvitesKeys = self.allInvitesKeys.sorted {
+         let item1 = self.allUserAssignments [$0] as! [AnyHashable : Any]
+         let item2 = self.allUserAssignments [$1] as! [AnyHashable : Any]
+         var string1 = item1 ["apellido"] as! String
+         var string2 = item2 ["apellido"] as! String
+         string1 = string1.capitalized
+         string2 = string2.capitalized
+         return  string1 < string2
+      }
+      self.assignmentTable.reloadData()
+   }
+   
+   @IBAction func selectAssistanceButton(_ sender: Any?) {
+      self.setupButton(key: "asistencia")
+      state = 2
+      self.allInvitesKeys = self.allInvitesKeys.sorted {
+         let status1 = self.allInvites [$0] as! String
+         let status2 = self.allInvites [$1] as! String
+         let int1 = self.statusquo(status: status1)
+         let int2 = self.statusquo(status: status2)
+         
+         
+         
+         return  int1 < int2
+      }
+      self.assignmentTable.reloadData()
+   }
+   
+   func statusquo (status:String)-> Int{
+      
+      switch (status){
+         
+         case "confirmado" : return 1
+         case "cancelado" : return 4
+         case "indeterminado" : return 3
+         case "quizas" : return 2
+         
+         
+         default: return 100
+      }
+   }
+   
+   func getUserDataAndContinue () {
         let userEmail = Auth.auth().currentUser?.email;
         
         if (userEmail == nil) {
@@ -100,12 +186,29 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
          self.allInvitesKeys = self.allInvitesKeys.sorted {
             let item1 = self.allUserAssignments [$0] as! [AnyHashable : Any]
             let item2 = self.allUserAssignments [$1] as! [AnyHashable : Any]
-            let string1 = item1 ["apellido"] as! String
-            let string2 = item2 ["apellido"] as! String
+            var string1 = item1 ["apellido"] as! String
+            var string2 = item2 ["apellido"] as! String
+            string1 = string1.capitalized
+            string2 = string2.capitalized
              return  string1 < string2
             
          }
          self.showInformation()
+         switch(self.state) {
+         case 0:
+            self.selectTableButton(0)
+            break;
+            
+         case 1:
+            self.selectAbcButton(0)
+            break;
+            
+         case 2:
+            self.selectAssistanceButton(0)
+            break;
+         default:
+            break;
+         }
       }) { (error) in
          self.displayError()
       }
@@ -161,7 +264,7 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
       let apellido = apellidoRaw != nil ? ("\(apellidoRaw!), ") : ""
       let telefono = userMap ["telefono"] as! String? ?? ""
       let email = userMap ["email"] as! String? ?? ""
-      let fullname =  "\(apellido)\(name)"
+      let fullname =  "\(apellido.capitalized)\(name.capitalized)"
       let fullUserDescription = "Telefono: \(telefono)\nMail: \(email)"
       cell.friendLabel.text = fullname
       cell.userDescriptionLabel.text = fullUserDescription
@@ -280,6 +383,45 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
          self.displayError()
       }
       
+   }
+   func setupButton (key : String)
+   {
+      if (key == "asistencia") {
+         
+         self.filterAssistanceButton.backgroundColor = kGreen
+         self.filterTablesButton.backgroundColor = UIColor.clear
+         self.filterAbcButton.backgroundColor = UIColor.clear
+         
+         UIView.animate(withDuration: 0.3, animations: {
+            self.filterAssistanceButton.alpha = 1
+            self.filterTablesButton.alpha = 1
+            self.filterAbcButton.alpha = 1
+         })
+      }
+      
+      if (key == "mesa") {
+         
+         
+         self.filterTablesButton.backgroundColor = kGreen
+         self.filterAssistanceButton.backgroundColor = UIColor.clear
+         self.filterAbcButton.backgroundColor = UIColor.clear
+         UIView.animate(withDuration: 0.3, animations: {
+            self.filterAssistanceButton.alpha = 1
+            self.filterTablesButton.alpha = 1
+            self.filterAbcButton.alpha = 1
+         })
+      }
+      
+      if (key == "abecedario") {
+         self.filterAbcButton.backgroundColor = kGreen
+         self.filterAssistanceButton.backgroundColor = UIColor.clear
+         self.filterTablesButton.backgroundColor = UIColor.clear
+         UIView.animate(withDuration: 0.3, animations: {
+            self.filterAssistanceButton.alpha = 1
+            self.filterTablesButton.alpha = 1
+            self.filterAbcButton.alpha = 1
+         })
+      }
    }
    
     

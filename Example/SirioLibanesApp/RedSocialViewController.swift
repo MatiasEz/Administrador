@@ -17,6 +17,9 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
    var ref: DatabaseReference!
    var dataDictionary : [String:Any] = [:]
    var redesMap : [String: Any]?
+   
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func editingDidBegin(_ sender: Any) {
@@ -37,7 +40,7 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
       self.addRedSocial(key: "twitter", displayName: "Twitter")
       self.addRedSocial(key: "snapchat", displayName: "Snapchat")
       self.addRedSocial(key: "youtube", displayName: "Youtube")
-      self.addRedSocial(key: "webPage", displayName: "Pagina Web")
+      self.addRedSocial(key: "webpage", displayName: "Pagina Web")
     }
    
    func addRedSocial(key: String, displayName: String) {
@@ -60,7 +63,8 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
       self.saveRedSocial(key: "twitter", displayName: "Twitter")
       self.saveRedSocial(key: "snapchat", displayName: "Snapchat")
       self.saveRedSocial(key: "youtube", displayName: "Youtube")
-      self.saveRedSocial(key: "webPage", displayName: "Pagina Web")
+      self.saveRedSocial(key: "webpage", displayName: "Pagina Web")
+      self.navigationController?.popToRootViewController(animated: true)
 
    }
    

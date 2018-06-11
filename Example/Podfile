@@ -7,6 +7,7 @@ target 'SirioLibanesApp_Example' do
    pod 'Firebase/Database'
    pod 'PKHUD'
    pod 'BarcodeScanner'
+   pod "QRCode"
 
   target 'SirioLibanesApp_Tests' do
     inherit! :search_paths

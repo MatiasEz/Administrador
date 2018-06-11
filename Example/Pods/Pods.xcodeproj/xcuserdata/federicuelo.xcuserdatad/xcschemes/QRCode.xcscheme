@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B24A96395F9811674054C1A34ED1509E'
-               BlueprintName = 'SirioLibanesApp'
+               BlueprintIdentifier = '597AF2440A6C05E387947FD8AFCBB234'
+               BlueprintName = 'QRCode'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SirioLibanesApp.framework'>
+               BuildableName = 'QRCode.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
