@@ -147,6 +147,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return self.userEvents.keys.count;
     }
         
+    @IBAction func newEventButtonPressed(_ sender: Any) {
+      guard let variableDeAccesoNoOpcional = self.accessType else {
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         self.present(alert, animated: true, completion: nil)
+         return;}
+   if self.accessType == "Admin"{
+         self.performSegue(withIdentifier: "newevent", sender: self)
+      } else { let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+      }
+    }
     @IBAction func socialMediaButtonPressed(_ sender: Any) {
         let button = sender as! UIButton
         let key = self.userItemList [button.tag]
@@ -271,7 +283,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          viewController.information = self.information
          viewController.pageName = self.pageName
       }
+        if segue.identifier == "newevent" {
+            let viewController = segue.destination as! NewEventViewController
     }
 
-
+    }
 }

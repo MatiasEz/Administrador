@@ -211,7 +211,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Nuevo" id="cqY-ui-9Qc">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="wVD-6k-fQZ" kind="show" id="IYC-oa-x0L"/>
+                                <action selector="newEventButtonPressed:" destination="GYU-OV-TZG" id="ojf-zC-ulv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Salir" id="Lpf-ne-zya">
@@ -229,6 +229,7 @@
                         <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="Q8h-x8-hMf"/>
                         <segue destination="QsQ-uz-bZ7" kind="show" identifier="songs" id="ujG-c6-FvI"/>
                         <segue destination="wTZ-1S-5E8" kind="show" identifier="invitados" id="Iyy-o2-Eau"/>
+                        <segue destination="wVD-6k-fQZ" kind="show" identifier="newevent" id="Faz-QN-FGx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUA-c8-wu2" sceneMemberID="firstResponder"/>
