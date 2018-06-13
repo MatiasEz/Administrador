@@ -16,6 +16,8 @@ class AssignmentTableViewCell: UITableViewCell {
     @IBOutlet public weak var assignmentLabel: UILabel!
     @IBOutlet public weak var userDescriptionLabel: UILabel!
     @IBOutlet public weak var friendLabel: UILabel!
+   var accessType : String?
+   
    
    override var tag : Int {
       didSet {
@@ -31,5 +33,7 @@ class AssignmentTableViewCell: UITableViewCell {
       self.statusSquare.layer.cornerRadius = 25
       self.selectionStyle = UITableViewCellSelectionStyle.none
     }
+   
+
 
 }
