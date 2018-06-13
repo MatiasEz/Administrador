@@ -20,7 +20,9 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var filterAssistanceButton: UIButton!
    
-   
+
+   var permissionsData : [String : [String]]?
+   var accessType : String?
    let kRed = UIColor(red: 206.0/255.0, green: 46.0/255.0, blue: 35.0/255.0, alpha: 1.0)
    let kGreen = UIColor(red: 3.0/255.0, green: 178.0/255.0, blue: 32.0/255.0, alpha: 1.0)
    let kOrange = UIColor(red: 242.0/255.0, green: 117.0/255.0, blue: 0.0/255.0, alpha: 1.0)
@@ -46,6 +48,7 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       
+      self.getPermissionsDataAndContinue()
       self.filterAbcButton.backgroundColor = .clear
       self.filterAbcButton.layer.cornerRadius = 13
       self.filterAbcButton.layer.borderWidth = 1
@@ -124,6 +127,8 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
          
          return  int1 < int2
       }
+    
+
       self.assignmentTable.reloadData()
    }
    
@@ -141,6 +146,39 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
       }
    }
    
+   func getPermissionsDataAndContinue () {
+      ref.child("Accesos").observeSingleEvent(of: .value, with: { (snapshot) in
+         // Get user value
+         let data = snapshot.value as? NSDictionary!
+         if let unwData = data {
+            self.permissionsData = unwData as? [String : [String]];
+            self.accessType = nil
+            
+            self.checkCurrentPermission(key: "Admin")
+            self.checkCurrentPermission(key: "Cliente")
+            self.checkCurrentPermission(key: "Recepcion")
+            
+            PKHUD.sharedHUD.hide(afterDelay: 0.3) { success in
+            }
+            
+         } else {
+            self.displayError()
+         }
+      }) { (error) in
+         self.displayError()
+      }
+   }
+   
+   func checkCurrentPermission(key: String) {
+      let myEmail = Auth.auth().currentUser?.email;
+      let emails = self.permissionsData![key]
+      for currentEmail in emails! {
+         if (currentEmail == myEmail) {
+            self.accessType = key
+         }
+      }
+      
+   }
    func getUserDataAndContinue () {
         let userEmail = Auth.auth().currentUser?.email;
         
@@ -256,7 +294,6 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-      
         let inviteKey = self.allInvitesKeys [indexPath.row]
         let status = self.allInvites [inviteKey] as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell") as! AssignmentTableViewCell
@@ -273,6 +310,27 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
       cell.friendLabel.text = fullname
       cell.userDescriptionLabel.text = fullUserDescription
       cell.tag = indexPath.row
+      
+      guard let variableDeAccesoNoOpcional = self.accessType else {
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         self.present(alert, animated: true, completion: nil)
+         return cell
+      }
+      
+      switch (variableDeAccesoNoOpcional) {
+      case "Admin":  cell.assignButton.isHidden = false
+         break
+      case "Cliente":  cell.assignButton.isHidden = true
+         break
+      case "Recepcion":  cell.assignButton.isHidden = true
+         break
+         
+      default: let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+      alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+      self.present(alert, animated: true, completion: nil)
+         break
+      }
       
       if (status == "indeterminado") {
          cell.statusSquare.backgroundColor = UIColor.darkGray
@@ -373,6 +431,7 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
          let email = userMap ["email"] as! String? ?? ""
          let fullname =  "\(apellido)\(name)"
          let map = ["nombre":fullname,"nickname":nickname,"mail":email] as [AnyHashable : Any]
+         
          
          self.currentMesaInvites = self.currentMesaInvites.filter { $0 ["nickname"] as! String != nickname}
          self.currentMesaInvites.append(map)
