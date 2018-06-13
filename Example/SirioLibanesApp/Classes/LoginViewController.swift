@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var claveBox: UITextField!
     
+   var accessType : String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +121,7 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(nickname!, forKey: "nicknameKey")
             
             print ("mi user es: " + (user?.displayName ?? "no hay user")  + ", nickname: " + (nickname)!!)
-            self.performSegue(withIdentifier: "loginSuccess", sender: self)
+           self.goToHomeViewController()
             self.displaySuccessfulLogin()
             
          }) { (error) in
@@ -131,7 +132,36 @@ class LoginViewController: UIViewController {
          
         }
     }
-    
+   
+   func goToHomeViewController () {
+      
+      guard let variableDeAccesoNoOpcional = self.accessType else {
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         self.present(alert, animated: true, completion: nil)
+         return;
+      }
+      
+      switch (variableDeAccesoNoOpcional) {
+      case "Admin":  self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         break
+      case "Cliente":self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         break
+      case "DJ":  self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         break
+      case "Recepcion":  self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         break
+         
+      default:
+         
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         
+         break
+         
+      }
+   }
+   
     func displayError () {
         let alert = UIAlertController(title: "¡Hubo un error!", message: "Revisa tu mail y contraseña y vuelve a intentarlo", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
