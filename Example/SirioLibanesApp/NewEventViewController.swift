@@ -31,9 +31,9 @@ class NewEventViewController: UIViewController {
    var timestamp : String?
    var telefono : String?
    var lugar : String?
+   var hashtag : String?
    var codigoQR : String?
    var keyEvento : String?
-   var socialApplink : String?
    var socialTag : String?
    var socialLink : String?
    var socialMaps : [String:Any] = [:]
@@ -93,19 +93,14 @@ class NewEventViewController: UIViewController {
             break
          
          case 2:
-            self.socialApplink  = self.inputTextField.text
-            self.displayThirdQuestionForCurrentSocialNetwork()
-            self.inputTextField.keyboardType = .default
-            break
-         
-         case 3:
             self.socialLink  = self.inputTextField.text
             self.saveCurrentSocialData()
             self.chooseNewSocialNetwork()
             self.inputTextField.keyboardType = .default
             break
-            
-         default:
+         
+      
+            default:
             break
          }
          
@@ -118,7 +113,7 @@ class NewEventViewController: UIViewController {
    func saveCurrentSocialData () {
       let mapSocial = ["link":self.socialLink,
                                "name":self.socialTag,
-                               "applink":self.socialApplink]
+                              ]
       self.socialMaps [self.currentSocialKey!] = mapSocial
    }
    
@@ -167,6 +162,13 @@ class NewEventViewController: UIViewController {
          self.changeText(title:"ID de Base de Datos", description: "Esta es un ID sin espacios que sirve para identificar este evento en la base de datos")
          self.inputTextField.keyboardType = .default
          break
+         
+      case 7:
+         self.hashtag = self.inputTextField.text
+         self.changeText(title:"Hashtag", description: "dato usado para compartir informacion en tus redes")
+         self.inputTextField.keyboardType = .default
+         break
+
          
       default:
          self.keyEvento = self.inputTextField.text
@@ -234,15 +236,13 @@ class NewEventViewController: UIViewController {
    func displaySecondQuestionForCurrentSocialNetwork () {
 
       self.currentSocialStep = 2
-
-      self.changeText(title:"\(self.currentSocialNetwork!) app link", description: " Este link permite abrir tu link en el contexto de la aplicacion de \(self.currentSocialNetwork!) ")
-       }
-   
-   func displayThirdQuestionForCurrentSocialNetwork () {
-      
-      self.currentSocialStep = 3
       self.changeText(title:"\(self.currentSocialNetwork!) link", description: "Este link permite abrir tu link en el contexto del navegador de \(self.currentSocialNetwork!) ")
+   
+
+      
    }
+
+
    
    func changeText(title : String, description : String) {
       self.titleLabel.text = title
@@ -280,6 +280,7 @@ class NewEventViewController: UIViewController {
                    "foto":self.foto!,
                    "timestamp":Int(self.timestamp!)!,
                    "qrkey":self.codigoQR!,
+                   "hashtag":self.hashtag!,
                    "redes":self.socialMaps,
                    "habilitada":false,
                    "key":self.keyEvento!] as [String : Any]

@@ -50,8 +50,7 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
       if let genericMap = optionalGenericMap {
          let genericTag : String = genericMap ["name"] as? String ?? ""
          let genericLink : String = genericMap ["link"] as? String ?? ""
-         let genericApplink : String? = genericMap ["applink"] as? String
-         let genericItem : Redsocial = Redsocial (title:displayName, tag: genericTag , link: genericLink, applink: genericApplink)
+         let genericItem : Redsocial = Redsocial (title:displayName, tag: genericTag , link: genericLink)
          self.items.append(genericItem)
       }
 
@@ -90,11 +89,9 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
       
       cell.titleLabel.text = currentItem.title
       cell.tagTextfield.text = currentItem.tag
-      cell.applinkTextfield.text = currentItem.applink
       cell.linkTextfield.text = currentItem.link
       
       self.dataDictionary ["\(currentItem.title)-tag"] = cell.tagTextfield
-      self.dataDictionary ["\(currentItem.title)-applink"] = cell.applinkTextfield
       self.dataDictionary ["\(currentItem.title)-link"] = cell.linkTextfield
       
       return cell
