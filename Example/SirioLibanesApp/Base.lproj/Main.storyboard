@@ -519,17 +519,8 @@ Telefono: 122312312</string>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noc-HK-C52">
-                                                    <rect key="frame" x="16" y="66.5" width="70" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="Ia2-mP-xpf"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-SF-da6">
-                                                    <rect key="frame" x="16" y="93.5" width="70" height="21"/>
+                                                    <rect key="frame" x="16" y="69.5" width="70" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="mCe-qr-3tl"/>
                                                     </constraints>
@@ -538,21 +529,12 @@ Telefono: 122312312</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-jt-8t4" userLabel="Link Textfield">
-                                                    <rect key="frame" x="101" y="94" width="226" height="20"/>
+                                                    <rect key="frame" x="101" y="70" width="226" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
                                                     <connections>
                                                         <action selector="editingDidBegin:" destination="ojW-kx-p3b" eventType="editingDidBegin" id="ZBJ-gB-U22"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPC-Az-yvT" userLabel="Applink Textfield">
-                                                    <rect key="frame" x="101" y="67" width="226" height="20"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
-                                                    <connections>
-                                                        <action selector="editingDidBegin:" destination="ojW-kx-p3b" eventType="editingDidBegin" id="Z4Y-RU-99G"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="riE-KR-jtX">
@@ -570,29 +552,23 @@ Telefono: 122312312</string>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="leading" secondItem="SPC-Az-yvT" secondAttribute="leading" id="0oP-Wt-pEF"/>
-                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="height" secondItem="SPC-Az-yvT" secondAttribute="height" id="1kt-9W-7hb"/>
-                                                <constraint firstItem="SPC-Az-yvT" firstAttribute="height" secondItem="riE-KR-jtX" secondAttribute="height" id="8PC-WO-Xpf"/>
-                                                <constraint firstItem="noc-HK-C52" firstAttribute="leading" secondItem="Vbr-n9-NJg" secondAttribute="leading" id="9hW-0n-jb4"/>
+                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="height" secondItem="riE-KR-jtX" secondAttribute="height" id="Bs4-Ua-rDV"/>
+                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="top" secondItem="riE-KR-jtX" secondAttribute="bottom" constant="10" id="DrL-8p-d1E"/>
                                                 <constraint firstItem="Vbr-n9-NJg" firstAttribute="leading" secondItem="taJ-Iu-lzD" secondAttribute="leading" id="E3C-W4-hSb"/>
+                                                <constraint firstItem="xMg-SF-da6" firstAttribute="leading" secondItem="Vbr-n9-NJg" secondAttribute="leading" id="EN0-ay-ip2"/>
                                                 <constraint firstAttribute="trailing" secondItem="riE-KR-jtX" secondAttribute="trailing" constant="16" id="KM1-s6-P3n"/>
                                                 <constraint firstItem="riE-KR-jtX" firstAttribute="centerY" secondItem="Vbr-n9-NJg" secondAttribute="centerY" id="LG5-6P-fsg"/>
-                                                <constraint firstItem="SPC-Az-yvT" firstAttribute="trailing" secondItem="riE-KR-jtX" secondAttribute="trailing" id="LO2-Ng-V1x"/>
                                                 <constraint firstItem="Vbr-n9-NJg" firstAttribute="top" secondItem="taJ-Iu-lzD" secondAttribute="bottom" constant="10" id="TBR-cm-pZe"/>
-                                                <constraint firstItem="xMg-SF-da6" firstAttribute="top" secondItem="noc-HK-C52" secondAttribute="bottom" constant="6" id="WMR-yj-tWG"/>
                                                 <constraint firstItem="taJ-Iu-lzD" firstAttribute="top" secondItem="R1w-cc-jUJ" secondAttribute="top" constant="6" id="Wzu-6f-NNJ"/>
+                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="trailing" secondItem="riE-KR-jtX" secondAttribute="trailing" id="XVF-ml-lnF"/>
                                                 <constraint firstItem="IUM-jt-8t4" firstAttribute="centerY" secondItem="xMg-SF-da6" secondAttribute="centerY" id="Zhu-N8-Tg2"/>
-                                                <constraint firstItem="xMg-SF-da6" firstAttribute="leading" secondItem="noc-HK-C52" secondAttribute="leading" id="bgd-rQ-T3R"/>
-                                                <constraint firstItem="noc-HK-C52" firstAttribute="top" secondItem="Vbr-n9-NJg" secondAttribute="bottom" constant="6" id="fvi-4a-iBP"/>
-                                                <constraint firstItem="SPC-Az-yvT" firstAttribute="centerY" secondItem="noc-HK-C52" secondAttribute="centerY" id="j8i-da-l3W"/>
                                                 <constraint firstItem="riE-KR-jtX" firstAttribute="leading" secondItem="Vbr-n9-NJg" secondAttribute="trailing" constant="15" id="mHf-s2-GJZ"/>
                                                 <constraint firstItem="taJ-Iu-lzD" firstAttribute="leading" secondItem="R1w-cc-jUJ" secondAttribute="leading" constant="16" id="nTl-YX-PoM"/>
-                                                <constraint firstItem="SPC-Az-yvT" firstAttribute="leading" secondItem="riE-KR-jtX" secondAttribute="leading" id="uMn-gd-RMa"/>
-                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="trailing" secondItem="SPC-Az-yvT" secondAttribute="trailing" id="wdE-04-mA6"/>
+                                                <constraint firstItem="IUM-jt-8t4" firstAttribute="leading" secondItem="riE-KR-jtX" secondAttribute="leading" id="tmv-xo-JcQ"/>
+                                                <constraint firstItem="xMg-SF-da6" firstAttribute="width" secondItem="Vbr-n9-NJg" secondAttribute="width" id="xt7-hz-B9X"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="applinkTextfield" destination="SPC-Az-yvT" id="PzC-rv-ZpO"/>
                                             <outlet property="linkTextfield" destination="IUM-jt-8t4" id="9nq-dM-K0u"/>
                                             <outlet property="tagTextfield" destination="riE-KR-jtX" id="ca0-QN-013"/>
                                             <outlet property="titleLabel" destination="taJ-Iu-lzD" id="sO0-UO-kHe"/>
