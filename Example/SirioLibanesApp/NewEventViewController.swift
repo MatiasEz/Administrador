@@ -16,6 +16,8 @@ class NewEventViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
    public var datePickerView : UIDatePicker?
+   public var timePickerView : UIDatePicker?
+
    
     var numeroDePaso : Int = 0
     var socialNetworkStepStarted : Bool = false
@@ -53,20 +55,60 @@ class NewEventViewController: UIViewController {
       self.continueButton.layer.borderColor = UIColor.white.cgColor
       
       self.datePickerView = UIDatePicker()
-      self.datePickerView!.datePickerMode = .dateAndTime
+      self.datePickerView!.datePickerMode = .date
       self.datePickerView!.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+     
+      self.timePickerView = UIDatePicker()
+      self.timePickerView!.datePickerMode = .time
+      self.timePickerView!.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+      self.timePickerView!.locale = NSLocale(localeIdentifier: "en_GB") as Locale // using Great Britain for this example
+      
+
+
+      
+      
+
       
       self.changeText(title: "Titulo", description: "Esto se mostrará en el listado de eventos de tus usuarios")
     }
    
    @objc func handleDatePicker() {
-      self.middleTimestamp = "\(Int(self.datePickerView!.date.timeIntervalSince1970))"
       
+      
+      
+     
+  
+      let hour = Calendar.current.component(.hour, from: self.timePickerView!.date)
+      let twoDigitHour = String(format: "%02d", hour)
+      let minute = Calendar.current.component(.minute, from: self.timePickerView!.date)
+      let twoDigitMinute = String(format: "%02d", minute)
+      let year = Calendar.current.component(.year, from: self.datePickerView!.date)
+      let month = Calendar.current.component(.month, from: self.datePickerView!.date)
+      let twoDigitMonth = String(format: "%02d", month)
+      let day = Calendar.current.component(.day, from: self.datePickerView!.date)
+      let twoDigitDay = String(format: "%02d", day)
+      let textoFecha = "\(twoDigitHour):\(twoDigitMinute) \(twoDigitDay)/\(twoDigitMonth)/\(year)"
+      let fecha = "\(twoDigitDay)/\(twoDigitMonth)/\(year)"
+      let hora = "\(twoDigitHour):\(twoDigitMinute)"
       let dateFormatterGet = DateFormatter()
-      dateFormatterGet.dateFormat = "HH:mm  dd/MM/yyyy"
-      var dateString = dateFormatterGet.string(from: self.datePickerView!.date)
-      self.inputTextField.text = dateString
+      dateFormatterGet.dateFormat = "HH:mm dd/MM/yyyy"
+ 
+
+    
+      
+      if (numeroDePaso == 5)
+      { self.inputTextField.text = hora
+
+      } else
+      { self.inputTextField.text = fecha}
+      
+      
+      guard let fechaCombinada = dateFormatterGet.date(from:textoFecha)else { return; }
+      let timestampNumero = Int (fechaCombinada.timeIntervalSince1970)
+      let timestampString = "\(timestampNumero)"
+      self.middleTimestamp = timestampString
    }
+
 
    @IBAction func continuePressAction(_ sender: Any) {
       
@@ -145,25 +187,35 @@ class NewEventViewController: UIViewController {
          
       case 4:
          self.foto = self.inputTextField.text
-         self.changeText(title:"Fecha", description: "Fecha y hora en la que se va a producir el evento")
+         self.changeText(title:"Hora del evento", description: "Hora en la que empezara el evento")
          self.inputTextField.keyboardType = .default
-         self.inputTextField.inputView = self.datePickerView!
-         break
+         self.inputTextField.inputView = self.timePickerView
+
+break
+         
          
       case 5:
+         self.timestamp = self.middleTimestamp
+         self.changeText(title:"Fecha", description: "Fecha en la que se va a producir el evento")
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.inputView = self.datePickerView
+         break
+         
+      case 6:
          self.timestamp = self.middleTimestamp
          self.changeText(title:"Clave QR", description: "Codigo secreto que pueden ingresar manualmente los usuarios a la hora de escanearlo")
          self.inputTextField.keyboardType = .default
          self.inputTextField.inputView = nil
+
          break
          
-      case 6:
+      case 7:
          self.codigoQR = self.inputTextField.text
          self.changeText(title:"ID de Base de Datos", description: "Esta es un ID sin espacios que sirve para identificar este evento en la base de datos")
          self.inputTextField.keyboardType = .default
          break
          
-      case 7:
+      case 8:
          self.hashtag = self.inputTextField.text
          self.changeText(title:"Hashtag", description: "dato usado para compartir informacion en tus redes")
          self.inputTextField.keyboardType = .default
