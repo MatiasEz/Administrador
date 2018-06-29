@@ -19,9 +19,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var claveBox: UITextField!
     
    var accessType : String?
+   var ref: DatabaseReference!
+   var permissionsData : [String : [String]]?
    
     override func viewDidLoad() {
         super.viewDidLoad()
+         ref = Database.database().reference()
         mailBox.keyboardType = UIKeyboardType.emailAddress
         mailBox.autocorrectionType = UITextAutocorrectionType.no
         passBox.keyboardType = UIKeyboardType.alphabet
@@ -121,8 +124,7 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(nickname!, forKey: "nicknameKey")
             
             print ("mi user es: " + (user?.displayName ?? "no hay user")  + ", nickname: " + (nickname)!!)
-           self.goToHomeViewController()
-            self.displaySuccessfulLogin()
+            self.getPermissionsDataAndContinue()
             
          }) { (error) in
             self.displayError()
@@ -132,6 +134,41 @@ class LoginViewController: UIViewController {
          
         }
     }
+   
+   func getPermissionsDataAndContinue () {
+      ref.child("Accesos").observeSingleEvent(of: .value, with: { (snapshot) in
+         // Get user value
+         let data = snapshot.value as? NSDictionary
+         if let unwData = data {
+            self.permissionsData = unwData as? [String : [String]];
+            self.accessType = nil
+            
+            self.checkCurrentPermission(key: "Admin")
+            self.checkCurrentPermission(key: "Cliente")
+            self.checkCurrentPermission(key: "DJ")
+            self.checkCurrentPermission(key: "Recepcion")
+            
+            self.goToHomeViewController()
+            
+            
+         } else {
+            self.displayError()
+         }
+      }) { (error) in
+         self.displayError()
+      }
+   }
+   
+   func checkCurrentPermission(key: String) {
+      let myEmail = Auth.auth().currentUser?.email;
+      let emails = self.permissionsData![key]
+      for currentEmail in emails! {
+         if (currentEmail == myEmail) {
+            self.accessType = key
+         }
+      }
+      
+   }
    
    func goToHomeViewController () {
       
@@ -143,23 +180,32 @@ class LoginViewController: UIViewController {
       }
       
       switch (variableDeAccesoNoOpcional) {
-      case "Admin":  self.performSegue(withIdentifier: "loginSuccess", sender: self)
+      case "Admin":
+         self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         self.displaySuccessfulLogin()
          break
-      case "Cliente":self.performSegue(withIdentifier: "loginSuccess", sender: self)
+      case "Cliente":
+         self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         self.displaySuccessfulLogin()
          break
-      case "DJ":  self.performSegue(withIdentifier: "loginSuccess", sender: self)
+      case "DJ":
+         self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         self.displaySuccessfulLogin()
          break
-      case "Recepcion":  self.performSegue(withIdentifier: "loginSuccess", sender: self)
+      case "Recepcion":
+         self.performSegue(withIdentifier: "loginSuccess", sender: self)
+         self.displaySuccessfulLogin()
          break
          
       default:
          
-         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta seccion", preferredStyle: UIAlertControllerStyle.alert)
+         let alert = UIAlertController(title: "Error", message: "No tienes permisos para acceder a esta aplicación", preferredStyle: UIAlertControllerStyle.alert)
          alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
          
          break
          
       }
+      
    }
    
     func displayError () {
