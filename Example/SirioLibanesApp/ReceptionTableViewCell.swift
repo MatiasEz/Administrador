@@ -9,7 +9,13 @@
 import UIKit
 
 class ReceptionTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var tableNumberLabel: UILabel!
+    @IBOutlet weak var presenceButton: UIButton!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var qrImage: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

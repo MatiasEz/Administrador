@@ -20,6 +20,7 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
    
     
     
+    @IBOutlet weak var addRedSocialButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func editingDidBegin(_ sender: Any) {
@@ -28,6 +29,11 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
 
     }
     override func viewDidLoad() {
+        self.addRedSocialButton.backgroundColor = .clear
+        self.addRedSocialButton.layer.cornerRadius = 20
+        self.addRedSocialButton.layer.borderWidth = 1
+        self.addRedSocialButton.layer.borderColor = UIColor.white.cgColor
+
       ref = Database.database().reference()
       super.viewDidLoad()
       
@@ -42,6 +48,9 @@ class RedSocialViewController: UIViewController, UITableViewDataSource {
       self.addRedSocial(key: "youtube", displayName: "Youtube")
       self.addRedSocial(key: "webpage", displayName: "Pagina Web")
     }
+   
+   
+ 
    
    func addRedSocial(key: String, displayName: String) {
       
