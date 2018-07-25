@@ -8,9 +8,14 @@
 
 import UIKit
 
-class NewEventViewController: UIViewController {
+class NewEventViewController: UIViewController, UITextFieldDelegate {
 
    //OUTLETS Y PROPIEDADES
+    
+    
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var keyboardHeight: NSLayoutConstraint!
+    @IBOutlet weak var keyboardView: UIView!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -18,7 +23,6 @@ class NewEventViewController: UIViewController {
    public var datePickerView : UIDatePicker?
    public var timePickerView : UIDatePicker?
 
-   
     var numeroDePaso : Int = 0
     var socialNetworkStepStarted : Bool = false
     var currentSocialNetwork : String?
@@ -45,6 +49,11 @@ class NewEventViewController: UIViewController {
    override func viewDidLoad() {
         super.viewDidLoad()
          //esto se ejecuta cuando se inicializa la clase
+    if UIDevice.current.userInterfaceIdiom == .pad {
+        keyboardHeight.constant = 316
+    } else if UIDevice.current.userInterfaceIdiom == .phone {
+        keyboardHeight.constant = 216
+    }
       self.inputTextField.autocorrectionType = .no
       self.inputTextField.becomeFirstResponder()
       self.inputTextField.text = ""
@@ -53,7 +62,13 @@ class NewEventViewController: UIViewController {
       self.continueButton.layer.cornerRadius = 20
       self.continueButton.layer.borderWidth = 1
       self.continueButton.layer.borderColor = UIColor.white.cgColor
-      
+    
+      self.backButton.backgroundColor = .clear
+      self.backButton.layer.cornerRadius = 20
+      self.backButton.layer.borderWidth = 1
+      self.backButton.layer.borderColor = UIColor.white.cgColor
+    
+    
       self.datePickerView = UIDatePicker()
       self.datePickerView!.datePickerMode = .date
       self.datePickerView!.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
@@ -62,22 +77,67 @@ class NewEventViewController: UIViewController {
       self.timePickerView!.datePickerMode = .time
       self.timePickerView!.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
       self.timePickerView!.locale = NSLocale(localeIdentifier: "en_GB") as Locale // using Great Britain for this example
-      
-
-
-      
-      
-
-      
-      self.changeText(title: "Titulo", description: "Esto se mostrará en el listado de eventos de tus usuarios")
+    
+     self.inputTextField.delegate = self
+   self.inputTextField.autocapitalizationType = .sentences
+    
     }
    
+   public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+      let caracteresString = self.acceptCharacterForCurrentStep()
+      let caracteresAceptables = CharacterSet(charactersIn: caracteresString)
+      if string.rangeOfCharacter(from: caracteresAceptables) == nil && !string.isEmpty {
+        self.showCaracterError()
+         return false
+      }
+      return true
+   }
+   
+   func acceptCharacterForCurrentStep () -> String {
+      
+      
+      let caracteresLetrasYNumeros = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ñÑ"
+      let caracteresSinEspacio = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_/:.-ñÑ"
+      let caracteresConBarra = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_ /ñÑ"
+      let numeros = "01234567890+*#: "
+      let letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_ñÑ"
+      let letrasMinusculas = "abcdefghijklmnñopqrstuvwxyz"
+      
+      switch numeroDePaso {
+         
+         
+      case 0 : return caracteresLetrasYNumeros
+         //Titulo
+      case 1 : return caracteresLetrasYNumeros
+      //Descripcion
+      case 2 : return caracteresSinEspacio
+       //URL LUGAR
+      case 3 : return numeros
+         //TELEFONO
+      case 4 : return caracteresSinEspacio
+         //IMAGEN DE FONDO
+      case 5 : return numeros
+         //HORA
+      case 6 : return caracteresConBarra
+         //FECHA
+      case 7 : return letrasMinusculas
+         //CLAVEQR
+      case 8 : return letras
+         //IDBASEDEDATOS
+      case 9 : return caracteresLetrasYNumeros
+      //HASHTAG
+      default: return caracteresLetrasYNumeros
+      
+      }
+   }
+    
+   func showCaracterError() {
+      let alert = UIAlertController(title: "Error", message: "El caracter que intentas agregar no está permitido en este campo. Solo se aceptan letras y números.", preferredStyle: UIAlertControllerStyle.alert)
+      alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+      self.present(alert, animated: true, completion: nil)
+      }
+   
    @objc func handleDatePicker() {
-      
-      
-      
-     
-  
       let hour = Calendar.current.component(.hour, from: self.timePickerView!.date)
       let twoDigitHour = String(format: "%02d", hour)
       let minute = Calendar.current.component(.minute, from: self.timePickerView!.date)
@@ -109,8 +169,30 @@ class NewEventViewController: UIViewController {
       self.middleTimestamp = timestampString
    }
 
+    @IBAction func backPressAction(_ sender: Any) {
+      
+      if (numeroDePaso <= 0) {
+         //si estoy en el paso cero y toco atras, salir del flow
+         self.navigationController?.popViewController(animated: true)
+         return
+      }
+      
+      if (self.socialNetworkStepStarted == false) {
+     numeroDePaso = numeroDePaso - 1
+         self.requiredFieldsStep() } else {
+         
+         self.chooseNewSocialNetwork()
+          }
 
-   @IBAction func continuePressAction(_ sender: Any) {
+
+   }
+    
+         
+         
+         
+      
+    
+    @IBAction func continuePressAction(_ sender: Any) {
       
       if (self.inputTextField.text!.isEmpty) {
          let alert = UIAlertController(title: "Error", message: "Completa el campo para continuar", preferredStyle: UIAlertControllerStyle.alert)
@@ -120,6 +202,8 @@ class NewEventViewController: UIViewController {
       }
       
       if (self.socialNetworkStepStarted == false) {
+         numeroDePaso = numeroDePaso + 1
+         self.saveInformationStep()
          self.requiredFieldsStep()
       } else {
          
@@ -159,83 +243,153 @@ class NewEventViewController: UIViewController {
       self.socialMaps [self.currentSocialKey!] = mapSocial
    }
    
-   func requiredFieldsStep () {
+   func saveInformationStep () {
       switch numeroDePaso {
       case 0:
-         self.titulo = self.inputTextField.text
-         self.changeText(title:"Descripción", description: "Debe ser una descripción corta que se muestra como bajada en el listado de eventos")
-         self.inputTextField.keyboardType = .default
          break
          
       case 1:
-         self.descripcion = self.inputTextField.text
-         self.changeText(title:"URL del Lugar", description: "URL que te dirige a la ubicación del evento en GoogleMaps")
-         self.inputTextField.keyboardType = .URL
+         self.titulo = self.inputTextField.text
          break
          
       case 2:
-         self.lugar = self.inputTextField.text
-         self.changeText(title:"Telefono", description: "Contacto del cliente")
-         self.inputTextField.keyboardType = .phonePad
+         self.descripcion = self.inputTextField.text
          break
          
       case 3:
-         self.telefono = self.inputTextField.text
-         self.changeText(title:"Imagen de fondo", description: "URL de la imagen que se muestra como fondo en el detalle del evento")
-         self.inputTextField.keyboardType = .URL
+         self.lugar = self.inputTextField.text
          break
          
       case 4:
-         self.foto = self.inputTextField.text
-         self.changeText(title:"Hora del evento", description: "Hora en la que empezara el evento")
-         self.inputTextField.keyboardType = .default
-         self.inputTextField.inputView = self.timePickerView
-
-break
-         
+         self.telefono = self.inputTextField.text
+         break
          
       case 5:
-         self.timestamp = self.middleTimestamp
-         self.changeText(title:"Fecha", description: "Fecha en la que se va a producir el evento")
-         self.inputTextField.keyboardType = .default
-         self.inputTextField.inputView = self.datePickerView
+         self.foto = self.inputTextField.text
          break
          
       case 6:
          self.timestamp = self.middleTimestamp
-         self.changeText(title:"Clave QR", description: "Codigo secreto que pueden ingresar manualmente los usuarios a la hora de escanearlo")
-         self.inputTextField.keyboardType = .default
-         self.inputTextField.inputView = nil
-
          break
          
       case 7:
-         self.codigoQR = self.inputTextField.text
-         self.changeText(title:"ID de Base de Datos", description: "Esta es un ID sin espacios que sirve para identificar este evento en la base de datos")
-         self.inputTextField.keyboardType = .default
+         self.timestamp = self.middleTimestamp
          break
          
       case 8:
+         self.codigoQR = self.inputTextField.text
+         break
+         
+      case 9:
+         self.keyEvento = self.inputTextField.text
+         break
+         
+      case 10:
          self.hashtag = self.inputTextField.text
-         self.changeText(title:"Hashtag", description: "dato usado para compartir informacion en tus redes")
+         break
+         
+      default:
+         break
+      }
+   }
+   
+   
+   
+   func requiredFieldsStep () {
+      
+      self.inputTextField.text = ""
+      
+      switch numeroDePaso {
+         
+      case 0:
+         self.changeText(title: "Titulo", description: "Esto se mostrará en el listado de eventos de tus usuarios")
          self.inputTextField.keyboardType = .default
+         self.inputTextField.text = self.titulo
+
+         break
+         
+      case 1:
+         self.changeText(title:"Descripción", description: "Debe ser una descripción corta que se muestra como bajada en el listado de eventos")
+         self.inputTextField.autocapitalizationType = .sentences
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.text = self.descripcion
+         break
+         
+      case 2:
+         self.changeText(title:"URL del Lugar", description: "URL que te dirige a la ubicación del evento en GoogleMaps")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .URL
+         self.inputTextField.text = self.lugar
+         break
+         
+      case 3:
+         self.changeText(title:"Telefono", description: "Contacto del cliente")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .phonePad
+         self.inputTextField.text = self.telefono
+         break
+         
+      case 4:
+         self.changeText(title:"Imagen de fondo", description: "URL de la imagen que se muestra como fondo en el detalle del evento")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .URL
+         self.inputTextField.inputView = nil
+         self.inputTextField.text = self.foto
+         break
+         
+      case 5:
+         self.changeText(title:"Hora del evento", description: "Hora en la que empezara el evento")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.inputView = self.timePickerView
+         self.handleDatePicker()
+         break
+         
+      case 6:
+         self.changeText(title:"Fecha", description: "Fecha en la que se va a producir el evento")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.inputView = self.datePickerView
+         self.handleDatePicker()
+         break
+         
+      case 7:
+         self.changeText(title:"Clave QR", description: "Codigo secreto que pueden ingresar manualmente los usuarios a la hora de escanearlo")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.inputView = nil
+         self.inputTextField.text = self.codigoQR
+
+         break
+         
+      case 8:
+         self.changeText(title:"ID de Base de Datos", description: "Esta es un ID sin espacios que sirve para identificar este evento en la base de datos")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.text = self.keyEvento
+         break
+         
+      case 9:
+         self.changeText(title:"Hashtag", description: "dato usado para compartir informacion en tus redes")
+         self.inputTextField.autocapitalizationType = .none
+         self.inputTextField.keyboardType = .default
+         self.inputTextField.text = self.hashtag
          break
 
          
       default:
-         self.keyEvento = self.inputTextField.text
          self.chooseNewSocialNetwork()
          break
          
       }
       
-      numeroDePaso = numeroDePaso + 1
       self.inputTextField.reloadInputViews()
       self.inputTextField.resignFirstResponder()
-      self.inputTextField.text = ""
       print("numero de paso: \(numeroDePaso)")
       self.inputTextField.becomeFirstResponder()
    }
+   
+   
    
    func chooseNewSocialNetwork() {
       
@@ -275,6 +429,9 @@ break
       }))
       alert.addAction(UIAlertAction(title: "Terminar redes y crear evento", style: UIAlertActionStyle.destructive, handler: {(action) in
          self.finishEvent()
+      }))
+      alert.addAction(UIAlertAction(title: "Cancelar el evento", style: UIAlertActionStyle.destructive, handler: {(action) in
+         self.navigationController?.popViewController(animated: true)
       }))
       self.present(alert, animated: true, completion: nil)
    }
