@@ -16,6 +16,7 @@ class OptionsViewController: UIViewController
    @IBOutlet weak var threeButton: UIButton!
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var fourthButton: UIButton!
+    @IBOutlet weak var receptionButton: UIButton!
     public var information : [AnyHashable: Any] = [:]
    public var pageName : String = ""
    var ref: DatabaseReference!
@@ -42,6 +43,11 @@ class OptionsViewController: UIViewController
       threeButton.layer.cornerRadius = 20
       threeButton.layer.borderWidth = 1
       threeButton.layer.borderColor = UIColor.white.cgColor
+    
+    receptionButton.backgroundColor = .clear
+    receptionButton.layer.cornerRadius = 20
+    receptionButton.layer.borderWidth = 1
+    receptionButton.layer.borderColor = UIColor.white.cgColor
       
       
       super.viewDidLoad()

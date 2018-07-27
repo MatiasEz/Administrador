@@ -18,7 +18,6 @@ class AssignmentTableViewCell: UITableViewCell {
     @IBOutlet public weak var friendLabel: UILabel!
    var accessType : String?
    
-   
    override var tag : Int {
       didSet {
          self.statusButton.tag = self.tag

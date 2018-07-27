@@ -36,6 +36,9 @@
 		F71B9D2320CD5ACE00BF9E99 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */; };
 		F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */; };
 		F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC620B2473A0081A4BD /* Redsocial.swift */; };
+		F7CFE93C20E150A500020B4C /* ReceptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CFE93B20E150A500020B4C /* ReceptionViewController.swift */; };
+		F7CFE93E20E150C800020B4C /* ReceptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CFE93D20E150C800020B4C /* ReceptionTableViewCell.swift */; };
+		F7F60FAA20E4330B008C497E /* Invitado.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F60FA920E4330B008C497E /* Invitado.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialTableViewCell.swift; sourceTree = "<group>"; };
 		F7960FC620B2473A0081A4BD /* Redsocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redsocial.swift; sourceTree = "<group>"; };
+		F7CFE93B20E150A500020B4C /* ReceptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptionViewController.swift; sourceTree = "<group>"; };
+		F7CFE93D20E150C800020B4C /* ReceptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptionTableViewCell.swift; sourceTree = "<group>"; };
+		F7F60FA920E4330B008C497E /* Invitado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitado.swift; sourceTree = "<group>"; };
 		FA6828CE2CA5E5CE571FF3E7 /* Pods_SirioLibanesApp_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SirioLibanesApp_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -163,6 +169,9 @@
 				607FACD71AFB9204008FA782 /* RedSocialViewController.swift */,
 				F7960FC620B2473A0081A4BD /* Redsocial.swift */,
 				F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */,
+				F7F60FA920E4330B008C497E /* Invitado.swift */,
+				F7CFE93B20E150A500020B4C /* ReceptionViewController.swift */,
+				F7CFE93D20E150C800020B4C /* ReceptionTableViewCell.swift */,
 				981C3C8D20277767004B3282 /* RegisterViewController.swift */,
 				9855A96420274F9500515E1A /* HomeViewController.swift */,
 				98DE0FF92027B71100DB1A7C /* HomeTableViewCell.swift */,
@@ -461,12 +470,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				98DE10032027C27800DB1A7C /* SongsViewController.swift in Sources */,
+				F7CFE93C20E150A500020B4C /* ReceptionViewController.swift in Sources */,
 				9855A96520274F9500515E1A /* HomeViewController.swift in Sources */,
 				F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */,
 				F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */,
 				F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */,
 				9855A95F2027398600515E1A /* LoginViewController.swift in Sources */,
 				98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */,
+				F7F60FAA20E4330B008C497E /* Invitado.swift in Sources */,
 				98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* RedSocialViewController.swift in Sources */,
 				98DE0FF620278A9200DB1A7C /* InputViewController.swift in Sources */,
@@ -476,6 +487,7 @@
 				F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */,
 				9861C86F202AA59E0004B1F5 /* AssignmentTableViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				F7CFE93E20E150C800020B4C /* ReceptionTableViewCell.swift in Sources */,
 				9861C871202ABF2D0004B1F5 /* SongTableViewCell.swift in Sources */,
 				98DE0FFA2027B71100DB1A7C /* HomeTableViewCell.swift in Sources */,
 				9855A96320274D1E00515E1A /* InitialViewController.swift in Sources */,

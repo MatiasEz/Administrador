@@ -214,7 +214,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          break
       case "DJ":  self.performSegue(withIdentifier: "songs", sender: self)
          break
-      case "Recepcion":  self.performSegue(withIdentifier: "invitados", sender: self)
+      case "Recepcion":  self.performSegue(withIdentifier: "reception", sender: self)
          break
 
       default:

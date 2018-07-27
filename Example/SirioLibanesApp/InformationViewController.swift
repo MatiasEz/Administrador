@@ -54,22 +54,22 @@ class InformationViewController: UIViewController {
    }
     
     @IBAction func downloadQRCodeImage(_ sender: Any) {
-      if let data = UIImagePNGRepresentation(self.currentImage!) {
-            let filename = getDocumentsDirectory().appendingPathComponent("qrcode.png")
-            do {
-               try data.write(to: filename)
-               let alert = UIAlertController(title: "Imagen guardada", message: "Se ha guardado la image QR de tu evento en el disco", preferredStyle: UIAlertControllerStyle.alert)
-               alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
-               self.present(alert, animated: true, completion: nil)
-            } catch {
-               let alert = UIAlertController(title: "Imagen no guardada", message: "Hubo un error guardando la image QR de tu evento en el disco", preferredStyle: UIAlertControllerStyle.alert)
-               alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
-               self.present(alert, animated: true, completion: nil)
-            }
-         }
+     
       
+      // image to share
+      let image = self.currentImage
       
-    }
+      // set up activity view controller
+      let imageToShare = [ image! ]
+      let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+      activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+      
+      // exclude some activity types from the list (optional)
+      activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+      
+      // present the view controller
+      self.present(activityViewController, animated: true, completion: nil)
+   }
    
    func getDocumentsDirectory() -> URL {
       let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
