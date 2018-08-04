@@ -50,9 +50,9 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
          //esto se ejecuta cuando se inicializa la clase
     if UIDevice.current.userInterfaceIdiom == .pad {
-        keyboardHeight.constant = 316
+        keyboardHeight.constant = 416
     } else if UIDevice.current.userInterfaceIdiom == .phone {
-        keyboardHeight.constant = 216
+        keyboardHeight.constant = 316
     }
       self.inputTextField.autocorrectionType = .no
       self.inputTextField.becomeFirstResponder()

@@ -39,7 +39,7 @@ open class TruncationItem : UIView {
         circleFrame.center = rect.center
         
         context?.addEllipse(in: circleFrame)
-        context?.setFillColor(tintColor.cgColor)
+        context?.setFillColor(UIColor.green.cgColor)
         context?.fillPath()
     }
 }

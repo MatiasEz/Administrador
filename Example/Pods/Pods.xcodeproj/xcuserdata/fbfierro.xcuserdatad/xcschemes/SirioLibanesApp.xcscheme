@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A4B91A66D8BE822883BB3DCCF46F03F"
+               BlueprintIdentifier = "D2A156E5BC470CAA141782559F7847AF"
                BlueprintName = "SirioLibanesApp"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "SirioLibanesApp.framework">

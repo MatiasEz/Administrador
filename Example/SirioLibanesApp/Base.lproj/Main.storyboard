@@ -778,19 +778,19 @@ Telefono: 122312312</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uua-SD-pWH">
-                                <rect key="frame" x="16" y="46" width="382" height="540"/>
+                                <rect key="frame" x="16" y="46" width="356" height="540"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="receptionCell" rowHeight="100" id="r39-Ho-3Xu" customClass="ReceptionTableViewCell" customModule="SirioLibanesApp_Example" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="382" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="356" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r39-Ho-3Xu" id="yCF-uL-RLq">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="356" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODg-iY-Czg">
-                                                    <rect key="frame" x="316" y="35" width="50" height="50"/>
+                                                    <rect key="frame" x="290" y="35" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="HIp-WW-ES9"/>
@@ -801,16 +801,16 @@ Telefono: 122312312</string>
                                                     <rect key="frame" x="16" y="47.333333333333336" width="25" height="25.000000000000007"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzC-HL-kie">
-                                                    <rect key="frame" x="57" y="0.0" width="243" height="99.666666666666671"/>
+                                                    <rect key="frame" x="57" y="0.0" width="217" height="99.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matias Ezcurra" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWU-4n-u9Z">
-                                                            <rect key="frame" x="-53.333333333333343" y="10.000000000000002" width="350" height="20.666666666666671"/>
+                                                            <rect key="frame" x="-41" y="10.000000000000002" width="324" height="20.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yX-gx-m14">
-                                                            <rect key="frame" x="52.666666666666671" y="30.666666666666671" width="138" height="69"/>
+                                                            <rect key="frame" x="39.666666666666671" y="30.666666666666671" width="138" height="69"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantidad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXB-Ud-Ij4">
                                                                     <rect key="frame" x="94.666666666666671" y="4.9999999999999964" width="43.333333333333329" height="12"/>
@@ -858,7 +858,6 @@ Telefono: 122312312</string>
                                                         <constraint firstItem="kWU-4n-u9Z" firstAttribute="top" secondItem="XzC-HL-kie" secondAttribute="top" constant="10" id="Hda-AW-eyS"/>
                                                         <constraint firstItem="4yX-gx-m14" firstAttribute="centerX" secondItem="XzC-HL-kie" secondAttribute="centerX" id="npf-WB-et7"/>
                                                         <constraint firstAttribute="bottom" secondItem="4yX-gx-m14" secondAttribute="bottom" id="oe8-gJ-AKF"/>
-                                                        <constraint firstItem="kWU-4n-u9Z" firstAttribute="centerX" secondItem="XzC-HL-kie" secondAttribute="centerX" id="yLY-WU-gFc"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -866,6 +865,7 @@ Telefono: 122312312</string>
                                             <constraints>
                                                 <constraint firstItem="EJ9-MQ-LmP" firstAttribute="centerY" secondItem="yCF-uL-RLq" secondAttribute="centerY" constant="10" id="1t6-4l-WnF"/>
                                                 <constraint firstItem="kWU-4n-u9Z" firstAttribute="width" secondItem="yCF-uL-RLq" secondAttribute="width" constant="-32" id="AWa-rk-jhT"/>
+                                                <constraint firstItem="kWU-4n-u9Z" firstAttribute="leading" secondItem="yCF-uL-RLq" secondAttribute="leading" constant="16" id="Hpb-wW-wcK"/>
                                                 <constraint firstItem="XzC-HL-kie" firstAttribute="top" secondItem="yCF-uL-RLq" secondAttribute="top" id="R4y-9T-V72"/>
                                                 <constraint firstItem="EJ9-MQ-LmP" firstAttribute="leading" secondItem="yCF-uL-RLq" secondAttribute="leading" constant="16" id="RN6-4C-GgG"/>
                                                 <constraint firstItem="XzC-HL-kie" firstAttribute="leading" secondItem="EJ9-MQ-LmP" secondAttribute="trailing" constant="16" id="Xj7-e3-B3b"/>
@@ -914,33 +914,84 @@ Telefono: 122312312</string>
                                     <action selector="openCameraValidator:" destination="QRh-vo-pB4" eventType="touchUpInside" id="jSv-6Q-dRc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-FA-pg2" customClass="AlphabetSlider" customModule="AlphabetSlider">
-                                <rect key="frame" x="8" y="-8" width="398" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-FA-pg2">
+                                <rect key="frame" x="8" y="0.0" width="398" height="38"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-vZ-Ciw">
+                                        <rect key="frame" x="16.000000000000007" y="4" width="116.66666666666669" height="30"/>
+                                        <color key="backgroundColor" red="0.08574210887" green="0.78794931989999994" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Adentro">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adentroFilter:" destination="QRh-vo-pB4" eventType="touchUpInside" id="BF8-Aw-Gi0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo4-iP-PQH">
+                                        <rect key="frame" x="140.66666666666666" y="4" width="116.66666666666666" height="30"/>
+                                        <color key="backgroundColor" red="0.08574210887" green="0.78794931989999994" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Todos">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="todosFilter:" destination="QRh-vo-pB4" eventType="touchUpInside" id="er5-WX-OrI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sh-cp-VVa">
+                                        <rect key="frame" x="265.33333333333331" y="4" width="116.66666666666669" height="30"/>
+                                        <color key="backgroundColor" red="0.08574210887" green="0.78794931989999994" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Afuera">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="afueraFilter:" destination="QRh-vo-pB4" eventType="touchUpInside" id="UuY-aJ-KfJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4eR-vZ-Ciw" firstAttribute="leading" secondItem="ZwL-FA-pg2" secondAttribute="leading" constant="16" id="5ss-Hr-53T"/>
+                                    <constraint firstItem="0sh-cp-VVa" firstAttribute="centerY" secondItem="ZwL-FA-pg2" secondAttribute="centerY" id="CJz-hM-DhJ"/>
+                                    <constraint firstItem="0sh-cp-VVa" firstAttribute="leading" secondItem="Fo4-iP-PQH" secondAttribute="trailing" constant="8" id="Hf8-G8-23t"/>
+                                    <constraint firstItem="4eR-vZ-Ciw" firstAttribute="centerY" secondItem="ZwL-FA-pg2" secondAttribute="centerY" id="I0K-sN-FgN"/>
+                                    <constraint firstItem="Fo4-iP-PQH" firstAttribute="width" secondItem="0sh-cp-VVa" secondAttribute="width" id="Ls4-Ea-Bzy"/>
+                                    <constraint firstItem="4eR-vZ-Ciw" firstAttribute="width" secondItem="Fo4-iP-PQH" secondAttribute="width" id="UPZ-w1-taX"/>
+                                    <constraint firstItem="Fo4-iP-PQH" firstAttribute="leading" secondItem="4eR-vZ-Ciw" secondAttribute="trailing" constant="8" id="j29-q6-jWa"/>
+                                    <constraint firstItem="Fo4-iP-PQH" firstAttribute="centerY" secondItem="ZwL-FA-pg2" secondAttribute="centerY" id="k3C-HJ-Fz1"/>
+                                    <constraint firstAttribute="trailing" secondItem="0sh-cp-VVa" secondAttribute="trailing" constant="16" id="p1B-lz-tJE"/>
+                                    <constraint firstItem="Fo4-iP-PQH" firstAttribute="centerX" secondItem="ZwL-FA-pg2" secondAttribute="centerX" id="y2K-AF-4UZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VqM-j0-9Hf" userLabel="ContainerView">
+                                <rect key="frame" x="372" y="46" width="42" height="540"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VqM-j0-9Hf" firstAttribute="top" secondItem="Uua-SD-pWH" secondAttribute="top" id="2cV-aj-DBy"/>
                             <constraint firstItem="ZwL-FA-pg2" firstAttribute="leading" secondItem="lFu-n9-3DH" secondAttribute="leading" constant="8" id="6XX-hR-7N7"/>
                             <constraint firstItem="Ep2-ju-bS8" firstAttribute="leading" secondItem="lFu-n9-3DH" secondAttribute="leading" constant="86" id="7ZC-sQ-oFR"/>
                             <constraint firstItem="rwW-L9-hEZ" firstAttribute="leading" secondItem="lFu-n9-3DH" secondAttribute="leading" constant="16" id="FvN-JM-ZLH"/>
                             <constraint firstItem="Ep2-ju-bS8" firstAttribute="top" secondItem="Uua-SD-pWH" secondAttribute="bottom" constant="16" id="GHM-Lf-oeT"/>
                             <constraint firstItem="rwW-L9-hEZ" firstAttribute="bottom" secondItem="Ep2-ju-bS8" secondAttribute="bottom" id="GLV-ak-y0a"/>
-                            <constraint firstItem="Uua-SD-pWH" firstAttribute="centerX" secondItem="lFu-n9-3DH" secondAttribute="centerX" id="GXU-uy-rll"/>
                             <constraint firstItem="rwW-L9-hEZ" firstAttribute="top" secondItem="Ep2-ju-bS8" secondAttribute="top" id="H66-uG-wEz"/>
                             <constraint firstItem="NVZ-E3-oUw" firstAttribute="leading" secondItem="Ep2-ju-bS8" secondAttribute="trailing" constant="16" id="HKn-mx-eEe"/>
                             <constraint firstItem="NVZ-E3-oUw" firstAttribute="width" secondItem="Ep2-ju-bS8" secondAttribute="width" id="Igy-Gk-xrJ"/>
                             <constraint firstItem="lFu-n9-3DH" firstAttribute="trailing" secondItem="NVZ-E3-oUw" secondAttribute="trailing" constant="16" id="NZW-En-IJ5"/>
+                            <constraint firstItem="VqM-j0-9Hf" firstAttribute="bottom" secondItem="Uua-SD-pWH" secondAttribute="bottom" id="Pfz-Wg-JV4"/>
                             <constraint firstItem="Uua-SD-pWH" firstAttribute="top" secondItem="ZwL-FA-pg2" secondAttribute="bottom" constant="8" id="Ppu-Uz-9zN"/>
+                            <constraint firstItem="VqM-j0-9Hf" firstAttribute="trailing" secondItem="lFu-n9-3DH" secondAttribute="trailing" id="Skm-8z-RoC"/>
                             <constraint firstItem="lFu-n9-3DH" firstAttribute="trailing" secondItem="ZwL-FA-pg2" secondAttribute="trailing" constant="8" id="Tea-KP-ZUB"/>
                             <constraint firstItem="Ep2-ju-bS8" firstAttribute="leading" secondItem="rwW-L9-hEZ" secondAttribute="trailing" constant="16" id="bd6-zO-pcd"/>
-                            <constraint firstItem="lFu-n9-3DH" firstAttribute="trailing" secondItem="Uua-SD-pWH" secondAttribute="trailing" constant="16" id="ecD-Mr-0m1"/>
+                            <constraint firstItem="lFu-n9-3DH" firstAttribute="trailing" secondItem="Uua-SD-pWH" secondAttribute="trailing" constant="42" id="ecD-Mr-0m1"/>
                             <constraint firstItem="lFu-n9-3DH" firstAttribute="bottom" secondItem="Ep2-ju-bS8" secondAttribute="bottom" constant="16" id="hMf-QZ-Sr8"/>
                             <constraint firstItem="Uua-SD-pWH" firstAttribute="top" secondItem="lFu-n9-3DH" secondAttribute="top" constant="46" id="hlE-fM-9Ta"/>
-                            <constraint firstItem="lFu-n9-3DH" firstAttribute="top" secondItem="ZwL-FA-pg2" secondAttribute="top" constant="8" id="jBY-Ap-hdn"/>
+                            <constraint firstItem="lFu-n9-3DH" firstAttribute="top" secondItem="ZwL-FA-pg2" secondAttribute="top" id="jBY-Ap-hdn"/>
                             <constraint firstItem="Uua-SD-pWH" firstAttribute="leading" secondItem="lFu-n9-3DH" secondAttribute="leading" constant="16" id="l5H-Jk-qrw"/>
                             <constraint firstItem="lFu-n9-3DH" firstAttribute="bottom" secondItem="Uua-SD-pWH" secondAttribute="bottom" constant="86" id="lTP-qz-aaD"/>
                             <constraint firstItem="NVZ-E3-oUw" firstAttribute="top" secondItem="Uua-SD-pWH" secondAttribute="bottom" constant="16" id="llS-M2-15w"/>
+                            <constraint firstItem="VqM-j0-9Hf" firstAttribute="leading" secondItem="Uua-SD-pWH" secondAttribute="trailing" id="pLH-nv-RtL"/>
                             <constraint firstItem="lFu-n9-3DH" firstAttribute="bottom" secondItem="NVZ-E3-oUw" secondAttribute="bottom" constant="16" id="xsF-iH-GLr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lFu-n9-3DH"/>
@@ -953,10 +1004,13 @@ Telefono: 122312312</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="alphabetSlider" destination="ZwL-FA-pg2" id="FRw-Uk-16V"/>
+                        <outlet property="adentroButton" destination="4eR-vZ-Ciw" id="IE5-qj-NYL"/>
+                        <outlet property="afueraButton" destination="0sh-cp-VVa" id="MeA-SA-FbM"/>
                         <outlet property="cargarDatos" destination="Ep2-ju-bS8" id="IQJ-hq-YrO"/>
+                        <outlet property="containerLateral" destination="VqM-j0-9Hf" id="alQ-O2-cte"/>
                         <outlet property="sincronizeButton" destination="NVZ-E3-oUw" id="vu8-Tv-OA1"/>
                         <outlet property="tableView" destination="Uua-SD-pWH" id="tVq-9e-xJ7"/>
+                        <outlet property="todosButton" destination="Fo4-iP-PQH" id="H3u-7v-xF7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3a-ku-zqu" userLabel="First Responder" sceneMemberID="firstResponder"/>

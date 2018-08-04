@@ -15,6 +15,7 @@ class Invitado: NSObject {
    var mail : String? = nil
    var ingresado : Bool
    var fullname : String
+   var position : Int?
    
    
    public init(mail: String? = nil, mesa: Int, ingresado: Bool,fullname: String, cantidad: Int ) {
@@ -32,7 +33,10 @@ class Invitado: NSObject {
       self.mesa = mesaInt ?? Int(mesaString ?? "0") ?? 0
       self.ingresado = map["ingresado"] as? Bool ?? false
       self.fullname = map["fullname"] as? String ?? "No name"
-      self.cantidad = map["cantidad"] as? Int ?? 1
+      
+      let cantInt = map["cantidad"] as? Int
+      let cantString = map["cantidad"] as? String
+      self.cantidad = cantInt ?? Int(cantString ?? "1") ?? 1
    }
 
 }

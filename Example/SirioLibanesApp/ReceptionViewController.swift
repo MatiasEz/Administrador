@@ -10,16 +10,24 @@ import UIKit
 import FirebaseDatabase
 import PKHUD
 import MobileCoreServices
+import MYTableViewIndex;
+import PureLayout
 
-class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITableViewDelegate, UITableViewDataSource {
+class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITableViewDelegate, UITableViewDataSource, TableViewIndexDataSource, TableViewIndexDelegate {
    public var information : [AnyHashable: Any] = [:]
    public var pageName : String = "juanitoevento"
     
+   @IBOutlet weak var containerLateral: UIView!
+   @IBOutlet weak var afueraButton: UIButton!
+    @IBOutlet weak var todosButton: UIButton!
+    @IBOutlet weak var adentroButton: UIButton!
     @IBOutlet weak var sincronizeButton: UIButton!
     @IBOutlet weak var cargarDatos: UIButton!
     @IBOutlet weak var tableView: UITableView!
    var ref: DatabaseReference!
-   var mapInvitados : [Invitado] = []
+   var fullInvitados : [Invitado] = []
+   var invitados : [Invitado] = []
+   var filterState = 0
 
     override func viewDidLoad() {
       PKHUD.sharedHUD.contentView = PKHUDProgressView()
@@ -38,7 +46,47 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       cargarDatos.layer.cornerRadius = 20
       cargarDatos.layer.borderWidth = 1
       cargarDatos.layer.borderColor = UIColor.white.cgColor
+      
+      let tableViewIndexController = TableViewIndexController(scrollView: tableView)
+      tableViewIndexController.tableViewIndex.dataSource = self
+      tableViewIndexController.tableViewIndex.delegate = self
+      tableViewIndexController.tableViewIndex.font = UIFont.boldSystemFont(ofSize: 25.0)
+      tableViewIndexController.tableViewIndex.removeFromSuperview()
+      self.containerLateral.addSubview(tableViewIndexController.tableViewIndex);
+      tableViewIndexController.tableViewIndex.autoPinEdgesToSuperviewEdges()
+      tableViewIndexController.tableViewIndex.backgroundColor = UIColor.black
+      tableViewIndexController.tableViewIndex.backgroundView.backgroundColor = UIColor.black
     }
+   func indexItems(for tableViewIndex: TableViewIndex) -> [UIView] {
+      let alphabet: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+      return alphabet.map{ title -> UIView in
+         let label = StringItem(text: title)
+         label.font = label.font.withSize(30)
+         label.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+         label.tintColor = UIColor.white
+         return label
+      }
+   }
+   
+   func tableViewIndex(_ tableViewIndex: TableViewIndex, didSelect item: UIView, at index: Int) -> Bool {
+      let alphabet: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+      let letter = alphabet [index]
+      var row : Int? = nil;
+      var count = 0;
+      for invitado in self.invitados {
+         if (invitado.fullname.lowercased().hasPrefix(letter.lowercased())) {
+            row = count
+            break
+         }
+         count += 1
+      }
+      if let row = row {
+         let indexPath = IndexPath(row: row, section: 0)
+         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+         return true
+      }
+      return false
+   }
    
    override func viewWillAppear(_ animated: Bool) {
       self.getUserInfo()
@@ -47,13 +95,13 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
    
    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    return self.mapInvitados.count;
+    return self.invitados.count;
       
    }
    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = self.tableView.dequeueReusableCell(withIdentifier: "receptionCell") as! ReceptionTableViewCell
       let position = indexPath.row
-      let currentInvitado = mapInvitados[position]
+      let currentInvitado = invitados[position]
       cell.nameLabel.text = currentInvitado.fullname
       
       let variableIntCantidad = currentInvitado.cantidad
@@ -94,8 +142,8 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
       PKHUD.sharedHUD.show()
-      let position = indexPath.row
-      let currentInvitado = self.mapInvitados [position]
+      let currentInvitado = self.invitados [indexPath.row]
+      let position = currentInvitado.position! - 1
       if  (currentInvitado.ingresado == true) { currentInvitado.ingresado = false} else {currentInvitado.ingresado = true}
       var invitadoMap : [String:Any] = [:]
       invitadoMap["fullname"] = currentInvitado.fullname
@@ -106,13 +154,15 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
          invitadoMap["mail"] = currentInvitado.mail
       }
       self.ref.child("Recepcion").child(self.pageName).child("\(position)").setValue(invitadoMap)
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { self.tableView.reloadData()}
-      self.saveValues()
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+         self.tableView.reloadData()
+         self.getUserInfo()
+      }
    }
    
    func saveValues(){
       var newMapArray : [[String:Any]] = []
-      for invitado in mapInvitados {
+      for invitado in fullInvitados {
          var invitadoMap : [String:Any] = [:]
          invitadoMap["fullname"] = invitado.fullname
          invitadoMap["ingresado"] = invitado.ingresado
@@ -149,21 +199,64 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
          return
       }
    }
+    @IBAction func adentroFilter(_ sender: Any?) {
+      self.invitados = self.fullInvitados.filter { $0.ingresado == true}
+      self.tableView.reloadData()
+      self.filterState = 1
+      self.calculateRate()
+    }
+    
+    @IBAction func todosFilter(_ sender: Any?) {
+      self.invitados = self.fullInvitados
+      self.tableView.reloadData()
+      self.filterState = 0
+      self.calculateRate()
+    }
+    
+    @IBAction func afueraFilter(_ sender: Any?) {
+      self.invitados = self.fullInvitados.filter { $0.ingresado == false}
+      self.tableView.reloadData()
+      self.filterState = 2
+      self.calculateRate()
+    }
    
-   func goUpdateInvitados(infoArray: [[String:Any]]) {
-      var invitadoArray : [Invitado] = []
-      for infomap in infoArray {
-         let invitado = Invitado (map:infomap)
-         invitadoArray.append(invitado)
+   func calculateRate () {
+      let total = self.fullInvitados.count;
+      let ingresados = self.fullInvitados.filter { $0.ingresado == true}.count
+      let noIngresados = total - ingresados;
+      
+      self.adentroButton.setTitle("Adentro (\(ingresados))",for: .normal)
+      self.afueraButton.setTitle("Afuera (\(noIngresados))",for: .normal)
+      self.todosButton.setTitle("Todos (\(total))",for: .normal)
+   }
+    
+    func goUpdateInvitados(infoArray: [[String:Any]]) {
+        var invitadoArray : [Invitado] = []
+        for infomap in infoArray {
+            let invitado = Invitado (map:infomap)
+            invitadoArray.append(invitado)
+        }
+        
+        self.fullInvitados = invitadoArray.sorted {
+            var string1 = $0.fullname
+            var string2 = $1.fullname
+            string1 = string1.capitalized
+            string2 = string2.capitalized
+            return  string1 < string2
+        }
+        
+        var pos = 1
+        for invitado in self.fullInvitados {
+            invitado.position = pos
+            pos += 1
+        }
+      switch self.filterState {
+         case 0: self.todosFilter(nil);break
+         case 1: self.adentroFilter(nil);break
+         case 2: self.afueraFilter(nil);break
+      default: break
       }
       
-      self.mapInvitados = invitadoArray.sorted {
-         var string1 = $0.fullname
-         var string2 = $1.fullname
-         string1 = string1.capitalized
-         string2 = string2.capitalized
-         return  string1 < string2
-      }
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { self.tableView.reloadData()}
    }
    
@@ -251,7 +344,7 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       
       var allMesas : [String: [Any]] = [:]
       
-      for invitado in self.mapInvitados {
+      for invitado in self.fullInvitados {
          let mesaName = "Mesa \(invitado.mesa)"
          var array : [Any] = allMesas [mesaName] != nil ? allMesas [mesaName]! : []
          var map = ["nombre":invitado.fullname] as [AnyHashable : Any]
