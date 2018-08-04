@@ -123,7 +123,6 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(nickname!, forKey: "nicknameKey")
             
-            print ("mi user es: " + (user?.displayName ?? "no hay user")  + ", nickname: " + (nickname)!!)
             self.getPermissionsDataAndContinue()
             
          }) { (error) in

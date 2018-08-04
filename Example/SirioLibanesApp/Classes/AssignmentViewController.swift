@@ -195,19 +195,33 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
                 let allAssignments : [[AnyHashable:Any]] = userAssignmentData [key] as! [[AnyHashable:Any]]
                 self.myFriends.append(contentsOf: allAssignments)
                for assignmentMap in allAssignments {
-                  for nickname in self.allInvitesKeys {
-                     if ((assignmentMap ["nickname"]  as! String) == nickname) {
-                        self.allTableAssignments [nickname] = key
-                     }
+                  let optionalMail = assignmentMap ["mail"]  as? String
+                  if let newNickname = self.attemptToAssignNickname(for: optionalMail) {
+                     self.allTableAssignments [newNickname] = key
                   }
                }
                
             }
-            self.getAllUsers()
+         
+            self.displayScreen()
         }) { (error) in
             self.displayError()
         }
-    }
+   }
+   
+   func attemptToAssignNickname(for mail : String?) -> String? {
+      guard let mail = mail else {
+         return nil
+      }
+      
+      for userKey in self.allUserAssignments.keys {
+         let userMap = self.allUserAssignments [userKey] as! [AnyHashable: Any]
+         if (userMap ["email"] as? String == mail) {
+            return userMap ["nickname"] as? String
+         }
+      }
+      return nil
+   }
    
    func getAllUsers () {
       ref.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -235,31 +249,36 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
              return  string1 < string2
             
          }
-         self.showInformation()
-         switch(self.state) {
-         case 0:
-            self.selectTableButton(0)
-            break;
-            
-         case 1:
-            self.selectAbcButton(0)
-            break;
-            
-         case 2:
-            self.selectAssistanceButton(0)
-            break;
-         default:
-            break;
-         }
+
+         self.getUserDataAndContinue()
       }) { (error) in
          self.displayError()
       }
    }
    
+   func displayScreen () {
+      self.showInformation()
+      switch(self.state) {
+      case 0:
+         self.selectTableButton(0)
+         break;
+         
+      case 1:
+         self.selectAbcButton(0)
+         break;
+         
+      case 2:
+         self.selectAssistanceButton(0)
+         break;
+      default:
+         break;
+      }
+   }
+   
    func showInformation () {
       
-      self.assignmentLabel.text = "Invitados"
-      self.descriptionLabel.text = "Estos son todos los invitados que accedieron al evento"
+      self.assignmentLabel.text = "Usuarios"
+      self.descriptionLabel.text = "Estos son todos los usuarios que accedieron al evento"
       self.assignmentTable.reloadData()
       UIView.animate(withDuration: 0.3, animations: {
          self.assignmentTable.alpha = 1
@@ -278,7 +297,7 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
             if let userEventData = userEventData {
                self.allInvites = userEventData;
                self.allInvitesKeys = Array(self.allInvites.keys) as! [String]
-               self.getUserDataAndContinue()
+               self.getAllUsers()
             } else {
                self.displayError(message: "No hay nadie que haya aceptado esta invitación aun")
             }
@@ -298,7 +317,7 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
         let status = self.allInvites [inviteKey] as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell") as! AssignmentTableViewCell
       cell.userStatusLabel.text = "Estado: " + status.capitalized
-      cell.assignmentLabel.text = "Asignado a: " +  (self.allTableAssignments [inviteKey] as! String? ?? "Nada")
+      cell.assignmentLabel.text = "Asignado a: " +  (self.allTableAssignments [inviteKey] as? String ?? "Nada")
       let userMap = self.allUserAssignments [inviteKey] as! [AnyHashable:Any]? ?? [:]
       let name = userMap ["nombre"] as! String? ?? ""
       let apellidoRaw = userMap ["apellido"] as! String?
@@ -407,13 +426,26 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
          return
       }
       
-      let nickname = userMap ["nickname"] as! String? ?? ""
+      var nickname : String? = nil;
+      nickname = userMap ["nickname"] as? String
+      let mail = userMap ["email"] as? String
+   
+      if nickname == nil {
+         nickname = self.attemptToAssignNickname(for: mail)
+      }
       
-      if let currentMesa = self.allTableAssignments [nickname] as! String? {
+      if (nickname == nil) {
+         self.displayError(message:"No pudimos realizaar esta asignación");
+         return
+      }
+      
+      
+      
+      if let unwNickname = nickname, let currentMesa = self.allTableAssignments [unwNickname] as? String {
          ref.child("Asignaciones").child(pageName).child(currentMesa).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             self.currentMesaInvites = snapshot.value as? [[AnyHashable:Any]] ?? []
-            self.currentMesaInvites = self.currentMesaInvites.filter { $0 ["nickname"] as! String != nickname}
+            self.currentMesaInvites = self.currentMesaInvites.filter { $0 ["mail"] as? String != mail}
             self.ref.child("Asignaciones").child(self.pageName).child(currentMesa).setValue(self.currentMesaInvites)
          }) { (error) in
             self.displayError()
@@ -430,10 +462,10 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
          let apellido = apellidoRaw != nil ? ("\(apellidoRaw!), ") : ""
          let email = userMap ["email"] as! String? ?? ""
          let fullname =  "\(apellido)\(name)"
-         let map = ["nombre":fullname,"nickname":nickname,"mail":email] as [AnyHashable : Any]
+         let map = ["nombre":fullname,"mail":email] as [AnyHashable : Any]
          
          
-         self.currentMesaInvites = self.currentMesaInvites.filter { $0 ["nickname"] as! String != nickname}
+         self.currentMesaInvites = self.currentMesaInvites.filter { $0 ["nickname"] as? String != nickname}
          self.currentMesaInvites.append(map)
          self.ref.child("Asignaciones").child(self.pageName).child(mesa).setValue(self.currentMesaInvites)
          let alert = UIAlertController(title: "¡Asignacion actualizada!", message: "Has cargado a \(name) con la asignación \(mesa)", preferredStyle: UIAlertControllerStyle.alert)

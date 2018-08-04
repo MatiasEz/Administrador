@@ -157,6 +157,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             viewController.information = self.information
             viewController.pageName = self.pageName
         }
+      
+      if segue.identifier == "reception" {
+         let viewController: ReceptionViewController = segue.destination as! ReceptionViewController
+         viewController.information = self.information
+         viewController.pageName = self.pageName
+      }
     }
    
    

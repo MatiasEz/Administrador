@@ -78,7 +78,6 @@ class RegisterViewController: UIViewController {
                 return
             }
             self.saveUserData()
-            print ("mi user es: " + (user?.displayName ?? "no hay user") )
             self.performSegue(withIdentifier: "loginSuccess", sender: self)
             self.displaySuccessfulLogin()
         }

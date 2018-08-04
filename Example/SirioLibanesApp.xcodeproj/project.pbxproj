@@ -15,6 +15,11 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		6359B3EE2112B143004800AD /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3E92112B143004800AD /* CSVParser.swift */; };
+		6359B3EF2112B143004800AD /* FunctionalParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3EA2112B143004800AD /* FunctionalParse.swift */; };
+		6359B3F02112B143004800AD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3EB2112B143004800AD /* String+Extension.swift */; };
+		6359B3F12112B143004800AD /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3EC2112B143004800AD /* Parser.swift */; };
+		6359B3F22112B143004800AD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3ED2112B143004800AD /* Errors.swift */; };
 		981C3C8E20277767004B3282 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3C8D20277767004B3282 /* RegisterViewController.swift */; };
 		9855A95C2027389000515E1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9855A95B2027383D00515E1A /* GoogleService-Info.plist */; };
 		9855A95D2027389200515E1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9855A95B2027383D00515E1A /* GoogleService-Info.plist */; };
@@ -67,6 +72,12 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6259837E4FD150DFA86EAD41 /* Pods_SirioLibanesApp_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SirioLibanesApp_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6359B3E92112B143004800AD /* CSVParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
+		6359B3EA2112B143004800AD /* FunctionalParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionalParse.swift; sourceTree = "<group>"; };
+		6359B3EB2112B143004800AD /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6359B3EC2112B143004800AD /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		6359B3ED2112B143004800AD /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		63ECFA7A210EA30F00F125A1 /* SirioLibanesApp_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SirioLibanesApp_Example.entitlements; sourceTree = "<group>"; };
 		96D6B0EEA01EA8E499D5F9D1 /* Pods-SirioLibanesApp_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SirioLibanesApp_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SirioLibanesApp_Example/Pods-SirioLibanesApp_Example.release.xcconfig"; sourceTree = "<group>"; };
 		981C3C8D20277767004B3282 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Classes/RegisterViewController.swift; sourceTree = "<group>"; };
 		9855A95B2027383D00515E1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -141,6 +152,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				63ECFA7A210EA30F00F125A1 /* SirioLibanesApp_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SirioLibanesApp */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -163,6 +175,7 @@
 		607FACD21AFB9204008FA782 /* Example for SirioLibanesApp */ = {
 			isa = PBXGroup;
 			children = (
+				6359B3E82112B143004800AD /* CSV */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				9855A95E2027398600515E1A /* LoginViewController.swift */,
 				9855A96220274D1E00515E1A /* InitialViewController.swift */,
@@ -231,6 +244,18 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		6359B3E82112B143004800AD /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				6359B3E92112B143004800AD /* CSVParser.swift */,
+				6359B3EA2112B143004800AD /* FunctionalParse.swift */,
+				6359B3EB2112B143004800AD /* String+Extension.swift */,
+				6359B3EC2112B143004800AD /* Parser.swift */,
+				6359B3ED2112B143004800AD /* Errors.swift */,
+			);
+			path = CSV;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -289,6 +314,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = A4Z5L2G52S;
 						LastSwiftMigration = 0900;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -368,6 +398,7 @@
 				"${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MYTableViewIndex/MYTableViewIndex.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
 				"${BUILT_PRODUCTS_DIR}/SirioLibanesApp/SirioLibanesApp.framework",
@@ -379,6 +410,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BarcodeScanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MYTableViewIndex.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SirioLibanesApp.framework",
@@ -431,15 +463,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SirioLibanesApp_Tests/Pods-SirioLibanesApp_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,20 +503,25 @@
 				F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */,
 				F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */,
 				F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */,
+				6359B3F02112B143004800AD /* String+Extension.swift in Sources */,
 				9855A95F2027398600515E1A /* LoginViewController.swift in Sources */,
 				98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */,
 				F7F60FAA20E4330B008C497E /* Invitado.swift in Sources */,
 				98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* RedSocialViewController.swift in Sources */,
+				6359B3EE2112B143004800AD /* CSVParser.swift in Sources */,
 				98DE0FF620278A9200DB1A7C /* InputViewController.swift in Sources */,
 				98DE0FFE2027C11600DB1A7C /* SocialViewController.swift in Sources */,
 				98DE10012027C20500DB1A7C /* AssignmentViewController.swift in Sources */,
 				981C3C8E20277767004B3282 /* RegisterViewController.swift in Sources */,
 				F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */,
 				9861C86F202AA59E0004B1F5 /* AssignmentTableViewCell.swift in Sources */,
+				6359B3EF2112B143004800AD /* FunctionalParse.swift in Sources */,
+				6359B3F22112B143004800AD /* Errors.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				F7CFE93E20E150C800020B4C /* ReceptionTableViewCell.swift in Sources */,
 				9861C871202ABF2D0004B1F5 /* SongTableViewCell.swift in Sources */,
+				6359B3F12112B143004800AD /* Parser.swift in Sources */,
 				98DE0FFA2027B71100DB1A7C /* HomeTableViewCell.swift in Sources */,
 				9855A96320274D1E00515E1A /* InitialViewController.swift in Sources */,
 				F71B9D2320CD5ACE00BF9E99 /* InformationViewController.swift in Sources */,
@@ -637,8 +670,10 @@
 			baseConfigurationReference = 38A511E680EB44068D96E216 /* Pods-SirioLibanesApp_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SirioLibanesApp_Example.entitlements;
 				DEVELOPMENT_TEAM = A4Z5L2G52S;
 				INFOPLIST_FILE = SirioLibanesApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriolibanes.siriolibanesadmin;
@@ -655,8 +690,10 @@
 			baseConfigurationReference = 96D6B0EEA01EA8E499D5F9D1 /* Pods-SirioLibanesApp_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SirioLibanesApp_Example.entitlements;
 				DEVELOPMENT_TEAM = A4Z5L2G52S;
 				INFOPLIST_FILE = SirioLibanesApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriolibanes.siriolibanesadmin;

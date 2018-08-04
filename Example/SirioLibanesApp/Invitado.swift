@@ -25,11 +25,14 @@ class Invitado: NSObject {
       self.cantidad = cantidad
    }
    public init(map:[String:Any] ) {
-      self.mail = map["mail"] as! String?
-      self.mesa = map["mesa"] as! Int
-      self.ingresado = map["ingresado"] as! Bool
-      self.fullname = map["fullname"] as! String
-      self.cantidad = map["cantidad"] as! Int
+      let mail = map["mail"] as? String
+      self.mail = mail?.lowercased()
+      let mesaInt = map["mesa"] as? Int
+      let mesaString = map["mesa"] as? String
+      self.mesa = mesaInt ?? Int(mesaString ?? "0") ?? 0
+      self.ingresado = map["ingresado"] as? Bool ?? false
+      self.fullname = map["fullname"] as? String ?? "No name"
+      self.cantidad = map["cantidad"] as? Int ?? 1
    }
 
 }

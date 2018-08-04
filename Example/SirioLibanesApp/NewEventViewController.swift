@@ -36,7 +36,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
    var foto : String?
    var timestamp : String?
    var telefono : String?
-   var lugar : String?
+   var lugar : String? = "https://goo.gl/maps/4utj5jSpf9n"
    var hashtag : String?
    var codigoQR : String?
    var keyEvento : String?
@@ -130,9 +130,47 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
       
       }
    }
+   
+   func acceptCharacterDescription () -> String {
+      
+      
+      let caracteresLetrasYNumeros = "Solo letras y numeros"
+      let caracteresSinEspacio = "No se aceptan espacios"
+      let caracteresConBarra = "Letras y numeros con espacios y barras"
+      let numeros = "Solo numeros y caracteres telefonicos"
+      let letras = "Solo letras y guiones bajos"
+      let letrasMinusculas = "Solo letras minusculas"
+      
+      switch numeroDePaso {
+         
+         
+      case 0 : return caracteresLetrasYNumeros
+      //Titulo
+      case 1 : return caracteresLetrasYNumeros
+      //Descripcion
+      case 2 : return caracteresSinEspacio
+      //URL LUGAR
+      case 3 : return numeros
+      //TELEFONO
+      case 4 : return caracteresSinEspacio
+      //IMAGEN DE FONDO
+      case 5 : return numeros
+      //HORA
+      case 6 : return caracteresConBarra
+      //FECHA
+      case 7 : return letrasMinusculas
+      //CLAVEQR
+      case 8 : return letras
+      //IDBASEDEDATOS
+      case 9 : return caracteresLetrasYNumeros
+      //HASHTAG
+      default: return caracteresLetrasYNumeros
+         
+      }
+   }
     
    func showCaracterError() {
-      let alert = UIAlertController(title: "Error", message: "El caracter que intentas agregar no está permitido en este campo. Solo se aceptan letras y números.", preferredStyle: UIAlertControllerStyle.alert)
+      let alert = UIAlertController(title: "Error", message: "El caracter que intentas agregar no está permitido en este campo. \(self.acceptCharacterDescription())", preferredStyle: UIAlertControllerStyle.alert)
       alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
       self.present(alert, animated: true, completion: nil)
       }
