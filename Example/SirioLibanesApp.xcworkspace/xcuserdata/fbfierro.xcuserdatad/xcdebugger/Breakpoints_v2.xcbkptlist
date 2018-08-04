@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/ReceptionViewController.swift"
-            timestampString = "555055211.741238"
+            timestampString = "555109205.7817529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "convertToDictionary(text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/ReceptionViewController.swift"
-            timestampString = "555055211.742147"
+            timestampString = "555109205.782366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "getUserInfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SirioLibanesApp/ReceptionViewController.swift"
-            timestampString = "555055211.742551"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "goUpdateInvitados(infoArray:)"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
+            landmarkName = "saveMail(_:for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

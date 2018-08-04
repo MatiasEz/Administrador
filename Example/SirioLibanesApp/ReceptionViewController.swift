@@ -102,6 +102,7 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       let cell = self.tableView.dequeueReusableCell(withIdentifier: "receptionCell") as! ReceptionTableViewCell
       let position = indexPath.row
       let currentInvitado = invitados[position]
+      cell.invitado = currentInvitado
       cell.nameLabel.text = currentInvitado.fullname
       
       let variableIntCantidad = currentInvitado.cantidad
@@ -113,9 +114,9 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       cell.tableNumberLabel.text = stringMesa
       
        if (currentInvitado.mail?.isEmpty ?? true) {
-           cell.qrImage.isHidden = true
+         cell.qrImage.image = UIImage(named: "mailno")
        } else {
-           cell.qrImage.isHidden = false
+         cell.qrImage.image = UIImage(named: "mailyes")
        }
     
     
@@ -338,7 +339,64 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       self.present(alert, animated: true, completion: nil)
     }
    
+    @IBAction func mailAsk(_ sender: Any) {
+      let button = sender as! UIButton
+      let cell = button.superview?.superview as! ReceptionTableViewCell
+      let invitado = cell.invitado!
+
+      var mailTitle = "Agregar email"
+      var mailText = "Este invitado no tiene asignado ningún email y por tanto no puede acceder a la información del evento. Por favor ingresa el email del invitado:"
+      
+      if let mail = invitado.mail {
+         mailTitle = "Modificar email"
+         mailText = "Este invitado ya está asignado a este email: \(mail). Si deseas modificarlo ingresa el nuevo email en el campo inferior:";
+      }
+      
+      let alertController = UIAlertController(title: mailTitle, message: mailText, preferredStyle: .alert)
+      
+      let saveAction = UIAlertAction(title: "OK", style: .default, handler: {
+         alert -> Void in
+         
+         let firstTextField = alertController.textFields![0] as UITextField?
+         if ((firstTextField?.text)!.isEmpty) {
+            self.displayError(message: "Debes completar este campo para continuar")
+            return
+         }
+         self.saveMail((firstTextField?.text)!,for: invitado);
+         
+      })
+      
+      let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
+         (action : UIAlertAction!) -> Void in
+         
+      })
+      
+      alertController.addTextField { (textField : UITextField!) -> Void in
+         textField.placeholder = "Email del invitado"
+      }
+      
+      alertController.addAction(cancelAction)
+      alertController.addAction(saveAction)
+      
+      self.present(alertController, animated: true, completion: nil)
+   }
    
+   func saveMail(_ mail : String, for currentInvitado: Invitado) {
+      PKHUD.sharedHUD.show()
+      let position = currentInvitado.position! - 1
+      var invitadoMap : [String:Any] = [:]
+      invitadoMap["fullname"] = currentInvitado.fullname
+      invitadoMap["ingresado"] = currentInvitado.ingresado
+      invitadoMap["mesa"] = currentInvitado.mesa
+      invitadoMap["cantidad"] = currentInvitado.cantidad
+      invitadoMap["mail"] = mail
+      self.ref.child("Recepcion").child(self.pageName).child("\(position)").setValue(invitadoMap)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+         self.tableView.reloadData()
+         self.getUserInfo()
+      }
+   }
+    
     @IBAction func syncAssignment(_ sender: Any) {
       
       

@@ -14,6 +14,7 @@ class ReceptionTableViewCell: UITableViewCell {
     @IBOutlet weak var presenceButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var qrImage: UIImageView!
+    var invitado: Invitado?
     
     
     override func awakeFromNib() {

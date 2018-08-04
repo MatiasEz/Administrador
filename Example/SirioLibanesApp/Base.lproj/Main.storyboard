@@ -797,7 +797,7 @@ Telefono: 122312312</string>
                                                         <constraint firstAttribute="width" secondItem="ODg-iY-Czg" secondAttribute="height" multiplier="1:1" id="sdj-Dx-cxx"/>
                                                     </constraints>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-MQ-LmP">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailyes" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-MQ-LmP">
                                                     <rect key="frame" x="16" y="47.333333333333336" width="25" height="25.000000000000007"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzC-HL-kie">
@@ -860,12 +860,24 @@ Telefono: 122312312</string>
                                                         <constraint firstAttribute="bottom" secondItem="4yX-gx-m14" secondAttribute="bottom" id="oe8-gJ-AKF"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hO-nn-3yw">
+                                                    <rect key="frame" x="3.6666666666666679" y="35" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="4hO-nn-3yw" secondAttribute="height" multiplier="1:1" id="Xy3-gp-wx6"/>
+                                                        <constraint firstAttribute="width" constant="50" id="ZeR-T6-K2m"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="mailAsk:" destination="QRh-vo-pB4" eventType="touchUpInside" id="U7a-Qm-Rua"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="EJ9-MQ-LmP" firstAttribute="centerY" secondItem="yCF-uL-RLq" secondAttribute="centerY" constant="10" id="1t6-4l-WnF"/>
                                                 <constraint firstItem="kWU-4n-u9Z" firstAttribute="width" secondItem="yCF-uL-RLq" secondAttribute="width" constant="-32" id="AWa-rk-jhT"/>
+                                                <constraint firstItem="4hO-nn-3yw" firstAttribute="centerY" secondItem="EJ9-MQ-LmP" secondAttribute="centerY" id="BP5-WS-2BP"/>
                                                 <constraint firstItem="kWU-4n-u9Z" firstAttribute="leading" secondItem="yCF-uL-RLq" secondAttribute="leading" constant="16" id="Hpb-wW-wcK"/>
+                                                <constraint firstItem="4hO-nn-3yw" firstAttribute="centerX" secondItem="EJ9-MQ-LmP" secondAttribute="centerX" id="IQw-jh-ptM"/>
                                                 <constraint firstItem="XzC-HL-kie" firstAttribute="top" secondItem="yCF-uL-RLq" secondAttribute="top" id="R4y-9T-V72"/>
                                                 <constraint firstItem="EJ9-MQ-LmP" firstAttribute="leading" secondItem="yCF-uL-RLq" secondAttribute="leading" constant="16" id="RN6-4C-GgG"/>
                                                 <constraint firstItem="XzC-HL-kie" firstAttribute="leading" secondItem="EJ9-MQ-LmP" secondAttribute="trailing" constant="16" id="Xj7-e3-B3b"/>
@@ -1929,9 +1941,9 @@ Telefono: 122312312</string>
         <image name="delete" width="64" height="64"/>
         <image name="header" width="264" height="266"/>
         <image name="info" width="50" height="50"/>
+        <image name="mailyes" width="100" height="100"/>
         <image name="mesa" width="96" height="96"/>
         <image name="musica" width="96" height="96"/>
-        <image name="qrcode" width="50" height="50"/>
         <image name="redoscial" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
