@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/ReceptionViewController.swift"
-            timestampString = "555109205.7817529"
+            timestampString = "555112176.284268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "convertToDictionary(text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SirioLibanesApp/ReceptionViewController.swift"
+            timestampString = "555112176.285067"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
+            landmarkName = "saveMail(_:for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/ReceptionViewController.swift"
-            timestampString = "555109205.782366"
+            timestampString = "555112176.285762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
-            landmarkName = "saveMail(_:for:)"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
+            landmarkName = "scanner(_:didCaptureCode:type:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

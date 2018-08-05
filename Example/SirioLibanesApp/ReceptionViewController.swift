@@ -12,8 +12,9 @@ import PKHUD
 import MobileCoreServices
 import MYTableViewIndex;
 import PureLayout
+import BarcodeScanner
 
-class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITableViewDelegate, UITableViewDataSource, TableViewIndexDataSource, TableViewIndexDelegate {
+class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITableViewDelegate, UITableViewDataSource, TableViewIndexDataSource, TableViewIndexDelegate, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
    public var information : [AnyHashable: Any] = [:]
    public var pageName : String = "juanitoevento"
     
@@ -28,6 +29,8 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
    var fullInvitados : [Invitado] = []
    var invitados : [Invitado] = []
    var filterState = 0
+   let colorSelected = UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.9)
+   let colorUnselected = UIColor(red: 0, green: 0.5, blue: 0, alpha: 0.5)
 
     override func viewDidLoad() {
       PKHUD.sharedHUD.contentView = PKHUDProgressView()
@@ -82,7 +85,7 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       }
       if let row = row {
          let indexPath = IndexPath(row: row, section: 0)
-         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
          return true
       }
       return false
@@ -141,11 +144,15 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
     
    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
-      PKHUD.sharedHUD.show()
       let currentInvitado = self.invitados [indexPath.row]
+      self.changeState(for: currentInvitado, forceIngreso: false)
+   }
+   
+   func changeState(for currentInvitado: Invitado, forceIngreso: Bool) {
+      PKHUD.sharedHUD.show()
       let position = currentInvitado.position! - 1
       if  (currentInvitado.ingresado == true) { currentInvitado.ingresado = false} else {currentInvitado.ingresado = true}
+      if (forceIngreso == true) {currentInvitado.ingresado = true;}
       var invitadoMap : [String:Any] = [:]
       invitadoMap["fullname"] = currentInvitado.fullname
       invitadoMap["ingresado"] = currentInvitado.ingresado
@@ -205,6 +212,9 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       self.tableView.reloadData()
       self.filterState = 1
       self.calculateRate()
+      self.adentroButton.backgroundColor = colorSelected
+      self.afueraButton.backgroundColor = colorUnselected
+      self.todosButton.backgroundColor = colorUnselected
     }
     
     @IBAction func todosFilter(_ sender: Any?) {
@@ -212,6 +222,9 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       self.tableView.reloadData()
       self.filterState = 0
       self.calculateRate()
+      self.adentroButton.backgroundColor = colorUnselected
+      self.afueraButton.backgroundColor = colorUnselected
+      self.todosButton.backgroundColor = colorSelected
     }
     
     @IBAction func afueraFilter(_ sender: Any?) {
@@ -219,6 +232,9 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
       self.tableView.reloadData()
       self.filterState = 2
       self.calculateRate()
+      self.adentroButton.backgroundColor = colorUnselected
+      self.afueraButton.backgroundColor = colorSelected
+      self.todosButton.backgroundColor = colorUnselected
     }
    
    func calculateRate () {
@@ -328,16 +344,47 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
    }
    
    func displayImportError () {
-      let alert = UIAlertController(title: "Error", message: "Hubo un error en la carga del listado de recepción, por favor revisa que estes utilizando un archivo válido e intenta nuevamente", preferredStyle: UIAlertControllerStyle.alert)
-      alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
-      self.present(alert, animated: true, completion: nil)
+      self.displayError(message: "Hubo un error en la carga del listado de recepción, por favor revisa que estes utilizando un archivo válido e intenta nuevamente")
    }
    
     @IBAction func openCameraValidator(_ sender: Any) {
-      let alert = UIAlertController(title: "No disponible", message: "Todavía no está disponible esta funcionalidad", preferredStyle: UIAlertControllerStyle.alert)
-      alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
-      self.present(alert, animated: true, completion: nil)
+      let viewController = BarcodeScannerViewController()
+      viewController.codeDelegate = self
+      viewController.errorDelegate = self
+      viewController.dismissalDelegate = self
+      
+      present(viewController, animated: true, completion: nil)
     }
+   
+   func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+      for invitado in self.fullInvitados {
+         if invitado.mail?.lowercased() == code.lowercased() {
+            self.changeState(for: invitado, forceIngreso: true)
+            controller.dismiss(animated: true, completion: nil)
+            let alert = UIAlertController(title: "Invitado aceptado", message: "El usuario marcado es \(invitado.fullname).\nSu mesa asignada es la \(invitado.mesa),\nLa cantidad asignada es: \(invitado.cantidad)", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            if let row = self.invitados.firstIndex(of: invitado) {
+               let indexPath = IndexPath(row: row, section: 0)
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                  self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+               }
+            }
+            return
+         }
+      }
+      self.displayError(message: "El código QR escaneado no es válido o se trata de un usuario que no está asignado a este evento.")
+      controller.dismiss(animated: true, completion: nil)
+   }
+   
+   func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+      self.displayError(message: "No pudimos leer este código")
+   }
+   
+   func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+      controller.dismiss(animated: true, completion: nil)
+   }
    
     @IBAction func mailAsk(_ sender: Any) {
       let button = sender as! UIButton
