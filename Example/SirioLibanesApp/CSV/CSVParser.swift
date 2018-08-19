@@ -283,12 +283,3 @@ extension CSVParser {
     }
   }
 }
-
-extension CSVParser: RangeReplaceableCollection {
-  public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C : Collection, C.Iterator.Element == Array<String> {
-    self._rows.replaceSubrange(subrange, with: newElements)
-  }
-  public func reserveCapacity(_ n: Int) {
-    self._rows.reserveCapacity(n)
-  }
-}

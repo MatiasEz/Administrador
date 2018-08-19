@@ -365,7 +365,7 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
             alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
-            if let row = self.invitados.firstIndex(of: invitado) {
+            if let row = self.invitados.index(of: invitado) {
                let indexPath = IndexPath(row: row, section: 0)
                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                   self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
