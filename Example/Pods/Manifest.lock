@@ -1,5 +1,5 @@
 PODS:
-  - BarcodeScanner (4.1.2)
+  - BarcodeScanner (4.1.1)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -49,7 +49,7 @@ PODS:
   - SirioLibanesApp (0.1.0)
 
 DEPENDENCIES:
-  - BarcodeScanner (= 4.1.2)
+  - BarcodeScanner (= 4.1.1)
   - FBSnapshotTestCase (~> 2.1.4)
   - Firebase/Auth
   - Firebase/Core
@@ -66,7 +66,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BarcodeScanner: 2dd7e54fd0c40d006f6a89b8bddd56e73e85c58d
+  BarcodeScanner: 9013387ab07ab96232407517f4b90d16fd79aac5
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Firebase: 355bd535bfdacaa82a7fe8d9784115edefd6fc03
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
@@ -85,6 +85,6 @@ SPEC CHECKSUMS:
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SirioLibanesApp: e5e6c8436a7cdc620668a99f02e97de3af67baaf
 
-PODFILE CHECKSUM: 5b4476b825782c43682be4595aed207f77c1a04a
+PODFILE CHECKSUM: 89aca79e7d92d4855a99ef61c0e25a780ebb08b0
 
 COCOAPODS: 1.4.0

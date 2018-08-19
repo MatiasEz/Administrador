@@ -14,10 +14,12 @@ class Redsocial: NSObject {
    var title : String
    var tag : String
    var link : String
+   var key : String
    
-   public init(title: String, tag: String, link: String) {
+   public init(title: String, tag: String, link: String, key: String) {
       self.title = title
       self.tag = tag
       self.link = link
+      self.key = key
    }
 }

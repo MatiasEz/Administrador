@@ -50,11 +50,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func deleteCurrentEvent(_ sender: Any) {
-      let alert = UIAlertController(title: "Borrar evento", message: "¿Está seguro de que desea borrar este evento? Se perderá toda la información, canciones recomendadas y asignaciones de la fiesta y ya no será accesible por ningún usuario.", preferredStyle: UIAlertControllerStyle.alert)
+      let alert = UIAlertController(title: "Borrar evento", message: "¿Está seguro de que desea borrar este evento? Se perderá toda la información, canciones recomendadas, asignaciones y datos de recepción del evento y ya no será accesible por ningún usuario.", preferredStyle: UIAlertControllerStyle.alert)
       alert.addAction(UIAlertAction(title: "Sí", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
          self.ref.child("Eventos").child(self.pageName).removeValue()
          self.ref.child("Asignaciones").child(self.pageName).removeValue()
          self.ref.child("Musica").child(self.pageName).removeValue()
+         self.ref.child("Recepcion").child(self.pageName).removeValue()
          if (self.currentQRkey.isEmpty == false) {
             self.ref.child("Codigos").child(self.currentQRkey).removeValue()
          }

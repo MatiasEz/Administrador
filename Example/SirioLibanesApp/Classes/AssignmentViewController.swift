@@ -216,7 +216,8 @@ class AssignmentViewController: UIViewController, UITableViewDataSource, UITable
       
       for userKey in self.allUserAssignments.keys {
          let userMap = self.allUserAssignments [userKey] as! [AnyHashable: Any]
-         if (userMap ["email"] as? String == mail) {
+         let compareMail = userMap ["email"] as? String
+         if (compareMail?.lowercased() == mail.lowercased()) {
             return userMap ["nickname"] as? String
          }
       }

@@ -6,7 +6,7 @@ target 'SirioLibanesApp_Example' do
    pod 'Firebase/Auth'
    pod 'Firebase/Database'
    pod 'PKHUD'
-   pod 'BarcodeScanner', '4.1.2'
+   pod 'BarcodeScanner', '4.1.1'
    pod 'MYTableViewIndex'
    pod 'PureLayout'
    pod "QRCode"

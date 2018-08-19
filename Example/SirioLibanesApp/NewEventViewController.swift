@@ -84,16 +84,17 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
     }
    
    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-      let caracteresString = self.acceptCharacterForCurrentStep()
-      let caracteresAceptables = CharacterSet(charactersIn: caracteresString)
-      if string.rangeOfCharacter(from: caracteresAceptables) == nil && !string.isEmpty {
-        self.showCaracterError()
-         return false
+      if let caracteresString = self.acceptCharacterForCurrentStep() {
+        let caracteresAceptables = CharacterSet(charactersIn: caracteresString)
+         if string.rangeOfCharacter(from: caracteresAceptables) == nil && !string.isEmpty {
+            self.showCaracterError()
+            return false
+         }
       }
       return true
    }
    
-   func acceptCharacterForCurrentStep () -> String {
+   func acceptCharacterForCurrentStep () -> String? {
       
       
       let caracteresLetrasYNumeros = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ñÑ"
@@ -118,7 +119,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
          //IMAGEN DE FONDO
       case 5 : return numeros
          //HORA
-      case 6 : return caracteresConBarra
+      case 6 : return nil
          //FECHA
       case 7 : return letrasMinusculas
          //CLAVEQR
@@ -126,7 +127,9 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
          //IDBASEDEDATOS
       case 9 : return caracteresLetrasYNumeros
       //HASHTAG
-      default: return caracteresLetrasYNumeros
+      case 10 : return nil
+      //TODOS
+      default: return nil
       
       }
    }
@@ -267,11 +270,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
             default:
             break
          }
-         
-         self.inputTextField.text = ""
-
       }
-      
    }
    
    func saveCurrentSocialData () {
@@ -478,15 +477,14 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
       
       self.currentSocialStep = 1
       self.changeText(title:"\(self.currentSocialNetwork!) tag", description: "Ingresa con un texto que identifique la pagina de \(self.currentSocialNetwork!) ")
+      self.inputTextField.text = ""
    }
    
    func displaySecondQuestionForCurrentSocialNetwork () {
 
       self.currentSocialStep = 2
       self.changeText(title:"\(self.currentSocialNetwork!) link", description: "Este link permite abrir tu link en el contexto del navegador de \(self.currentSocialNetwork!) ")
-   
-
-      
+      self.inputTextField.text = "http://"
    }
 
 
