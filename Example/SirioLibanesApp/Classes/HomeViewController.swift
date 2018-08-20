@@ -210,7 +210,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
       switch (variableDeAccesoNoOpcional) {
       case "Admin":  self.performSegue(withIdentifier: "detailEvent", sender: self)
          break
-      case "Cliente":self.performSegue(withIdentifier: "invitados", sender: self)
+      case "Cliente":self.performSegue(withIdentifier: "reception", sender: self)
          break
       case "DJ":  self.performSegue(withIdentifier: "songs", sender: self)
          break
@@ -283,9 +283,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          viewController.information = self.information
          viewController.pageName = self.pageName
       }
-        if segue.identifier == "newevent" {
+      
+      if segue.identifier == "reception" {
+         let viewController: ReceptionViewController = segue.destination as! ReceptionViewController
+         viewController.information = self.information
+         viewController.pageName = self.pageName
+      }
+      
+      if segue.identifier == "newevent" {
             let viewController = segue.destination as! NewEventViewController
-    }
+      }
 
-    }
+   }
 }

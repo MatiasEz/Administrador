@@ -62,6 +62,12 @@ class OptionsViewController: UIViewController
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       
+      if segue.identifier == "reception" {
+         let viewController: ReceptionViewController = segue.destination as! ReceptionViewController
+         viewController.information = self.information
+         viewController.pageName = self.pageName
+      }
+      
       if segue.identifier == "social" {
          let viewController: RedSocialViewController = segue.destination as! RedSocialViewController
          viewController.information = self.information

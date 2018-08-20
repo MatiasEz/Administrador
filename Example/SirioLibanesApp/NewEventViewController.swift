@@ -36,7 +36,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
    var foto : String?
    var timestamp : String?
    var telefono : String?
-   var lugar : String?
+   var lugar : String? = "https://goo.gl/maps/4utj5jSpf9n"
    var hashtag : String?
    var codigoQR : String?
    var keyEvento : String?
@@ -50,9 +50,9 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
          //esto se ejecuta cuando se inicializa la clase
     if UIDevice.current.userInterfaceIdiom == .pad {
-        keyboardHeight.constant = 316
+        keyboardHeight.constant = 416
     } else if UIDevice.current.userInterfaceIdiom == .phone {
-        keyboardHeight.constant = 216
+        keyboardHeight.constant = 316
     }
       self.inputTextField.autocorrectionType = .no
       self.inputTextField.becomeFirstResponder()
@@ -84,16 +84,17 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
     }
    
    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-      let caracteresString = self.acceptCharacterForCurrentStep()
-      let caracteresAceptables = CharacterSet(charactersIn: caracteresString)
-      if string.rangeOfCharacter(from: caracteresAceptables) == nil && !string.isEmpty {
-        self.showCaracterError()
-         return false
+      if let caracteresString = self.acceptCharacterForCurrentStep() {
+        let caracteresAceptables = CharacterSet(charactersIn: caracteresString)
+         if string.rangeOfCharacter(from: caracteresAceptables) == nil && !string.isEmpty {
+            self.showCaracterError()
+            return false
+         }
       }
       return true
    }
    
-   func acceptCharacterForCurrentStep () -> String {
+   func acceptCharacterForCurrentStep () -> String? {
       
       
       let caracteresLetrasYNumeros = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ñÑ"
@@ -118,7 +119,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
          //IMAGEN DE FONDO
       case 5 : return numeros
          //HORA
-      case 6 : return caracteresConBarra
+      case 6 : return nil
          //FECHA
       case 7 : return letrasMinusculas
          //CLAVEQR
@@ -126,13 +127,53 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
          //IDBASEDEDATOS
       case 9 : return caracteresLetrasYNumeros
       //HASHTAG
-      default: return caracteresLetrasYNumeros
+      case 10 : return nil
+      //TODOS
+      default: return nil
       
+      }
+   }
+   
+   func acceptCharacterDescription () -> String {
+      
+      
+      let caracteresLetrasYNumeros = "Solo letras y numeros"
+      let caracteresSinEspacio = "No se aceptan espacios"
+      let caracteresConBarra = "Letras y numeros con espacios y barras"
+      let numeros = "Solo numeros y caracteres telefonicos"
+      let letras = "Solo letras y guiones bajos"
+      let letrasMinusculas = "Solo letras minusculas"
+      
+      switch numeroDePaso {
+         
+         
+      case 0 : return caracteresLetrasYNumeros
+      //Titulo
+      case 1 : return caracteresLetrasYNumeros
+      //Descripcion
+      case 2 : return caracteresSinEspacio
+      //URL LUGAR
+      case 3 : return numeros
+      //TELEFONO
+      case 4 : return caracteresSinEspacio
+      //IMAGEN DE FONDO
+      case 5 : return numeros
+      //HORA
+      case 6 : return caracteresConBarra
+      //FECHA
+      case 7 : return letrasMinusculas
+      //CLAVEQR
+      case 8 : return letras
+      //IDBASEDEDATOS
+      case 9 : return caracteresLetrasYNumeros
+      //HASHTAG
+      default: return caracteresLetrasYNumeros
+         
       }
    }
     
    func showCaracterError() {
-      let alert = UIAlertController(title: "Error", message: "El caracter que intentas agregar no está permitido en este campo. Solo se aceptan letras y números.", preferredStyle: UIAlertControllerStyle.alert)
+      let alert = UIAlertController(title: "Error", message: "El caracter que intentas agregar no está permitido en este campo. \(self.acceptCharacterDescription())", preferredStyle: UIAlertControllerStyle.alert)
       alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
       self.present(alert, animated: true, completion: nil)
       }
@@ -229,11 +270,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
             default:
             break
          }
-         
-         self.inputTextField.text = ""
-
       }
-      
    }
    
    func saveCurrentSocialData () {
@@ -440,15 +477,14 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
       
       self.currentSocialStep = 1
       self.changeText(title:"\(self.currentSocialNetwork!) tag", description: "Ingresa con un texto que identifique la pagina de \(self.currentSocialNetwork!) ")
+      self.inputTextField.text = ""
    }
    
    func displaySecondQuestionForCurrentSocialNetwork () {
 
       self.currentSocialStep = 2
       self.changeText(title:"\(self.currentSocialNetwork!) link", description: "Este link permite abrir tu link en el contexto del navegador de \(self.currentSocialNetwork!) ")
-   
-
-      
+      self.inputTextField.text = "http://"
    }
 
 

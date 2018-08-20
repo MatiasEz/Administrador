@@ -13,5 +13,6 @@ class RedSocialTableViewCell: UITableViewCell {
    @IBOutlet weak var titleLabel: UILabel!
    @IBOutlet weak var tagTextfield: UITextField!
    @IBOutlet weak var linkTextfield: UITextField!
+   public var key = ""
    
 }

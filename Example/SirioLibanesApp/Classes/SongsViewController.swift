@@ -90,7 +90,8 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             
             let artist = (currentMap! ["artista"] as! String?) ?? "Desconocido"
-            let newMap = ["tema":song,"votos":counter, "artista":artist] as [AnyHashable : Any]
+            let user = (currentMap! ["user"] as! String?) ?? "Desconocido"
+            let newMap = ["tema":song,"votos":counter, "artista":artist, "user":user] as [AnyHashable : Any]
             self.songs.append(newMap)
          }
          self.songs = self.songs.sorted(by: self.sorterForSong)
@@ -223,7 +224,7 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
          self.displayError(message:"El campo de ingreso esta vacio");
          return
       }
-      let map = ["tema":song,"artista":artist,"votos":1] as [AnyHashable : Any]
+      let map = ["tema":song,"artista":artist,"votos":1,"user":"Administrador"] as [AnyHashable : Any]
       self.songs.append(map)
       self.songs = self.songs.sorted(by: self.sorterForSong)
       self.ref.child("Musica").child(self.pageName).setValue(self.songs)

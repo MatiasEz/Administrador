@@ -100,7 +100,7 @@ class InputViewController: UIViewController, BarcodeScannerCodeDelegate, Barcode
         
         ref.child("Codigos").child(redeemCode).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let eventName = snapshot.value as? String!
+            let eventName = snapshot.value as? String
             if (eventName?.isEmpty ?? true) {
                 self.displayError(message: "Ingresaste un código incorrecto")
             } else {
@@ -174,7 +174,7 @@ class InputViewController: UIViewController, BarcodeScannerCodeDelegate, Barcode
     {
         ref.child("Eventos").child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let eventData = snapshot.value as? NSDictionary!
+            let eventData = snapshot.value as? NSDictionary
             if let unwEventData = eventData {
                 print (unwEventData.description)
                 self.information = unwEventData as! [AnyHashable: Any]
