@@ -17,6 +17,8 @@ class OptionsViewController: UIViewController
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var fourthButton: UIButton!
     @IBOutlet weak var receptionButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    
     public var information : [AnyHashable: Any] = [:]
    public var pageName : String = ""
    var ref: DatabaseReference!
@@ -48,6 +50,11 @@ class OptionsViewController: UIViewController
     receptionButton.layer.cornerRadius = 20
     receptionButton.layer.borderWidth = 1
     receptionButton.layer.borderColor = UIColor.white.cgColor
+    
+    shareButton.backgroundColor = .clear
+    shareButton.layer.cornerRadius = 20
+    shareButton.layer.borderWidth = 1
+    shareButton.layer.borderColor = UIColor.white.cgColor
       
       
       super.viewDidLoad()
@@ -78,7 +85,12 @@ class OptionsViewController: UIViewController
          viewController.information = self.information
          viewController.pageName = self.pageName
       }
-   }
-   
+      if segue.identifier == "infoShare" {
+         let claveQR = self.information ["qrkey"]
+         let viewController = segue.destination as! InformationViewController
+         viewController.setUpCode(code: claveQR as! String)
+         
+      }
+      
 }
-
+}
