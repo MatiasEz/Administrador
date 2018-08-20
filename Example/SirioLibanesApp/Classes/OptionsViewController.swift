@@ -26,34 +26,28 @@ class OptionsViewController: UIViewController
    override func viewDidLoad() {
       ref = Database.database().reference()
     
-    fourthButton.backgroundColor = .clear
     fourthButton.layer.cornerRadius = 20
-    fourthButton.layer.borderWidth = 1
+    fourthButton.layer.borderWidth = 5
     fourthButton.layer.borderColor = UIColor.white.cgColor
     
-    firstButton.backgroundColor = .clear
     firstButton.layer.cornerRadius = 20
-    firstButton.layer.borderWidth = 1
+    firstButton.layer.borderWidth = 5
     firstButton.layer.borderColor = UIColor.white.cgColor
     
-      twoButton.backgroundColor = .clear
       twoButton.layer.cornerRadius = 20
-      twoButton.layer.borderWidth = 1
+      twoButton.layer.borderWidth = 5
       twoButton.layer.borderColor = UIColor.white.cgColor
       
-      threeButton.backgroundColor = .clear
       threeButton.layer.cornerRadius = 20
-      threeButton.layer.borderWidth = 1
+      threeButton.layer.borderWidth = 5
       threeButton.layer.borderColor = UIColor.white.cgColor
     
-    receptionButton.backgroundColor = .clear
     receptionButton.layer.cornerRadius = 20
-    receptionButton.layer.borderWidth = 1
+    receptionButton.layer.borderWidth = 5
     receptionButton.layer.borderColor = UIColor.white.cgColor
     
-    shareButton.backgroundColor = .clear
     shareButton.layer.cornerRadius = 20
-    shareButton.layer.borderWidth = 1
+    shareButton.layer.borderWidth = 5
     shareButton.layer.borderColor = UIColor.white.cgColor
       
       
