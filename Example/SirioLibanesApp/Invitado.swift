@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Invitado: NSObject {
+class Invitado : Equatable {
    
    var cantidad : Int
    var mesa : Int
@@ -25,6 +25,7 @@ class Invitado: NSObject {
       self.fullname = fullname
       self.cantidad = cantidad
    }
+   
    public init(map:[String:Any] ) {
       let mail = map["mail"] as? String
       self.mail = mail?.lowercased()
@@ -37,6 +38,14 @@ class Invitado: NSObject {
       let cantInt = map["cantidad"] as? Int
       let cantString = map["cantidad"] as? String
       self.cantidad = cantInt ?? Int(cantString ?? "1") ?? 1
+   }
+
+   
+   static func ==(lhs:Invitado, rhs:Invitado) -> Bool {
+      if (lhs.mail == nil || rhs.mail == nil) {
+         return false
+      }
+      return lhs.mail == rhs.mail
    }
 
 }

@@ -253,7 +253,8 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
             let invitado = Invitado (map:infomap)
             invitadoArray.append(invitado)
         }
-        
+      
+      var fullDescriptionOfRecurrents = ""
         self.fullInvitados = invitadoArray.sorted {
             var string1 = $0.fullname
             var string2 = $1.fullname
@@ -261,6 +262,40 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
             string2 = string2.capitalized
             return  string1 < string2
         }
+      
+      
+         var uniqueValues: [Invitado] = []
+         for item in self.fullInvitados {
+            if uniqueValues.contains(item) {
+               let otherItem = uniqueValues[uniqueValues.firstIndex(of: item)!]
+               fullDescriptionOfRecurrents += "Este mail está en dos cuentas: \(item.mail ?? "") \nLos nombres en conflicto son \(item.fullname ) y \(otherItem.fullname ?? "")\n\n"
+            } else {
+               uniqueValues += [item]
+            }
+         }
+      
+      if (!fullDescriptionOfRecurrents.isEmpty) {
+         let fullText = "El mismo mail se está usando para muchos items de recepcion, por favor corrigelo: \n" + fullDescriptionOfRecurrents
+         let textView = UITextView()
+         textView.text = fullText
+         
+         let alert = UIAlertController(title: "Mails duplicados", message: nil, preferredStyle: .alert)
+         textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         
+         let controller = UIViewController()
+         
+         textView.frame = controller.view.frame
+         controller.view.addSubview(textView)
+         
+         alert.setValue(controller, forKey: "contentViewController")
+         
+         let height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height * 0.8)
+         alert.view.addConstraint(height)
+         alert.addAction(UIAlertAction(title: "De acuerdo", style: UIAlertActionStyle.default, handler: nil))
+         
+         
+         present(alert, animated: true, completion: nil)
+      }
         
         var pos = 1
         for invitado in self.fullInvitados {
