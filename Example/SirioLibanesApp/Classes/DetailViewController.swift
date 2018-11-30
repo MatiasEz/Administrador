@@ -127,9 +127,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                    "lugar":cell.textfieldAddress.text!,
                    "foto":cell.textfieldURL.text!,
                    "timestamp":Int(Double(cell.textfieldTimestamp.text!)!),
+                   "hashtag":self.information ["hashtag"] ?? "unknown",
                    "habilitada":cell.switchHabilitado.isOn,
-                   "invitados": self.information ["invitados"]!,
-                   "redes": self.information ["redes"]!] as [String : Any]
+                   "key": self.information ["key"] ?? "unknown",
+                   "qrkey": self.information ["qrkey"] ?? "unknown",
+                   "invitados": self.information ["invitados"] ?? [:],
+                   "redes": self.information ["redes"] ?? [:]]
       return event
    }
     

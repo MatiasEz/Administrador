@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/NewEventViewController.swift"
-            timestampString = "555945169.3168629"
+            timestampString = "556498047.126978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "487"
@@ -86,11 +86,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/NewEventViewController.swift"
-            timestampString = "555945169.317412"
+            timestampString = "556498047.1278369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -99,14 +99,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SirioLibanesApp_Example.NewEventViewController.acceptCharacterForCurrentStep() -&gt; Swift.Optional&lt;Swift.String&gt;"
                   moduleName = "SirioLibanesApp_Example"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fbfierro/Administrador/Example/SirioLibanesApp/NewEventViewController.swift"
-                  timestampString = "555945170.020143"
+                  timestampString = "556498047.51165"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -114,14 +114,14 @@
                   offsetFromSymbolStart = "333">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SirioLibanesApp_Example.NewEventViewController.acceptCharacterForCurrentStep() -&gt; Swift.Optional&lt;Swift.String&gt;"
                   moduleName = "SirioLibanesApp_Example"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fbfierro/Administrador/Example/SirioLibanesApp/NewEventViewController.swift"
-                  timestampString = "555945170.023618"
+                  timestampString = "556498047.515801"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SirioLibanesApp/Classes/SongsViewController.swift"
-            timestampString = "555945169.31776"
+            timestampString = "556495225.69063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
