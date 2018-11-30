@@ -18,6 +18,7 @@ class OptionsViewController: UIViewController
     @IBOutlet weak var fourthButton: UIButton!
     @IBOutlet weak var receptionButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var giftButton: UIButton!
     
     public var information : [AnyHashable: Any] = [:]
    public var pageName : String = ""
@@ -49,7 +50,10 @@ class OptionsViewController: UIViewController
     shareButton.layer.cornerRadius = 20
     shareButton.layer.borderWidth = 5
     shareButton.layer.borderColor = UIColor.white.cgColor
-      
+    
+    giftButton.layer.cornerRadius = 20
+    giftButton.layer.borderWidth = 5
+    giftButton.layer.borderColor = UIColor.white.cgColor
       
       super.viewDidLoad()
    }
@@ -91,6 +95,11 @@ class OptionsViewController: UIViewController
          viewController.setUpCode(code: claveQR as! String)
          
       }
-      
+      if segue.identifier == "gift" {
+         let viewController: GiftViewController = segue.destination as! GiftViewController
+         viewController.information = self.information
+         viewController.pageName = self.pageName
+
+}
 }
 }

@@ -310,8 +310,13 @@ class ReceptionViewController: UIViewController, UIDocumentPickerDelegate, UITab
    func loadFileCsv(string: String) {
       print(string)
       do {
-         let csv = try CSVParser(content: string, delimiter: ";")
+         
+       
+         let stringLimpio = string.replacingOccurrences(of: ";;;;;", with: "")
+         let csv = try CSVParser(content: stringLimpio, delimiter: ";")
          self.loadJSON(string: try csv.toJSON())
+         
+         
          // get every row in csv
          
       } catch {

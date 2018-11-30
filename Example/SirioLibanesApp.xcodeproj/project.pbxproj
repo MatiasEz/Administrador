@@ -39,6 +39,9 @@
 		F70DA18220952BCE005AE2FA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DA18120952BCE005AE2FA /* NewEventViewController.swift */; };
 		F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F716861620ACDAFB00C971DB /* OptionsViewController.swift */; };
 		F71B9D2320CD5ACE00BF9E99 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */; };
+		F7784ABE21A0B55200CFFFD7 /* GiftsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7784ABB21A0B55100CFFFD7 /* GiftsTableViewCell.swift */; };
+		F7784ABF21A0B55200CFFFD7 /* Gifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7784ABC21A0B55100CFFFD7 /* Gifts.swift */; };
+		F7784AC021A0B55200CFFFD7 /* GiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7784ABD21A0B55100CFFFD7 /* GiftsViewController.swift */; };
 		F7960FC520B0D1310081A4BD /* RedSocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */; };
 		F7960FC720B2473A0081A4BD /* Redsocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7960FC620B2473A0081A4BD /* Redsocial.swift */; };
 		F7CFE93C20E150A500020B4C /* ReceptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CFE93B20E150A500020B4C /* ReceptionViewController.swift */; };
@@ -99,6 +102,9 @@
 		F70DA18120952BCE005AE2FA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		F716861620ACDAFB00C971DB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = Classes/OptionsViewController.swift; sourceTree = "<group>"; };
 		F71B9D2220CD5ACE00BF9E99 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		F7784ABB21A0B55100CFFFD7 /* GiftsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftsTableViewCell.swift; sourceTree = "<group>"; };
+		F7784ABC21A0B55100CFFFD7 /* Gifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gifts.swift; sourceTree = "<group>"; };
+		F7784ABD21A0B55100CFFFD7 /* GiftsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftsViewController.swift; sourceTree = "<group>"; };
 		F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSocialTableViewCell.swift; sourceTree = "<group>"; };
 		F7960FC620B2473A0081A4BD /* Redsocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redsocial.swift; sourceTree = "<group>"; };
 		F7CFE93B20E150A500020B4C /* ReceptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptionViewController.swift; sourceTree = "<group>"; };
@@ -175,13 +181,12 @@
 		607FACD21AFB9204008FA782 /* Example for SirioLibanesApp */ = {
 			isa = PBXGroup;
 			children = (
+				F7784ABA21A0B55100CFFFD7 /* Gifts */,
 				6359B3E82112B143004800AD /* CSV */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				9855A95E2027398600515E1A /* LoginViewController.swift */,
 				9855A96220274D1E00515E1A /* InitialViewController.swift */,
-				607FACD71AFB9204008FA782 /* RedSocialViewController.swift */,
-				F7960FC620B2473A0081A4BD /* Redsocial.swift */,
-				F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */,
+				F7784AAB21A0B3F600CFFFD7 /* Redes sociales */,
 				F7F60FA920E4330B008C497E /* Invitado.swift */,
 				F7CFE93B20E150A500020B4C /* ReceptionViewController.swift */,
 				F7CFE93D20E150C800020B4C /* ReceptionTableViewCell.swift */,
@@ -254,6 +259,26 @@
 				6359B3ED2112B143004800AD /* Errors.swift */,
 			);
 			path = CSV;
+			sourceTree = "<group>";
+		};
+		F7784AAB21A0B3F600CFFFD7 /* Redes sociales */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* RedSocialViewController.swift */,
+				F7960FC620B2473A0081A4BD /* Redsocial.swift */,
+				F7960FC420B0D1310081A4BD /* RedSocialTableViewCell.swift */,
+			);
+			path = "Redes sociales";
+			sourceTree = "<group>";
+		};
+		F7784ABA21A0B55100CFFFD7 /* Gifts */ = {
+			isa = PBXGroup;
+			children = (
+				F7784ABB21A0B55100CFFFD7 /* GiftsTableViewCell.swift */,
+				F7784ABC21A0B55100CFFFD7 /* Gifts.swift */,
+				F7784ABD21A0B55100CFFFD7 /* GiftsViewController.swift */,
+			);
+			path = Gifts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7784AC021A0B55200CFFFD7 /* GiftsViewController.swift in Sources */,
 				98DE10032027C27800DB1A7C /* SongsViewController.swift in Sources */,
 				F7CFE93C20E150A500020B4C /* ReceptionViewController.swift in Sources */,
 				9855A96520274F9500515E1A /* HomeViewController.swift in Sources */,
@@ -507,6 +533,7 @@
 				F716861720ACDAFB00C971DB /* OptionsViewController.swift in Sources */,
 				6359B3F02112B143004800AD /* String+Extension.swift in Sources */,
 				9855A95F2027398600515E1A /* LoginViewController.swift in Sources */,
+				F7784ABE21A0B55200CFFFD7 /* GiftsTableViewCell.swift in Sources */,
 				98DE10062027DEA400DB1A7C /* DetailTableViewCell.swift in Sources */,
 				F7F60FAA20E4330B008C497E /* Invitado.swift in Sources */,
 				98DE10042027DC8700DB1A7C /* DetailViewController.swift in Sources */,
@@ -527,6 +554,7 @@
 				98DE0FFA2027B71100DB1A7C /* HomeTableViewCell.swift in Sources */,
 				9855A96320274D1E00515E1A /* InitialViewController.swift in Sources */,
 				F71B9D2320CD5ACE00BF9E99 /* InformationViewController.swift in Sources */,
+				F7784ABF21A0B55200CFFFD7 /* Gifts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
